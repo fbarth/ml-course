@@ -1,0 +1,179 @@
+---
+title: "Preço de apartamentos em São Paulo"
+output: html_document
+---
+
+O objetivo deste projeto é criar um modelo preditivo para preço de apartamentos na cidade de São Paulo. 
+Os dados utilizados neste projeto foram capturas em Setembro de 2014 a partir de crawler que coletou informações
+existentes em diversos websites de imobiliárias. 
+
+Este dataset está sugeito a dados com erros. Por isso, faz parte deste projeto entender os dados, pré-processar e, 
+se necessário, excluir exemplos que pareçam possuir informação errada.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Leitura dos dados 
+
+Dados capturados em Setembro de 2014 a partir de websites de imobiliárias. 
+
+```{r}
+load(file = '../data/20140917_imoveis_completo.rda')
+class(imoveis)
+names(imoveis)
+nrow(imoveis)
+sapply(imoveis, class)
+```
+
+Exclusão de atributo em formato texto de difícil manipulação e aparentemente irrelevante. 
+
+```{r}
+imoveis$descricao <- NULL
+````
+
+Análise da variável **bairro**
+
+````{r}
+barplot(sort(table(imoveis$bairro), decreasing = TRUE), las=2, main="Bairros")
+sort(table(imoveis$bairro), decreasing = TRUE)
+length(table(imoveis$bairro))
+````
+
+Análise da variável **preço**
+
+````{r}
+summary(imoveis$preco)
+nrow(imoveis[imoveis$preco == 0, ])
+imoveis <- imoveis[imoveis$preco > 0, ]
+boxplot(imoveis$preco, outline = FALSE, main="Boxplot preço")
+````
+
+Exclusão de imóveis com preço superior a R$ 5.000.000,00
+
+````{r}
+nrow(imoveis[imoveis$preco > 5000000, ])
+imoveis <- imoveis[imoveis$preco < 5000000, ]
+````
+
+Análise da variável **área**, exclusão dos exemplos com valor faltante para área e exclusão dos exemplos com área menor que 10m2. 
+
+````{r}
+summary(imoveis$area)
+imoveis <- imoveis[complete.cases(imoveis$area), ]
+boxplot(imoveis$area)
+imoveis[imoveis$area < 10, c('area','preco','bairro')]
+imoveis <- imoveis[imoveis$area > 10, ]
+imoveis[imoveis$area < 20, c('area','preco','bairro','dormitorios')]
+hist(imoveis$area, main="Área dos apartamentos")
+````
+
+Análise da variável **dormitórios** e exclusão de exemplos com valores faltantes para dormitórios.
+
+````{r}
+summary(imoveis$dormitorios)
+imoveis <- imoveis[complete.cases(imoveis$dormitorios),]
+barplot(table(imoveis$dormitorios), main="Dormitórios")
+````
+
+Análise da variável *banheiros* e exclusão de exemplos com valores faltantes para banheiros. 
+
+````{r}
+summary(imoveis$banheiros)
+imoveis <- imoveis[complete.cases(imoveis$banheiros), ]
+table(imoveis$banheiros)
+imoveis <- imoveis[imoveis$banheiros < 15, ]
+barplot(table(imoveis$banheiros), main="Banheiros")
+````
+
+Análise da variável **suites**
+
+````{r}
+summary(imoveis$suites)
+imoveis$suites <- ifelse(is.na(imoveis$suites), 0, imoveis$suites)
+table(imoveis$suites)
+barplot(table(imoveis$suites), main="Suites")
+````
+
+Análise da variável **vagas**
+
+````{r}
+summary(imoveis$vagas)
+imoveis$vagas <- ifelse(is.na(imoveis$vagas), 0, imoveis$vagas)
+table(imoveis$vagas)
+barplot(table(imoveis$vagas), main="Vagas")
+````
+
+````{r}
+nrow(imoveis)
+sum(is.na(imoveis))
+````
+
+Vamos trabalhar apenas com apartamentos até 600m2.
+
+````{r}
+imoveis <- imoveis[imoveis$area <= 600, ]
+hist(imoveis$area, main="Área dos apartamentos")
+````
+
+Algumas informações sobre dormitórios. Estamos excluindo todos os apartamentos com mais de sete dormitórios.
+
+````{r}
+plot(imoveis$area ~ imoveis$dormitorios, pch=19, main="Relação área vs dormitórios")
+imoveis <- imoveis[imoveis$dormitorios < 7, ]
+plot(imoveis$area ~ imoveis$dormitorios, pch=19, main="Relação área vs dormitórios")
+plot(imoveis$dormitorios ~ imoveis$suites, pch=19, main="Relação dormitórios vs suítes")
+````
+
+Não podemos ter a quantidade de suites maior que a quantidade de dormitórios.
+
+````{r}
+sum(imoveis$suites <= imoveis$dormitorios)
+imoveis <- imoveis[(imoveis$suites <= imoveis$dormitorios), ]
+plot(imoveis$dormitorios ~ imoveis$suites, pch=19, main="Relação dormitórios vs suítes")
+````
+
+Excluindo apartamentos com mais de 10 banheiros com mais de 10 vagas.
+
+````{r}
+plot(imoveis$area ~ imoveis$banheiros, pch=19, main="Relação área vs banheiros")
+plot(imoveis$suites ~ imoveis$banheiros, pch=19, main="Relação suites vs banheiros")
+plot(imoveis$dormitorios ~ imoveis$banheiros, pch=19, main="Relação dormitórios vs banheiros")
+imoveis <- imoveis[imoveis$banheiros < 10, ]
+
+plot(imoveis$area ~ imoveis$vagas, pch=19, main="Relação área vs vagas")
+imoveis <- imoveis[imoveis$vagas < 10, ]
+plot(imoveis$area ~ imoveis$vagas, pch=19, main="Relação área vs vagas")
+````
+
+Apresentando outras formas de visualização
+
+````{r}
+library(ggplot2)
+temp <- imoveis[(imoveis$bairro == 'ipiranga' | imoveis$bairro == 'paraiso'), ]
+qplot(temp$area, temp$preco, col=temp$bairro, size=temp$vagas, main = "Bairro vs preço")
+````
+
+Apresentando a correlação entre as variáveis numéricas
+
+````{r}
+cor(imoveis[, 2:7])
+````
+
+Bairros pouco representativos serão excluídos. Todos os exemplos de bairros com menos de 10 apartamentos serão excluídos.
+
+````{r}
+imoveis <- imoveis[imoveis$bairro != 'city-butanta', ]
+imoveis <- imoveis[imoveis$bairro != 'cantareira', ]
+imoveis <- imoveis[imoveis$bairro != 'parelheiros', ]
+imoveis <- imoveis[imoveis$bairro != 'parque-continental', ]
+imoveis <- imoveis[imoveis$bairro != 'itaim-paulista', ]
+imoveis <- imoveis[imoveis$bairro != 'bresser', ]
+imoveis <- imoveis[imoveis$bairro != 'jardim-sao-bento', ]
+imoveis <- imoveis[imoveis$bairro != 'parque-edu-chaves', ]
+imoveis <- imoveis[imoveis$bairro != 'jardim-lusitania', ]
+imoveis <- imoveis[imoveis$bairro != 'riviera-paulista', ]
+imoveis <- imoveis[imoveis$bairro != 'city-butanta', ]
+imoveis$bairro <- factor(imoveis$bairro)
+sort(table(imoveis$bairro), decreasing = TRUE)
+````
