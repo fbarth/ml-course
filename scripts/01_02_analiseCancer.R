@@ -16,6 +16,9 @@ trainIndex <- createDataPartition(dataset$diagnosis, p = .8,
 train <- dataset[trainIndex,]
 test <- dataset[-trainIndex,]
 
+train <- train[sample(nrow(train)),]
+test <- test[sample(nrow(test)),]
+
 # criando um modelo com arvores de decisao com todos os exemplos
 library(party)
 myFormula <- diagnosis ~ .
@@ -44,10 +47,9 @@ confusionMatrix(t2)
 #
 # variando o numero de exemplos no conjunto de treinamento
 # 
-
 myFormula <- diagnosis ~ .
 result <- matrix(0,nrow=nrow(train), ncol=2)
-for (i in 10:nrow(train)){
+for (i in 2:nrow(train)){
   
   train_temp <- train[1:i,]
   cancer_ctree <- ctree(myFormula, data=train_temp)
@@ -60,10 +62,10 @@ for (i in 10:nrow(train)){
   print(paste(i,"  ",(confusionMatrix(t))$overall[1],"  ",(confusionMatrix(t2))$overall[1]))
   result[i,] <- c((confusionMatrix(t))$overall[1], (confusionMatrix(t2))$overall[1])
 } 
-result <- result[10:nrow(result), ]
+result <- result[5:nrow(result), ]
 
 plot(result[,1], type="l", col="red", ylim=c(0,1), 
-     xlab="# exemplos", ylab="accr", main="Exemplo de overfit considerando N exemplos")
+     xlab="# exemplos", ylab="accr", main="Exemplo de underfitting e overfitting considerando N exemplos")
 lines(result[,2], type="l", col="blue")
 legend("bottomright", inset = 0.15, title="Dataset",
        c("Train","Test"), fill=c("red","blue"), horiz=FALSE)
@@ -89,7 +91,7 @@ for (i in 2:ncol(train)){
 } 
 
 plot(result[2:ncol(train),1], type="l", col="red", ylim=c(0,1), 
-     xlab="# exemplos", ylab="accr", main="Exemplo de overfit considerando N atributos")
+     xlab="# exemplos", ylab="accr", main="Exemplo de overfitting considerando N atributos")
 lines(result[2:ncol(train),2], type="l", col="blue")
 legend("bottomright", inset = 0.15, title="Dataset",
        c("Train","Test"), fill=c("red","blue"), horiz=FALSE)
@@ -103,8 +105,7 @@ legend("bottomright", inset = 0.15, title="Dataset",
 library(randomForest)
 myFormula <- diagnosis ~ .
 result <- matrix(0,nrow=nrow(train), ncol=2)
-for (i in 21:nrow(train)){
-  
+for (i in 5:nrow(train)){
   train_temp <- train[1:i,]
   cancer_ctree <- randomForest(myFormula, data=train_temp)
   trainPred <- predict(cancer_ctree, newdata = train_temp)
@@ -116,10 +117,10 @@ for (i in 21:nrow(train)){
   print(paste(i,"  ",(confusionMatrix(t))$overall[1],"  ",(confusionMatrix(t2))$overall[1]))
   result[i,] <- c((confusionMatrix(t))$overall[1], (confusionMatrix(t2))$overall[1])
 } 
-result <- result[21:nrow(result), ]
+result <- result[5:nrow(result), ]
 
 plot(result[,1], type="l", col="red", ylim=c(0,1), 
-     xlab="# exemplos", ylab="accr", main="Exemplo de overfit considerando N exemplos")
+     xlab="# exemplos", ylab="accr", main="Exemplo de overfitting considerando N exemplos")
 lines(result[,2], type="l", col="blue")
 legend("bottomright", inset = 0.15, title="Dataset",
        c("Train","Test"), fill=c("red","blue"), horiz=FALSE)

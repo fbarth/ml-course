@@ -2,6 +2,18 @@
 # Script para criacao do modelo e avaliacao
 #
 
+# Function that returns Root Mean Squared Error
+rmse <- function(error)
+{
+  sqrt(mean(error^2))
+}
+
+# Function that returns Mean Absolute Error
+mae <- function(error)
+{
+  mean(abs(error))
+}
+
 load("data/20140917_imoveis_completo_tratado.rda")
 sort(table(imoveis$bairro), decreasing = TRUE)
 length(table(imoveis$bairro))
@@ -14,18 +26,6 @@ test <- imoveis[ind == 2,]
 model <- lm(preco ~ ., data=train)
 summary(model)
 plot(model)
-
-# Function that returns Root Mean Squared Error
-rmse <- function(error)
-{
-  sqrt(mean(error^2))
-}
-
-# Function that returns Mean Absolute Error
-mae <- function(error)
-{
-  mean(abs(error))
-}
 
 test$pred <- predict(model, test)
 rmse(test$preco - pred)

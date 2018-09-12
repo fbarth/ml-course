@@ -15,5 +15,6 @@ ou artigos que serão utilizados na disciplina;
 
 ## Problemas até o momento discutidos em sala de aula
 
-* Breast cancer: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
+* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
+* Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
 
