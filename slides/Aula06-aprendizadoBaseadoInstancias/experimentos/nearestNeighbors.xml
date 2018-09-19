@@ -1,0 +1,16 @@
+<operator name="Root" class="Experiment">
+  <description text="This learner uses a simple nearest neighbors classifier. This instance based classifiers just uses the other instances closest to the instance at hand in order to determine a prediction."/>
+  <operator name="ArffExampleSource" class="ArffExampleSource">
+    <parameter key="data_file"	value="C:\Documents and Settings\fabricio.barth\Desktop\slidesAM\aprendizadoBaseadoInstancias\dados\iris.arff"/>
+    <parameter key="label_attribute"	value="class"/>
+  </operator>
+  <operator name="IdTagging" class="IdTagging">
+    <parameter key="create_nominal_ids"	value="true"/>
+  </operator>
+  <operator name="IBk" class="IBk">
+    <parameter key="keep_example_set"	value="true"/>
+  </operator>
+  <operator name="ExampleVisualizer" class="ExampleVisualizer">
+  </operator>
+</operator>
+

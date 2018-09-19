@@ -1,0 +1,34 @@
+\BOOKMARK [-1][]{1.-1}{Algoritmos de Agrupamento - Aprendizado N\343o Supervisionado}{}% 1
+\BOOKMARK [0][]{2.0}{Sum\341rio}{1.-1}% 2
+\BOOKMARK [-1][]{3.-1}{Introdu\347\343o}{}% 3
+\BOOKMARK [0][]{4.0}{Introdu\347\343o e Defini\347\365es}{3.-1}% 4
+\BOOKMARK [0][]{5.0}{Aplica\347\365es}{3.-1}% 5
+\BOOKMARK [-1][]{6.-1}{Algoritmos}{}% 6
+\BOOKMARK [0][]{7.0}{Algoritmos de Agrupamento}{6.-1}% 7
+\BOOKMARK [0][]{8.0}{Agrupamento Plano}{6.-1}% 8
+\BOOKMARK [0][]{9.0}{Agrupamentos soft e hard}{6.-1}% 9
+\BOOKMARK [0][]{10.0}{Agrupamento Plano hard \(Exemplo\)}{6.-1}% 10
+\BOOKMARK [0][]{11.0}{Agrupamento Hier\341rquico}{6.-1}% 11
+\BOOKMARK [0][]{12.0}{Agrupamento Hier\341rquico \(Exemplo\)}{6.-1}% 12
+\BOOKMARK [-1][]{13.-1}{Algoritmos para Agrupamento Plano}{}% 13
+\BOOKMARK [0][]{14.0}{Algoritmos para agrupamento plano}{13.-1}% 14
+\BOOKMARK [0][]{15.0}{K-means}{13.-1}% 15
+\BOOKMARK [0][]{16.0}{Itera\347\343o do algoritmo K-means}{13.-1}% 16
+\BOOKMARK [0][]{17.0}{Algoritmo K-means}{13.-1}% 17
+\BOOKMARK [0][]{19.0}{Algoritmo K-means}{13.-1}% 18
+\BOOKMARK [-1][]{20.-1}{Problema...}{}% 19
+\BOOKMARK [0][]{21.0}{Blue Flag Iris}{20.-1}% 20
+\BOOKMARK [0][]{22.0}{Blue Flag Iris - Dados}{20.-1}% 21
+\BOOKMARK [0][]{23.0}{Aplicando o algoritmo K-means}{20.-1}% 22
+\BOOKMARK [0][]{26.0}{Como determinar o melhor k?}{20.-1}% 23
+\BOOKMARK [-1][]{27.-1}{Algoritmos para Agrupamento Hier\341rquico}{}% 24
+\BOOKMARK [0][]{28.0}{Algoritmos para agrupamento hier\341rquico}{27.-1}% 25
+\BOOKMARK [0][]{29.0}{Agrupamento hier\341rquico bottom-up}{27.-1}% 26
+\BOOKMARK [0][]{31.0}{Agrupamento hier\341rquico bottom-up - Fun\347\343o de similaridade}{27.-1}% 27
+\BOOKMARK [0][]{32.0}{Tipos de fun\347\365es de similaridade}{27.-1}% 28
+\BOOKMARK [0][]{34.0}{Agrupamento hier\341rquico top-down}{27.-1}% 29
+\BOOKMARK [0][]{36.0}{Restri\347\343o sobre os agrupamentos hier\341rquicos}{27.-1}% 30
+\BOOKMARK [0][]{37.0}{Algumas considera\347\365es sobre agrupamentos}{27.-1}% 31
+\BOOKMARK [-1][]{38.-1}{Considera\347\365es Finais}{}% 32
+\BOOKMARK [0][]{39.0}{Sum\341rio dos atributos dos algoritmos}{38.-1}% 33
+\BOOKMARK [0][]{40.0}{Sum\341rio dos atributos dos algoritmos}{38.-1}% 34

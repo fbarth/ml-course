@@ -1,0 +1,94 @@
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[small]{titlesec} % personalizaçao de títulos
+\usepackage{enumerate}
+\usepackage{html}
+\usepackage{hyperref}
+% cores
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{multicol}
+
+\IfFileExists{.ps}
+  {\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}}
+  {}
+
+
+
+\sloppy
+
+
+\parindent 0cm
+\parskip   3pt
+
+\newcommand{\fazTitulo}[1]{
+
+ \htmladdnormallink{Universidade Regional de Blumenau}{http://www.furb.br}\hfill
+ \htmladdnormallink{\textbf{Inteligência Artificial}}{http://www.inf.furb.br/~jomi/ia}\\
+% 
+ \htmladdnormallink{Centro de Ciências Exatas e Naturais}{http://www.furb.br}\hfill
+ \htmladdnormallink{Jomi Fred Hübner}{http://www.inf.furb.br/~jomi}\\
+%
+ \htmladdnormallink{Departamento de Sistemas e Computação}{http://www.inf.furb.br/dsc}\\[0.2cm]
+
+ \begin{center}
+        \Large{#1}\\[1.5cm]       
+ \end{center}
+ 
+}
+
+
+\newcommand{\fazTituloUmaCol}[1]{
+
+\html{
+\begin{rawhtml}
+<table style="vertical-align; top; width: 100%;" border="0" cellspacing="0" cellpadding="0">
+<td>
+\end{rawhtml}
+}
+ 
+ \htmladdnormallink{Universidade Regional de Blumenau}{http://www.furb.br}\\
+ \htmladdnormallink{Centro de Ciências Exatas e Naturais}{http://www.furb.br}\\
+ \htmladdnormallink{Departamento de Sistemas e Computação}{http://www.inf.furb.br/dsc}\\[0.2cm]
+ \htmladdnormallink{\textbf{Inteligência Artificial}}{http://www.inf.furb.br/~jomi/ia}\\
+ \htmladdnormallink{Professor: Jomi Fred Hübner}{http://www.inf.furb.br/~jomi}\\
+
+\html{
+\begin{rawhtml}
+</td>
+<td style="text-align: right;">
+<a href="http://www.furb.br">
+<img
+style="border: 0px solid ; width: 123px; height: 76px;" alt="logo furb"
+src="http://www.inf.furb.br/%7Ejomi/logomarca-furb.jpg">
+</a>
+</td>
+</table>
+\end{rawhtml}
+}
+ 
+ \latex{
+         \begin{center}
+                \Large{#1}\\[1.5cm]
+         \end{center}
+ }
+
+ \html{
+        \begin{rawhtml}
+	<h0>
+        \end{rawhtml}
+        #1
+        \begin{rawhtml}
+        </h0>
+        \end{rawhtml}
+ } 
+}
+
+
+
+
+%%% Local Variables: 
+%%% mode: plain-tex
+%%% TeX-master: t
+%%% TeX-master: "cabecalho"
+%%% End: 

@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[Manning and Schütze, 2003]{man2003}
+Manning, C.~D. and Schütze, H. (2003).
+\newblock {\em Foundations of Statistical Natural Language Processing}.
+\newblock MIT Press.
+
+\bibitem[Mitchell, 1997]{mit1997}
+Mitchell, T.~M. (1997).
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill.
+
+\end{thebibliography}

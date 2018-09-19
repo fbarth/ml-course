@@ -1,0 +1,209 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+%\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Mineração de padrões frequentes} 
+\author{Fabrício Jailson Barth}
+\institution{}
+\date{Dezembro de 2012}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Sumário e Objetivos}
+\begin{itemize}
+\item Mineração de itens frequentes.
+\item Definição de suporte e confiança. 
+\item Caso: Identificação de áreas correlatas.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Mineração de itens frequentes}
+\begin{itemize}
+\item Dado:
+\begin{itemize}
+\item um conjunto $A = \{a_{1}, \cdots, a_{m}\}$ de itens,
+\item uma tabela $T = (t_{1}, \cdots, t_{n})$ de transações sobre $A$,
+\item um número $\beta_{min}$ que $0 < \beta_{min} \leq 1$, o
+  \textbf{suporte mínimo}.
+\end{itemize}
+
+\item Objetivo 1:
+\begin{itemize}
+\item encontrar o conjunto de \textbf{itens frequentes}, tais que o
+  \textbf{suporte} de cada conjunto de itens é maior ou igual ao $\beta_{min}$
+  definido pelo usuário.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo de transações}
+\tiny
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/dataset.png}}
+\caption{Um banco de dados de transações, com 10 transações, e a
+  enumeração de todos os conjuntos de itens frequentes usando o
+  suporte mínimo = 0,3}
+\label{fig:fig1}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Mineração de itens frequentes}
+\begin{itemize}
+\item Objetivo 2:
+\begin{itemize}
+\item encontrar o conjunto de regras de associação com confiança maior
+  que um mínimo definido pelo utilizador.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Suporte e Confiança}
+
+O suporte de um conjunto de itens $Z$, $suporte(Z)$, representa a
+porcentagem de transações na base de dados que contêm os itens de
+$Z$.
+
+O suporte de uma regra de associação $A \rightarrow B$, $suporte(A
+\rightarrow B)$, é dado por $suporte(A \cup B)$. 
+
+\begin{equation}
+confianca(A \rightarrow B) = \frac{P(A \cup B)}{P(A)} = \frac{suporte(A
+\cup B)}{suporte(A)}
+\end{equation}
+\end{Slide}
+
+\begin{Slide}{Exemplo de regras geradas}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/regras.png}}
+\caption{Regras extraídas com confiança maior que 0,8 (processo
+  executado usando o RapidMiner.)}
+\label{fig:fig2}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Estudo de caso}
+\begin{itemize}
+\item Candidatos podem definir várias áreas no objetivo profissional.
+\item Empresas podem definir várias áreas em cada vaga.
+\item \textbf{É possível identificar áreas correlatas através de
+    regras de associação?}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Características do experimento}
+\begin{itemize}
+\item Dados utilizados: vagas criadas no $2^{o}$ semestre de 2012.
+\item 51.311 vagas (\textit{transações})
+\item 124 áreas (\textit{atributos})
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Fase de pré-processamento}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.7\textheight}
+{\includegraphics{figuras/pre-processamento-dados.png}}
+\caption{Processo especificado na ferramenta RapidMiner}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Fase de modelagem}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/modelagem.png}}
+\caption{Processo especificado na ferramenta RapidMiner}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Regras geradas}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.2\textheight}
+{\includegraphics{figuras/regras-areas.png}}
+\caption{Regras geradas para Suporte = 0,05 e Confiança = 0,6}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Representação visual das regras geradas}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/regras-areas-visual.png}}
+\caption{Regras geradas para Suporte = 0,05 e Confiança = 0,6}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Heurísticas para Seleção de Regras de Associação}
+\begin{itemize}
+\item \textit{Lift}: um valor de \textit{lift} para uma regra ($A
+  \rightarrow B$) superior a 1 indica que $A$ e $B$ aparecem mais
+  frequentemente juntos do que o esperado, isso significa que a
+  ocorrência de $A$ tem um efeito positivo sobre a ocorrência de $B$.
+\item \textit{Convicção}: este valor indica que a probabilidade do
+  item $A$ ocorrer sem o item $B$ é $X$ vezes menor.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize}
+  \item Fabrício Barth. Mineração de regras de associação em
+    servidores Web com RapidMiner\footnote{http://fbarth.net.br/materiais/webMining/webUsageMining.pdf}.
+  \item Iah H. Witteh and Eibe Frank. Data Mining: Practical Machine
+    Learning Tools and Techniques (Third Edition), 2011.
+  \item Gonçalves. Regras de Associação e suas Medidas de Interesse
+    Objetivas e Subjetivas. INFOCOMP Journal of Computer Science,
+    2005, 4, 26-35.
+  \item \textit{Faceli, Lorena, Gama, Carvalho. Inteligência
+      Artificial: uma abordagem de aprendizado de máquina, 2011.}
+  \end{itemize}
+\end{Slide}
+
+\begin{Slide}{Arquivos RapidMiner utilizados}
+\begin{itemize}
+\item 20121228\_exemplo\_regras\_associacao.rmp
+\item 20121228\_geracao\_regras\_por\_vaga\_fase\_0.rmp
+\item 20121228\_geracao\_regras\_por\_vaga.rmp
+\end{itemize}
+\end{Slide}
+
+\end{document}
+

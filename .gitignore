@@ -4,3 +4,12 @@
 .Ruserdata
 .DS_Store
 README.html
+Makefile
+*.log
+*.aux
+*.blg
+*.out
+*.gz
+*.bbl
+*.key
+*.tex~

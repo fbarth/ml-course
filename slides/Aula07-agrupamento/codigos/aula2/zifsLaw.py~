@@ -1,0 +1,13 @@
+from nltk.token import *
+from nltk.tokenizer import WhitespaceTokenizer
+from nltk.probability import FreqDist
+from nltk.draw.plot import Plot
+
+freq_dist = FreqDist()
+corpus = Token(TEXT=open('dados/may2001_pdf.torto').read())
+WhitespaceTokenizer().tokenize(corpus)
+
+for token in corpus['SUBTOKENS']:
+	freq_dist.inc(token['TEXT'])
+
+

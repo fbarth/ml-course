@@ -1,0 +1,637 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{amsmath}
+\usepackage[latin1]{inputenc}
+\usepackage{graphics} 
+\usepackage{makeidx} 
+\usepackage{fancyvrb} 
+\usepackage{amssymb} 
+\usepackage{float,algorithmic,algorithm,alltt}
+\usepackage{booktabs}  % melhora o desenho das tabelas com \toprule \midrule e \bottomrule 
+\floatstyle{plain} 
+\newfloat{codigo}{tbp}{lop} 
+\floatname{codigo}{Código} 
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Algoritmos de Agrupamento - Aprendizado Não Supervisionado} 
+\author{Fabrício Jailson Barth}
+\institution{Curso de Ciência da Computação \\ Faculdades Tancredo Neves}
+\date{Novembro de 2006}
+
+\SlideHeader{}
+            {Disciplina de Inteligência Artificial}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+
+\begin{Slide}{Sumário}
+\begin{itemize}
+\item Introdução e Definições
+\item Aplicações
+
+\begin{itemize}
+\item Aplicações no Processamento de Linguagem Natural (PLN)
+\item Aplicações em Sistemas de Recomendação
+\end{itemize}
+
+\item Algoritmos de Agrupamento
+\item Agrupamento Hierárquico
+\item Agrupamento Plano
+\item Considerações Finais
+\end{itemize}
+\end{Slide}
+
+
+\begin{PartSlide}{\textsc{Introdução}}
+\end{PartSlide}
+
+
+\begin{Slide}{Introdução e Definições}
+\begin{itemize}
+\item Os algoritmos de agrupamento particionam um conjunto de objetos em
+agrupamentos \cite{man2003}.
+\item Normalmente, objetos são descritos e
+agrupados usando um conjunto de atributos e valores.
+\item Não existe nenhuma informação sobre a classe ou
+  categoria dos objetos.
+
+\newpage
+
+\item Os algoritmos de agrupamento manipulam um conjunto de objetos. Este
+conjunto de objetos é chamada de \emph{bags}.
+
+\item As \emph{bags} permitem
+o aparecimento de múltiplos objetos com a mesma representação.
+
+\item \emph{O objetivo dos algoritmos de agrupamento é colocar os objetos
+similares em um mesmo grupo e objetos não similares em grupos
+diferentes}.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Aplicações}
+\begin{itemize}
+\item Agrupamento de objetos similares, onde \emph{``objetos''} podem ser:
+
+\begin{itemize}
+\item documentos - recuperação de informação
+\item pessoas - sistemas de recomendação
+\item palavras - processamento de linguagem natural
+\item entre outras coisas $\cdots$
+\end{itemize}
+
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{Slide}{Agrupamento de palavras}
+\begin{itemize}
+\item O cálculo de similaridade entre palavras pode ser feito utilizando as
+palavras que estão à \emph{esquerda} e à \emph{direita} de cada palavra.
+\item Por
+exemplo, a similaridade entre as palavras \emph{in} e \emph{on} é alta
+porque ambas as palavras possuem palavras vizinhas similares.
+\item A
+similaridade entre \emph{is} e \emph{he} é baixa porque elas possuem
+poucos vizinhos em comum, poucas palavras à esquerda e à direita
+comuns.
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{Slide}{Agrupamento de palavras (\textbf{dendrograma})}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.5\textheight}
+{\includegraphics{figuras/agrupamentoExemplo}}
+\end{figure}
+
+Inicialmente, cada palavra forma o seu próprio agrupamento, a cada
+passo do algoritmo de agrupamento, os dois agrupamentos mais próximos
+são unidos.
+
+\end{Slide}
+
+
+
+\begin{Slide}{Aplicações no PLN}
+Existem dois principais usos dos algoritmos de agrupamento em PLN \cite{man2003}:
+\begin{itemize}
+\item \textbf{análise exploratória de dados}: trata-se de uma tarefa inicial e
+  essencial para análise de uma grande quantia de dados. Os algoritmos
+  de agrupamento são uma das técnicas existentes para determinado objetivo;  
+
+\newpage
+
+\item \textbf{generalização}: trata-se de uma forma de
+  \emph{aprendizado}. Os objetos são agrupados e as características generalizadas a
+  partir do que se conhece sobre os membros existentes no agrupamento
+  aos outros membros que podem fazer parte deste agrupamento. Por
+  exemplo, a partir das palavras \emph{Sunday}, \emph{Monday} e
+  \emph{Thursday} pode-se generalizar \emph{until day-of-the-week},
+  \emph{last day-of-the-week} e \emph{day-of-the-week morning} e
+  aplicar isto a palavra \emph{Friday} que inicialmente não está
+  contida no agrupamento.  
+\end{itemize}
+\end{Slide}
+
+
+%\begin{Slide}{Aplicações no PLN}
+%Definição de um modelo para a linguagem:
+%\begin{itemize}
+%\item reconhecimento de fala
+%\item tradução automática de texto
+%\end{itemize}
+%\end{Slide}
+
+
+\begin{Slide}{Aplicações em Sistemas de Recomendação}
+\newpage
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/agrupamentoDocumentosWiki}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Aplicações em Sistemas de Recomendação}
+\begin{itemize}
+\item Cada item é um documento.
+\item Cada documento é produzido por uma ou várias pessoas.
+\item O agrupamento é realizado sobre vetores que representam os
+  documentos.
+\item O agrupamento hierárquico fornece uma ferramenta
+  eficaz para exploração dos dados (documentos).
+\end{itemize}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/agrupamentoDocumentosPessoasWiki}}
+\end{figure}
+
+\newpage
+
+Documentos em um mesmo agrupamento determinam usuários com as
+mesmas necessidades de informação.
+
+\end{Slide}
+
+
+\begin{PartSlide}{\textsc{Algoritmos}}
+\end{PartSlide}
+
+
+\begin{Slide}{Algoritmos de Agrupamento}
+Existem dois tipos de estruturas produzidas por algoritmos de
+agrupamento:
+\begin{itemize}
+\item agrupamentos \emph{hierárquicos}
+\item não hierárquicos ou \emph{planos}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Agrupamento Hierárquico}
+\begin{itemize}
+\item Um agrupamento hierárquico é representado por uma árvore.
+\item Os nós folhas são os objetos.
+\item Cada nó intermediário representa o agrupamento
+que contêm todos os objetos de seus descendentes.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Agrupamento Hierárquico (Exemplo)}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/agrupamentoHierarquico}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Agrupamento Plano}
+\begin{itemize}
+\item Agrupamentos planos simplesmente contêm um certo número
+de agrupamentos e a \emph{relação} entre os agrupamentos e geralmente
+\emph{não-determinada}.
+\item A maioria dos algoritmos que produzem agrupamentos planos são
+  \emph{iterativos}.
+\item Eles iniciam com um conjunto inicial de agrupamentos e realocam
+  os objetos em cada agrupamento de maneira iterativa.
+\item Até uma determinada \emph{condição de parada}. 
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Agrupamentos \emph{soft} e \emph{hard}}
+Além da divisão entre os algoritmos hierárquicos e planos, tem-se a
+divisão entre os algoritmos \emph{soft} e \emph{hard}.
+\begin{itemize}
+\item Na abordagem \textbf{\emph{hard}} cada objeto é inserido em um e somente um agrupamento.
+\item Na abordagem \textbf{\emph{soft}} um objeto pode ser inserido em vários
+agrupamentos com diferentes níveis de pertinência. 
+\end{itemize}
+Em agrupamentos hierárquicos, geralmente a abordagem é \emph{hard}. Em
+agrupamentos planos, ambos os tipos de abordagens são comuns.
+\end{Slide}
+
+
+
+\begin{PartSlide}{\textsc{Algoritmos para Agrupamento Hierárquico}}
+\end{PartSlide}
+
+
+\begin{Slide}{Algoritmos para 
+agrupamento hierárquico}
+Os algoritmos que utilizam a abordagem de agrupamento hierárquico
+podem implementar abordagens:
+\begin{itemize}
+\item \emph{bottom-up (agglomerative clustering)}
+\item \emph{top-down (divisive clustering)}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Agrupamento hierárquico \emph{bottom-up}}
+
+\begin{algorithmic} 
+\STATE \textbf{Entrada}: um conjunto $x =\{x_{1},\cdots,x_{n}\}$ de objetos
+\STATE e uma função $sim \colon P(X) \times P(X) \to \Re$
+\FOR{i:=1 até n}
+  \STATE $c_{i} := \{x_{i}\}$
+  \COMMENT{Inicia com um agrupamento para cada objeto}
+\ENDFOR
+
+\newpage
+
+\STATE j := n + 1
+\WHILE{$|C| > 1$}
+  \STATE $(c_{n1},c_{n2}) := \arg \max_{c_{u},c_{v}\in C \times C}
+  sim(c_{u},c_{v})$
+  \COMMENT{Em cada passo, os dois agrupamentos mais similares são determinados}
+  \STATE $c_{j} := c_{n1} \cup c_{n2}$
+  \COMMENT{Unidos em um novo agrupamento}
+  \STATE $C := C \setminus \{c_{n1},c_{n2}\} \cup \{c_{j}\}$
+  \COMMENT{Elimina-se os dois agrupamentos mais similares e
+    adiciona-se o novo agrupamento ao conjunto de agrupamentos}
+  \STATE $j := j + 1$
+\ENDWHILE
+\end{algorithmic}
+
+\end{Slide}
+
+
+\begin{Slide}{Agrupamento hierárquico \emph{bottom-up} -
+    Função de similaridade}
+\begin{itemize}
+\item A função de similaridade pode ser a distância Euclidiana:
+\begin{equation}
+\mid \overrightarrow{x} - \overrightarrow{y} \mid =
+\sqrt{\sum_{i=1}^{n}(x_{i} - y_{i})^{2}}
+\end{equation}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Tipos de funções de similaridade}
+\begin{itemize}
+
+\item ligação simples (\emph{single link}): a similaridade entre
+  dois agrupamentos é o melhor resultado retornado da similaridade
+  entre os seus membros \emph{mais} similares.
+ 
+\item ligação completa (\emph{complete link}): a similaridade entre
+  dois agrupamentos é o melhor resultado retornado da similaridade
+  entre os seus membros \emph{menos} similares.
+
+\item média do grupo (\emph{group-average}): a similaridade entre dois
+  agrupamentos é a \emph{média} da similaridade entre os membros dos
+  agrupamentos.
+
+\end{itemize}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/pontos}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Agrupamento hierárquico \emph{top-down}}
+\begin{figure}[htbp]
+\begin{algorithmic} 
+\STATE \textbf{Entrada}: um conjunto $x =\{x_{1},\cdots,x_{n}\}$ de objetos,
+\STATE uma funcao de coesao $coh \colon P(X) \to \Re$
+\STATE e uma funcao de divisao $split \colon P(X) \to P(X) \times P(X)$
+\STATE $C := \{X\} (=\{c_{1}\})$
+\COMMENT{Inicia com um agrupamento com todos os objetos}
+\STATE $j := 1$
+\WHILE{$\{ \exists c_{i} \in C \ \mid \ |c_{i}| > 1 \}$}
+\STATE $c_{u} := \arg \min_{c_{v} \in C}coh(c_{v})$
+\COMMENT{Determina que agrupamento eh o menos coerente}
+\STATE $(c_{j+1},c_{j+2}) := split(c_{u})$
+\COMMENT{Divide o agrupamento}
+\STATE $C := C \setminus \{c_{u}\} \cup \{c_{j+1},c_{j+2}\}$
+\STATE $j := j + 2$
+\ENDWHILE
+\end{algorithmic}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Restrição sobre os agrupamentos hierárquicos}
+\vspace{0.3cm}
+Agrupamento hierárquico só faz sentido se a função de similaridade é
+monotônica decrescente das folhas para a raiz da árvore:
+\begin{equation}
+\forall c,c',c'' \subseteq S: \min (sim(c,c'),sim(c,c'')) \ge sim(c,c'
+\cup c'')
+\end{equation}
+\end{Slide}
+
+
+\begin{Slide}{Algumas considerações sobre agrupamentos}
+\begin{itemize}
+\item Um agrupamento é um grupo de objetos centrados em torno de um ponto central.
+\item Os agrupamentos mais compactos são os preferidos.
+\end{itemize}
+\end{Slide}
+
+
+\begin{PartSlide}{\textsc{Algoritmos para Agrupamento Plano}}
+\end{PartSlide}
+
+
+\begin{Slide}{Algoritmos para agrupamento plano}
+\begin{itemize}
+\item Utiliza diversas \emph{iterações} para realocar os objetos
+  nos melhores agrupamentos. 
+\item \emph{Critério de parada} é baseado na qualidade dos agrupamentos
+  (similaridade média e cálculo para informação comum entre agrupamentos).
+\item É necessário determinar o \emph{número de agrupamentos}:
+
+\begin{itemize}
+\item usando conhecimento à priori
+\item $k$, $k - 1$ aumento significativo da qualidade, $k + 1$ aumento
+  reduzido da qualidade. Procurar por um $k$ com este comportamento.
+\end{itemize}
+
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{\emph{K-means}}
+\begin{itemize}
+\item Algoritmo de agrupamento \emph{hard}
+\item Define o agrupamento pelo centro de massa dos seus membros.
+\item É necessário um conjunto inicial de agrupamentos.
+\item Seqüência de ações iterativas.
+\item Usualmente, diversas iterações são necessárias para
+  o algoritmo convergir.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Iteração do algoritmo \emph{K-means}}
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.72\textheight}
+{\includegraphics{figuras/desenhoKmeans}}
+\end{figure}
+
+\end{Slide}
+
+
+\begin{Slide}{Algoritmo \emph{K-means}}
+
+\begin{algorithmic} 
+\STATE \textbf{entrada}: um conjunto $X = \{\overrightarrow{x_{1}},\cdots,\overrightarrow{x_{n}}\} \subset \Re^{m}$
+\COMMENT{conjunto inicial de agrupamentos}
+\STATE uma medida de distância: $d \colon \Re^{m} \times \Re^{m} \to \Re$
+\STATE uma função para computar o ponto central: $\mu \colon P(\Re) \to \Re^{m}$
+\vspace{0.2cm}
+\STATE selecionar $k$ centros iniciais
+$\overrightarrow{f_{1}},\cdots,\overrightarrow{f_{k}}$
+
+\newpage
+
+\WHILE{o critério de parada não for verdadeiro}
+      \FOR{todos os agrupamentos $c_{j}$}
+           \STATE $c_{j} = \{\overrightarrow{x_{i}} \mid \forall \overrightarrow{f_{l}} d(\overrightarrow{x_{i}},\overrightarrow{f_{j}}) \leq d(\overrightarrow{x_{i}},\overrightarrow{f_{l}})\}$
+	   \COMMENT{os agrupamentos $c_{j}$ recebem objetos levando-se em consideração o seu centro $f_{j}$}
+      \ENDFOR
+      \FOR{todos os pontos centrais $\overrightarrow{f_{j}}$}
+           \STATE $\overrightarrow{f_{j}} = \mu(c_{j})$
+      \ENDFOR
+\ENDWHILE
+\end{algorithmic}
+
+\end{Slide}
+
+
+\begin{Slide}{Algoritmo \emph{K-means}}
+\begin{itemize}
+\item A medida de distância pode ser a distância Euclidiana:
+\begin{equation}
+\mid \overrightarrow{x} - \overrightarrow{y} \mid =
+\sqrt{\sum_{i=1}^{n}(x_{i} - y_{i})^{2}}
+\end{equation}
+\item a função para computar o ponto central pode ser:
+\begin{equation}
+\overrightarrow{\mu} = \frac{1}{M} \sum_{\overrightarrow{x} \in C} \overrightarrow{x} 
+\end{equation}
+onde $M$ é igual ao número de pontos no agrupamento $C$.
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{PartSlide}{Problema...}
+\end{PartSlide}
+
+
+\begin{Slide}{Blue Flag Iris}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.45\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/iris}}
+\end{figure}
+\begin{itemize}
+\item Considere uma base de dados sobre um determinado tipo de flor. 
+\item Esta base de dados possui informações sobre o \emph{comprimento}
+  e \emph{largura} do \emph{caule} e das \emph{pétalas} de várias flores parecidas
+  (todas azuis).
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Blue Flag Iris - Dados}
+\begin{figure}
+\fontsize{8pt}{8pt}
+\center
+\VerbatimInput
+[xleftmargin=5mm,numbers=left,obeytabs=true]{dados/iris_parte.arff}
+\end{figure}
+Todas as medidas são em cm.
+\end{Slide}
+
+
+\begin{Slide}{Aplicando o algoritmo K-means}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/agrupamentoPlano}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/agrupamentoPlanoVisual}}
+\end{figure}
+x = Petal Width, y = Petal Length, z = Sepal Length.
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/agrupamentoPlanoVisual_2}}
+\end{figure}
+x = Petal Width, y = Petal Length, z = Sepal Length.
+
+\end{Slide}
+
+
+%\begin{Slide}{EM}
+%\begin{itemize}
+%\item O algoritmo EM é uma versão \emph{soft} do algoritmo
+%  \emph{K-means}.
+%\item Estima os valores dos parâmetros escondidos de um modelo. Dado
+%  alguns dados $X$, qual a probabilidade de acordo com algum modelo
+%  $p$ com parâmetros $\Theta$ - $P(X \mid p(\Theta))$? \textbf{Como maximizar isto?}
+%\item Ao aplicar o algoritmo EM para agrupamentos, nós devemos
+%  visualizar o \textbf{processo de agrupamento como uma estimativa de
+%  distribuições de probabilidade}. 
+%\item A \textbf{idéia} é que os dados observados são gerados a partir de
+%  diversas causas. Cada causa contribui \textbf{independentemente}
+%  para a geração do processo, mas nós só vemos o final do processo -
+%  sem informação sobre que causa contribui para o quê.
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Passos E e M}
+%\begin{itemize}
+%\item \textbf{E (Estimar)}:  se nós conhecemos o valor de $\Theta$,
+%  nós podemos computar os valores da estrutura escondida do modelo.
+%\item \textbf{M (Maximizar)}: se nós conhecemos o valor da estrutura
+%  escondida do modelo então nós podemos computar o valor máximo para
+%  $\Theta$.
+%\end{itemize}
+%\end{Slide}
+
+
+
+\begin{PartSlide}{\emph{Nltk} Python}
+\end{PartSlide}
+
+
+\begin{Slide}{Um exemplo simples usando \emph{Nltk} (Python)}
+
+\begin{figure}
+\fontsize{8pt}{8pt}
+\center
+\VerbatimInput
+[xleftmargin=5mm,numbers=left,obeytabs=true]{codigos/clustering/clustering2.py}
+\end{figure}
+
+\end{Slide}
+
+
+\begin{Slide}{Resultado}
+\vspace{0.3cm}
+\fontsize{10pt}{10pt}
+\begin{alltt}
+<CLUSTER=0, FEATURES=array([3, 3])>
+     +-----------------------------+
+     |                             |
+     +-------------------+         |
+     |                   |         |
+     +---------+         |         |
+     |         |         |         |
+[ 3.  3.] [ 1.  2.] [ 4.  2.] [ 4.  0.]
+\end{alltt}
+\end{Slide}
+
+
+
+\begin{PartSlide}{\textsc{Considerações Finais}}
+\end{PartSlide}
+
+\begin{Slide}{Sumário dos atributos dos algoritmos}
+
+\emph{Agrupamento hierárquico}:
+
+\begin{itemize}
+\item É a melhor abordagem para análise exploratória de dados.
+\item Fornece mais informação que agrupamento plano.
+\item Menos eficiente que agrupamento plano (tempo e memória gastos).
+%\item Alguns problemas de PLN não podem ser resolvidos devido ao fato
+%  de implementar apenas a abordagem \emph{hard} (casos de palavras ambíguas). 
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Sumário dos atributos dos algoritmos}
+
+\emph{Agrupamento plano}:
+
+\begin{itemize}
+\item É preferível se a eficiência é um atributo importante e se o conjunto
+de dados é muito grande.
+\item O algoritmo \emph{K-means} é o método mais simples e deve ser usado
+sobre novos conjuntos de dados porque os resultados são geralmente
+suficientes.
+\item \emph{K-means} assume um espaço de representação Euclidiano, e não
+pode ser usado para muitos conjuntos de dados, por exemplo, dados nominais.
+\end{itemize}
+\end{Slide}
+
+\nocite{mit1997}
+
+\bibliography{doutorado,mestrado}
+\bibliographystyle{apalike}
+\end{document}

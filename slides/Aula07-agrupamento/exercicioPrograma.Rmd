@@ -1,0 +1,25 @@
+Exercício Programa 3
+========================================================
+
+Considerando o dataset apresentado em (http://archive.ics.uci.edu/ml/datasets/Adult)[http://archive.ics.uci.edu/ml/datasets/Adult], faça uma análise dos possíveis agrupamentos encontrados levando em consideração os atributos _age_, _education-num_, _capital-gain_, _capital-loss_ e _hours-per-week_.
+
+Para ter disponível o dataset, basta executar os comandos abaixo:
+
+```{r}
+#fileUrl <- "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
+#download.file(fileUrl,destfile="adult.csv", method="curl")
+dataset <- read.csv("adult.csv", sep=",", header=FALSE)
+head(dataset)
+names(dataset) <- c("age", "workclass", "fnlwgt", "education", "education_num", "marital_status", "occupation", "relationship", "race", "sex", "capital_gain", "capital_loss", "hours_per_week", "native_country", "class")
+sapply(dataset,class)
+```
+
+Faça a sua análise. A partir da análise, crie um relatório contendo os seguintes itens: 
+
+* Título: o seu relatório precisa ter um título que sumariza bem o seu relatório;
+* Introdução: descreva o dataset que você irá trabalhar e os objetivos da sua análise;
+* Método: descreva as etapas que você executou para realizar a sua análise, por exemplo: (i) aquisição dos dados; (ii) análise dos dados; (iii) identificação de _missing_ e de _outliers_, e; (iv) identificação e análise dos agrupamentos.
+* Resultados: descreve os resultados encontrados.
+* Considerações finais: considerações breves sobre os resultados encontrados.
+
+Não esquece de apresentar figuras que representam bem os resultados das análises. Cada figura deve possuir um título que descreve bem o objetivo daquela figura.

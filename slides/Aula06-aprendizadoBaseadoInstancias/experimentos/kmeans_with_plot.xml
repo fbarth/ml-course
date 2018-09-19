@@ -1,0 +1,50 @@
+<operator name="Root" class="Experiment">
+  <parameter key="logverbosity"	value="warning"/>
+  <operator name="WVTool" class="WVTool" activated="no">
+    <parameter key="default_content_language"	value="portuguese"/>
+    <list key="texts">
+      <parameter key="users"	value="/home/fabricio/eclipse/workspace/XwikiRPC/data/users"/>
+    </list>
+  </operator>
+  <operator name="ArffExampleSource" class="ArffExampleSource">
+    <parameter key="data_file"	value="/home/fabricio/tancredo/2006-2o-semestre/inteligenciaArtificial/slidesAM/agrupamento/dados/iris_sem_classe.arff"/>
+  </operator>
+  <operator name="IdTagging" class="IdTagging">
+    <parameter key="create_nominal_ids"	value="true"/>
+  </operator>
+  <operator name="ParameterIteration" class="ParameterIteration" activated="no">
+    <list key="parameters">
+      <parameter key="KMeans.k"	value="2,3,4,5"/>
+    </list>
+    <operator name="KMeans" class="KMeans" activated="no">
+      <parameter key="keep_example_set"	value="true"/>
+    </operator>
+    <operator name="eval" class="ClusterCentroidEvaluator" activated="no">
+      <parameter key="keep_centroid_based_cluster_model"	value="true"/>
+      <parameter key="keep_example_set"	value="true"/>
+    </operator>
+    <operator name="ExampleSet2Similarity" class="ExampleSet2Similarity" activated="no">
+      <parameter key="measure"	value="EuclideanDistance"/>
+    </operator>
+    <operator name="ClusterDensityEvaluator" class="ClusterDensityEvaluator" activated="no">
+      <parameter key="keep_flat_cluster_model"	value="true"/>
+      <parameter key="keep_similarity_measure"	value="true"/>
+    </operator>
+    <operator name="ExperimentLog" class="ExperimentLog" activated="no">
+      <list key="log">
+        <parameter key="k"	value="operator.KMeans.parameter.k"/>
+        <parameter key="eval"	value="operator.eval.parameter.main_criterion"/>
+      </list>
+    </operator>
+  </operator>
+  <operator name="KMeans (2)" class="KMeans" activated="no">
+    <parameter key="k"	value="3"/>
+    <parameter key="keep_example_set"	value="true"/>
+  </operator>
+  <operator name="SimpleKMeans" class="SimpleKMeans">
+    <parameter key="N"	value="3.0"/>
+    <parameter key="add_cluster_attribute"	value="true"/>
+    <parameter key="keep_example_set"	value="true"/>
+  </operator>
+</operator>
+
