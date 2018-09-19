@@ -1,0 +1,274 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+%\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Aprendizagem de máquina} 
+\author{Fabrício Barth}
+\institution{}
+\date{Maio de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+
+%
+%
+%   Introdução
+%
+%
+
+\begin{Slide}{Sumário}
+\begin{itemize}
+%\item Exemplos.
+\item O que é Aprendizagem de Máquina?
+\item Hierarquia de aprendizado.
+\item Exemplos de aprendizagem supervisionada (modelos preditivos).
+\item Exemplos de aprendizagem não supervisionada (modelos descritivos).
+\item Referências e exercícios.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{O que é Aprendizagem de Máquina?}
+
+\begin{itemize}
+
+\item Área de estudo que fornece aos computadores a habilidade de
+  aprender sem serem explicitamente programados [Arthur Samuel
+  (1959)].
+
+\item Área de estudo que permite desenvolver sistemas computacionais sem explicitamente programá-los.   
+
+\end{itemize}
+
+\newpage
+
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.9\columnwidth}{1\textheight}
+		{\includegraphics{figures/aplicacoesAm.png}}
+		%\caption{X}
+		%\label{fig:X}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{O que é Aprendizagem de Máquina?}
+	
+	\begin{itemize}
+		
+		\item Um programa de computador aprende a partir de uma experiência $E$ a realizar uma tarefa $T$. A medida que a sua experiência aumenta deve-se esperar que o desempenho $D$ para realizar a tarefa também aumente. [Tom Mitchell (1998)]. 
+
+\end{itemize}
+
+\newpage
+
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{1\textheight}
+		{\includegraphics{figures/desempenho.png}}
+		%\caption{X}
+		%\label{fig:X}
+	\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Exercício}
+O que cada uma das sentenças abaixo descreve segundo a definição do
+Tom Mitchell?
+\begin{itemize}
+\item Classificar e-mails como spam ou não spam.
+\item Verificar quais e-mails o usuário classifica como spam.
+\item O número (ou fração) de e-mails corretamente classificados como
+  spam ou não spam.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Hierarquia de aprendizado}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.6\textheight}
+{\includegraphics{figures/hierarquiaAM.png}}
+%\caption{X}
+%\label{fig:X}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Exemplos de aprendizagem supervisionada}
+\begin{itemize}
+
+\item Estimar o preço de uma casa.
+\begin{itemize}
+\item atributos: tamanho, posição geográfica, material.
+\item classe: preço (regressão).
+\end{itemize}
+
+\item Determinar se uma pessoa tem câncer benigno ou maligno.
+\begin{itemize}
+\item atributos: tamanho do tumor, formato do tumor, idade do paciente.
+\item classe: tumor benigno ou tumor maligno (classificação).
+\end{itemize}
+
+\newpage
+
+\item Determinar se é um texto publicado em uma rede social é
+  inadequado ou não.
+\begin{itemize}
+\item atributos: quantidade de palavras encontradas no texto,
+  quantidade de palavras proibidas encontradas no texto, quantidade de
+  textos já criados pelo usuário, idade do usuário no sistema, quantidade de
+  textos criados pelo usuário e moderados, ...
+\item classe: texto adequado ou não (classificação).  
+
+\item \textbf{classes}: texto adequado, texto inadequado, texto com propaganda (classificação com
+  múltiplas classes).
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo de dataset com \emph{classe}}
+{\small
+\begin{table}[htpb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+Idade & Miopia & Astigmat. & Lacrimej. & \textbf{Lentes} \\
+\midrule
+jovem&míope&não&reduzido&\textbf{nenhuma}\\
+jovem&míope&não&normal&\textbf{fraca}\\
+jovem&míope&sim&reduzido&\textbf{nenhuma}\\
+jovem&míope&sim&normal&\textbf{forte}\\
+$\cdots$& $\cdots$& $\cdots$ & $\cdots$ & $\cdots$ \\
+adulto&míope&não&reduzido&\textbf{nenhuma}\\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+\begin{Slide}{Exercícios}
+Que problema deve ser tratado como problema de regressão e que
+problema deve ser tratado como problema de classificação?
+\begin{itemize}
+\item A sua empresa possui 1.000 itens idênticos em estoque. Você quer
+  predizer quantos destes itens serão vendidos nos próximos três meses.
+\item Você quer examinar clientes seus e para cada um decidir se ele
+  irá pagar todo o financiamento ou não.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Exemplos de aprendizagem não supervisionada}
+\begin{itemize}
+\item Dado conjuntos de itens adquiridos na mesma compra, identificar padrões
+  de compra.
+\item Identificar padrões de navegação em sites.
+\item Agrupar notícias semelhantes publicadas por várias fontes de
+  informação.
+\item Em uma rede social, identificar sub-grupo de pessoas.   
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplos de aprendizagem não supervisionada}
+\begin{table}[htpb]
+\centering
+\tiny
+\caption{Exemplo de tabela com as transações dos usuários}
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+usuário & $categoria_{1}$ & $categoria_{2}$ & $categoria_{3}$ &
+$\cdots$ & $categoria_{m}$\\
+\midrule
+$user_{1}$ & 0 & 2 & 0& $\cdots$ & 1\\
+%\midrule
+$user_{2}$ & 1& 1& 0 & $\cdots$ & 0\\
+%\midrule
+$user_{3}$ & 2& 0 & 1& $\cdots$& 0\\
+%\midrule
+$user_{4}$ &0 & 1& 0& $\cdots$& 0\\
+%\midrule
+$\cdots$ & $\cdots$& $\cdots$& $\cdots$& $\cdots$&$\cdots$\\
+%\midrule
+$user_{n}$ & 1& 1& 0& $\cdots$& 1\\
+\bottomrule
+\end{tabular}
+\label{tab:transacoesUser}
+\end{table}
+\end{Slide}
+
+\begin{Slide}{Exemplo de identificação de grupos em redes sociais}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.8\textheight}
+{\includegraphics{figures/agrupamentoRede.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Exercícios}
+Quais dos problemas abaixo você iria resolver com uma abordagem não
+supervisionada de aprendizagem?
+\begin{itemize}
+\item Dado e-mails rotulados como spam e não spam, desenvolver um
+  filtro de spam.
+\item Dado um conjunto de notícias encontradas na Internet, agrupá-las
+  em conjunto de notícias que tratam do mesmo assunto.
+\newpage
+\item Dado uma base de clientes, descobrir segmentos de clientes.
+\item Dado uma base de pacientes diagnosticados com diabetes ou não,
+  aprender a classificar novos pacientes com diabetes ou não.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize}
+  \item Tom Mitchell. Machine Learning, 1997.
+  \item Iah H. Witteh and Eibe Frank. Data Mining: Practical Machine
+    Learning Tools and Techniques (Third Edition), 2011.
+  \item Capítulo 1 e 2 do livro Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning with Applications in R. Springer, 4th edition, 2014.
+  
+  \newpage
+  
+  \item Andrew Ng. Machine Learning. Coursera. https://www.coursera.org/learn/machine-learning
+  \item \textit{Faceli, Lorena, Gama, Carvalho. Inteligência
+      Artificial: uma abordagem de aprendizado de máquina, 2011.}
+  \end{itemize}
+\end{Slide}
+
+
+\end{document}
+
