@@ -13,3 +13,5 @@ Makefile
 *.bbl
 *.key
 *.tex~
+_region_.tex
+*.bak

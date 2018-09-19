@@ -1,0 +1,12 @@
+<operator name="Root" class="Experiment">
+  <operator name="WVTool" class="WVTool">
+    <parameter key="default_content_language"	value="portuguese"/>
+    <parameter key="id_attribute_type"	value="long"/>
+    <parameter key="stemmer"	value="edu.udo.cs.wvtool.generic.stemmer.SnowballStemmerWrapper"/>
+    <list key="texts">
+      <parameter key="textos"	value="/home/fabricio/tancredo/2006-2o-semestre/inteligenciaArtificial/slidesRepresentacaoConhecimento/textos"/>
+    </list>
+    <parameter key="vectorcreation"	value="edu.udo.cs.wvtool.generic.vectorcreation.TermFrequency"/>
+  </operator>
+</operator>
+

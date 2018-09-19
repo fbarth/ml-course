@@ -20,3 +20,14 @@ ou artigos que serão utilizados na disciplina;
 * Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 
+## Slides de suporte
+
+* [Aprendizagem de Máquina](slides/Aula01-aprendizagemMaquina/aIntroducao.pdf)
+* [Processo de KDD](slides/Aula02-processo-kdd/bigDataCienciaDadosKDD.pdf)
+* [Pré-processamento de dados](slides/Aula03-processamentoDadosR/analiseExploratoria_v2.pdf)
+* [Regressão Linear](slides/Aula04-regressao/regressao.pdf)
+* [Design de projetos](slides/Aula03-design/projetoEvalidacao.pdf)
+* [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
+* [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
+
+

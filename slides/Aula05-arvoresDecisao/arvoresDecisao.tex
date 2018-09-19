@@ -1,0 +1,803 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+\usepackage{algorithm}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Algoritmos Indutores de Árvores de Decisão} 
+\author{Fabrício J. Barth}
+\institution{}
+\date{Maio de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+
+%
+%
+%   Introdução
+%
+%
+\begin{PartSlide}{\textbf{Problema: Diagnóstico para uso de lentes de contato}}
+\end{PartSlide}
+
+\begin{Slide}{Diagnóstico para o uso de lentes de contato}
+  
+O setor de oftalmologia de um hospital da cidade de São Paulo possui,
+no seu banco de dados, um histórico de pacientes que procuraram o
+hospital queixando-se de problemas na visão.
+
+A conduta, em alguns casos, realizada pelo corpo clínico de
+oftalmologistas do hospital é indicar o uso de lentes ao paciente. 
+
+\emph{Problema: Extrair do banco de dados do hospital uma hipótese que
+  explica que paciente deve usar ou não lente de contatos.}
+
+\end{Slide}
+
+\begin{Slide}{\textbf{Atributos}}
+\begin{itemize}
+\item idade (jovem, adulto, idoso)
+\item miopia (míope, hipermétrope)
+\item astigmatismo (não, sim)
+\item taxa de lacrimejamento (reduzido, normal)
+\item lentes de contato (forte, fraca, nenhuma)
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{\textbf{Dados}}
+{\small
+\begin{table}[htpb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+Idade & Miopia & Astigmat. & Lacrimej. & \textbf{Lentes} \\
+\midrule
+jovem&míope&não&reduzido&\textbf{nenhuma}\\
+jovem&míope&não&normal&\textbf{fraca}\\
+jovem&míope&sim&reduzido&\textbf{nenhuma}\\
+jovem&míope&sim&normal&\textbf{forte}\\
+jovem&hiper&não&reduzido&\textbf{nenhuma}\\
+jovem&hiper&não&normal&\textbf{fraca}\\
+jovem&hiper&sim&reduzido&\textbf{nenhuma}\\
+jovem&hiper&sim&normal&\textbf{forte}\\
+adulto&míope&não&reduzido&\textbf{nenhuma}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[htpb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+Idade & Miopia & Astigmat. & Lacrimej. & \textbf{Lentes} \\
+\midrule
+adulto&míope&não&normal&\textbf{fraca}\\
+adulto&míope&sim&reduzido&\textbf{nenhuma}\\
+adulto&míope&sim&normal&\textbf{forte}\\
+adulto&hiper&sim&reduzido&\textbf{nenhuma}\\
+adulto&hiper&não&normal&\textbf{fraca}\\
+adulto&hiper&sim&reduzido&\textbf{nenhuma}\\
+adulto&hiper&sim&normal&\textbf{nenhuma}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[htpb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\toprule
+Idade & Miopia & Astigmat. & Lacrimej. & \textbf{Lentes} \\
+\midrule
+idoso&míope&não&reduzido&\textbf{nenhuma}\\
+idoso&míope&não&normal&\textbf{nenhuma}\\
+idoso&míope&sim&reduzido&\textbf{nenhuma}\\
+idoso&míope&sim&normal&\textbf{forte}\\
+idoso&hiper&não&reduzido&\textbf{nenhuma}\\
+idoso&hiper&não&normal&\textbf{fraca}\\
+idoso&hiper&sim&reduzido&\textbf{nenhuma}\\
+idoso&hiper&sim&normal&\textbf{nenhuma}\\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+\begin{Slide}{Exemplo de árvore de decisão}
+\includegraphics[width=1\textwidth]{figuras/arvoreLenteContato.png}
+\end{Slide}
+
+\begin{PartSlide}{\textbf{Problema: Classificação de flores do gênero Iris}}
+\end{PartSlide}
+
+\begin{Slide}{Atributos}
+	\begin{itemize}
+		\item Sepal.Length (cm)
+		\item Sepal.Width (cm)
+		\item Petal.Length (cm)
+		\item Petal.Width (cm)
+		\item Species (setosa, versicolor, virginica)
+	\end{itemize}
+\end{Slide}
+	
+	
+\begin{Slide}{Dados}
+{\tiny
+\begin{table}[htpb]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+	\toprule
+	Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & \textbf{Species} \\
+	\midrule
+5.1         & 3.5 &         1.4  &       0.2 & setosa \\
+5.1         &3.5         & 1.4  &       0.2  &   setosa\\
+5.0        & 3.6    &      1.4   &      0.2     &setosa\\
+5.1        & 3.8    &      1.5   &      0.3     &setosa\\
+7.0        & 3.2     &     4.7    &     1.4 &versicolor\\
+6.5       &  2.8    &      4.6   &      1.5 &versicolor\\
+6.7        & 3.0    &      5.0    &     1.7 &versicolor\\
+5.5       &  2.6    &      4.4    &     1.2 &versicolor\\
+5.8      &   2.7   &       5.1   &      1.9  &virginica\\
+6.9     &    3.1   &       5.4   &      2.1  &virginica\\
+6.3    &     2.8   &       5.1   &      1.5  &virginica\\
+5.9  &       3.0   &       5.1   &      1.8  &virginica\\
+	\bottomrule
+\end{tabular}
+\end{table}
+}	
+\end{Slide}
+
+\begin{Slide}{Qual o modelo que melhor descreve estes dados?}
+
+\end{Slide}
+
+\begin{PartSlide}{\textbf{Aprendizado de Árvores de Decisão}}
+\end{PartSlide}
+
+
+\begin{Slide}{Sumário e Objetivos}
+\begin{itemize}
+\item Representação de Árvores de Decisão
+\item Algoritmo de Aprendizagem ID3 e J48
+\item Entropia e Ganho de informação
+\item Bias %e Sobreajuste
+\item Resumo
+\item Exercícios
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{Slide}{Uma árvore de decisão para o problema das flores \emph{Iris}}
+\includegraphics[width=1\textwidth]{figuras/arvoreIris.png}
+\end{Slide}
+
+
+\begin{Slide}{Características}
+\begin{itemize}
+\item Representação de árvore de decisão:
+\begin{itemize}
+\item cada nodo interno testa um atributo;
+\item cada aresta correponde a um valor de atributo;
+\item cada nodo folha retorna uma classificação.
+\end{itemize}
+
+\item Pode-se representar:
+\begin{itemize}
+\item conjunções e disjunções.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Características}
+\begin{itemize}
+\item Em geral, árvores de decisão representam uma
+  disjunção de conjunções de restrições sobre os
+  valores dos atributos dos exemplos.
+\item Cada caminho entre a raiz da árvore e um folha correspondente
+  a uma conjunção de testes de atributos e a própria
+  árvore corresponde a uma disjunção destas conjunções.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Quando considerar Árvores de Decisão?}
+\begin{itemize}
+\item Exemplos descritos por pares \emph{atributo/valor}. Exemplos
+  são descritos por um conjunto \emph{fixo} de
+  atributos(idade) e seus valores(jovem).
+\item A função alvo tem \emph{valores discretos} de
+  saída. Classificação booleana (sim ou não) ou mais de
+  duas possibilidades para cada exemplo.
+
+\newpage
+
+\item \emph{Hipóteses disjuntivas} podem ser
+  necessárias. Árvores de decisão representam naturalmente
+  expressões disjuntivas.
+\item Dados de treinamento podem conter \emph{erros} e \emph{valores
+    de atributos faltantes}.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Algoritmo ID3}
+\begin{itemize}
+\item O algoritmo ID3 cria uma árvore de uma maneira
+  \emph{top-down} começando com a seguinte pergunta:
+
+
+\begin{itemize}
+\item Qual atributo deve ser testado na raiz da árvore?
+\end{itemize}
+
+\item Para responder esta questão, cada atributo do conjunto de
+  treinamento é avaliado usando um teste estatístico para
+  determinar quão bem o atributo (sozinho) classifica os exemplos
+  de treinamento.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Algoritmo ID3}
+\small
+\begin{algorithm}
+\caption{\emph{Top Down Induction of Decision Trees}}
+  \begin{algorithmic}
+	\STATE \textbf{Entrada}: Conjunto de Exemplos $E$. 
+	\STATE \textbf{Saída}: Árvore de Decisão (Hipótese $h$).
+	\STATE \textbf{1} Se todos os exemplos tem o mesmo resultado
+	para a função sendo aprendida, retorna um nodo folha com este
+	valor;
+	\STATE \textbf{2} Cria um nodo de decisão $N$ e escolhe o
+	melhor atributo $A$ para este nodo;
+
+	\STATE \textbf{3} Para cada valor $V$ possível para $A$: \\
+  \hspace*{0.5cm} \textbf{3.1} cria uma aresta em $N$ para o valor $V$;\\
+  \hspace*{0.5cm} \textbf{3.2} cria um subconjunto $E_{V}$ de exemplos onde $A=V$;\\
+  \hspace*{0.5cm} \textbf{3.3} liga a aresta com o nodo que retorna da aplicação do
+	algoritmo considerando os exemplos $E_{V}$.
+	\STATE \textbf{4} Os passos 1, 2 e 3 são aplicados
+	recursivamente para cada novo subconjunto de exemplos de
+	treinamento.
+  \end{algorithmic}
+  \label{alg:id3}
+\end{algorithm}   
+\end{Slide}
+
+
+\begin{Slide}{Qual o melhor atributo?}
+\includegraphics[width=1\textwidth]{figuras/escAtri.pdf}
+\end{Slide}
+
+
+
+\begin{Slide}{\textbf{Entropia - Teoria da Informação}}
+\begin{itemize}
+\item Caracteriza a \emph{impureza} de uma coleção arbitrária
+  de exemplos.
+\item Dado uma coleção $S$ contendo exemplos $\oplus$ e $\ominus$ de algum
+  conceito alvo, a \emph{entropia} de $S$ relativa a esta
+  classificação booleana é 
+
+\begin{equation}
+Entropia(S) = 
+- p_{\oplus} \log_{2} p_{\oplus} - p_{\ominus} \log_{2} p_{\ominus}
+\end{equation}
+
+\item $p_{\oplus}$ é a proporção de exemplos positivos em $S$.
+\item $p_{\ominus}$ é a proporção de exemplos negativos em $S$.
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{Slide}{Exemplo}
+\begin{itemize}
+\item Sendo $S$ uma coleção de 14 exemplos de algum conceito
+  booleano, incluindo 9 exemplos positivos e 5 negativos [9+,5-].
+\item A \emph{entropia} de S relativa a classificação booleana
+  é 
+\begin{equation}
+\small
+Entropia(S) = 
+-\frac{9}{14} \log_{2}
+\left(\frac{9}{14}\right)
+-\frac{5}{14} \log_{2}
+\left(\frac{5}{14}\right) = 0.940
+\end{equation}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Entropia}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figuras/dt-fig-entropy-new.pdf}
+\end{center}
+\end{Slide}
+
+
+
+\begin{Slide}{Entropia}
+\begin{itemize}
+\item Generalizando para o caso de um atributo alvo aceitar $c$
+  diferentes valores, a entropia de $S$ relativa a esta
+  classificação $c-classes$ é definida como:
+
+\begin{equation}
+Entropia(S) = \sum_{i=1}^{v} -p_{i} \log_{2} p_{i}
+\end{equation} 
+onde $p_{i}$ é a proporção de $S$ pertencendo a classe $i$.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Ganho de Informação}
+\begin{itemize}
+\item $Ganho(S,A)$ = redução esperada na entropia devido a
+  ordenação sobre $A$, ou seja, a redução esperada na
+  entropia causada pela \emph{partição} dos exemplos de acordo
+  com estre atributo $A$.
+
+\begin{eqnarray}
+Ganho(S,A) = Entropia(S) - Ganho(A) \\
+Ganho(A) = \sum_{v \in Valores(A)} \frac{| S_{v}
+  |}{| S |} Entropia(S_{v})
+\end{eqnarray}
+ 
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Ganho de Informação - Exemplo}
+\begin{itemize}
+\item Qual atributo tem o maior ganho de informação?
+\end{itemize}
+\includegraphics[width=0.8\textwidth]{figuras/escAtri.pdf}
+\end{Slide}
+
+
+\begin{Slide}{Atributo alvo: Species do dataset Iris}
+	Qual é o atributo com maior ganho de informação? 
+
+(Desenvolver um script para cálculo do atributo com maior ganho de informação em R)   
+
+\end{Slide}
+
+
+%\begin{Slide}{Atributo alvo: Species do dataset Iris}
+%\begin{table}
+%  \begin{tabular}{ccccc}
+%    \toprule
+%    Aparência & Temperatura & Umidade & Ventando & Jogar\\
+%    \midrule
+%    sol     & quente & elevada & falso      & não \\
+%    sol     & quente & elevada & verdadeiro & não \\
+%    nublado & quente & elevada & falso      & sim \\
+%    chuva   & suave  & elevada & falso      & sim \\
+%    chuva   & frio   & normal  & falso      & sim \\
+%    chuva   & frio   & normal  & verdadeiro & não \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
+%\newpage
+%
+%\begin{table}
+%  \begin{tabular}{ccccc}
+%    \toprule
+%    Aparência & Temperatura & Umidade & Ventando & Jogar\\
+%    \midrule
+%    nublado & frio   & normal  & verdadeiro & sim \\
+%    sol     & suave  & elevada & falso      & não \\
+%    sol     & frio   & normal  & falso      & sim \\
+%    chuva   & suave  & normal  & falso      & sim \\
+%    sol     & suave  & normal  & verdadeiro & sim \\
+%    nublado & suave  & elevada & verdadeiro & sim \\
+%    nublado & quente & normal  & falso      & sim \\
+%    chuva   & suave  & elevada & verdadeiro & não \\
+%    \bottomrule
+%  \end{tabular}
+%  \end{table}
+%\end{Slide}
+%
+%
+%
+%\begin{Slide}{Exemplo ilustrativo}
+%\begin{itemize}
+%\item Ganho(S, Aparência) = 0.246
+%\item Ganho(S, Humidade) = 0.151
+%\item Ganho(S, Vento) = 0.048
+%\item Ganho(S, Temperatura) = 0.029
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Graficamente: atributo aparência}
+%\includegraphics[width=1\textwidth]{figuras/tAparencia.pdf}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Graficamente: atributo humidade}
+%\includegraphics[width=1\textwidth]{figuras/tHumidade.pdf}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Graficamente: atributo ventando}
+%\includegraphics[width=1\textwidth]{figuras/tVentando.pdf}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Graficamente: atributo temperatura}
+%\includegraphics[width=1\textwidth]{figuras/tTemperatura.pdf}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Árvore de decisão final}
+%\includegraphics[width=1\textwidth]{figuras/arvoreTenis.pdf}
+%\end{Slide}
+
+
+
+\begin{Slide}{Busca no espaço de hipóteses}
+\begin{itemize}
+\item O método de aprendizagem ID3 pode ser caracterizado como um
+  método de busca em um espaço de hipóteses, por uma
+  hipótese que se ajusta aos exemplos de treinamento.
+\item O espaço de hipóteses do ID3 é o conjunto de árvores
+  de decisão possíveis.
+\item O ID3 realiza uma busca (\emph{subida da montanha}) através
+  do espaço de hipóteses começando com uma árvore vazia e
+  considerando progressivamente hipóteses mais elaboradas.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Busca no espaço de hipóteses}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{figuras/dt-search.pdf}
+\end{center}
+\end{Slide}
+
+
+
+\begin{Slide}{Busca no espaço de hipóteses}
+\begin{itemize}
+\item Espaço de hipóteses é \emph{completo} (a função alvo
+  está presente e é encontrada pelo algoritmo ID3).
+\item Fornece uma \emph{única hipótese} (qual?) - não pode
+  representar 20 hipóteses.
+\item \emph{Sem backtracking} (recuo/volta atrás) - mínimo local.
+\item Escolhas de busca com base estatística - robustez a ruído
+  nos dados. 
+\end{itemize}
+\end{Slide}
+
+
+
+\begin{Slide}{Bias Indutivo no ID3}
+\begin{itemize}
+\item Dada uma coleção de exemplos de treinamento, existem
+  geralmente várias árvores de decisão consistentes com os
+  exemplos.
+\item \emph{Qual árvore deve ser escolhida?}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Bias Indutivo no ID3}
+\begin{itemize}
+\item A preferência é por \emph{árvore mais curtas} e por
+  aquelas com atributos de \emph{alto ganho de informação}
+  próximos da raiz.
+\item \emph{Bias}: é uma preferência por algumas hipóteses ao
+  invés de uma restrição do espaço de hipóteses $H$.
+\item \emph{Occam's razor} prefere hipóteses mais curtas (mais
+  simples) que se ajustam aos dados.
+\end{itemize}
+\end{Slide}
+
+
+%\begin{Slide}{Aspectos na Aprendizagem de Árvores de Decisão}
+%Aspectos práticos na aprendizagem de árvores de decisão:
+%\begin{itemize}
+%\item Manipulação de atributos contínuos.
+%\item Escolha de uma medida apropriada para a seleção de
+%  atributos.
+%\item Manipulação de atributos com diferentes custos.
+%\item Melhoria da eficiência computacional.
+%\end{itemize}
+%\end{Slide}
+%
+%
+%
+%\begin{Slide}{Sobreajuste (Overfitting) em árvores de decisão}
+%\begin{itemize}
+%\item Considere o erro da hipótese $h$ sobre
+%
+%\begin{itemize}
+%\item dados de treinamento: $erro_{train}(h)$
+%\item distribuição de dados inteira $D$: $erro_{D}(h)$
+%\end{itemize}
+%
+%\item Uma hipótese $h \in H$ sobreajusta os dados de treinamento se
+% existir uma hipótese alternativa $h' \in H$ tal que:
+%\begin{equation}
+%erro_{train}(h) < erro_{train}(h')
+%\end{equation}
+%e
+%\begin{equation}
+%erro_{D}(h) > erro_{D}(h')
+%\end{equation}
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Evitando Sobreajuste}
+%Como podemos evitar o sobreajuste?
+%\begin{itemize}
+%\item Parar o crescimento quando a partição de dados não for
+%  estatisticamente significante.
+%\item Desenvolver uma árvore completa e então fazer uma poda.
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Poda da árvore}
+%\begin{itemize}
+%\item \emph{Podar um nó de decisão} = consiste em remover a
+%  sub-árvore enraizada naquele nó, tornando-o nó folha.
+%\item Atribuir a este nó, a classificação mais comum dos
+%  exemplos de treinamento afiliados com aquele nó.
+%\item Nós são removidos somente se a árvore aparada
+%  resultante não apresenta um comportamento pior do que a original
+%  sobre o conjunto de validação.
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Atributos de valor contínuo}
+%\begin{itemize}
+%\item Na definição do ID3 temos as seguintes restrições:
+%\begin{enumerate}
+%\item o atributo alvo deve ter valor discreto e
+%\item os atributos testados nos nós de decisão devem também
+%  ser de valor discreto.
+%\end{enumerate}
+%\item A segunda restrição pode ser removida, \emph{discretizando}-se os
+%  valores do atributo.
+%\end{itemize}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Exemplo}
+%\begin{table}
+%  \small	
+%  \begin{tabular}[htbp]{ccccc}
+%    \toprule
+%    Aparência & Temperatura & Umidade & Ventando & Jogar\\
+%    \midrule
+%    sol     & 28 & 70 & falso      & não \\
+%    sol     & 27 & 75 & verdadeiro & não \\
+%    nublado & 30 & 74 & falso      & sim \\
+%    chuva   & 25 & 73 & falso      & sim \\
+%    chuva   & 18 & 69 & falso      & sim \\
+%    chuva   & 19 & 65 & verdadeiro & não \\
+%    \bottomrule
+%  \end{tabular}
+%  \end{table}
+%
+%\newpage
+%
+%\begin{table}
+%  \small	
+%  \begin{tabular}[htbp]{ccccc}
+%    \toprule
+%    Aparência & Temperatura & Umidade & Ventando & Jogar\\
+%    \midrule
+%    nublado & 18 & 63 & verdadeiro & sim \\
+%    sol     & 20 & 71 & falso      & não \\
+%    sol     & 17 & 65 & falso      & sim \\
+%    chuva   & 24 & 68 & falso      & sim \\
+%    sol     & 23 & 69 & verdadeiro & sim \\
+%    nublado & 25 & 71 & verdadeiro & sim \\
+%    nublado & 30 & 67 & falso      & sim \\
+%    chuva   & 20 & 74 & verdadeiro & não \\
+%    \bottomrule
+%  \end{tabular}
+%  \end{table}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Atributos com muitos valores}
+%Problema:
+%\begin{itemize}
+%\item se o atributo tem muitos valores, a heurística de \emph{ganho de
+%  informação} utilizada até agora irá selecionar este atributo. 
+%\end{itemize}
+%
+%\newpage
+%
+%Uma solução é penalizar atributos com muitos valores usando a
+%seguinte fórmula de \emph{ganho}:
+%
+%\begin{eqnarray}
+%GainRatio(S,A) = \frac{Ganho(S,A)}{SplitInformation(S,A)} \\
+%SplitInformation(S,A) = - \sum_{i=1}^{v} \frac{|S_{i}|}{|S|} \log_{2} \frac{|S_{i}|}{|S|}
+%\end{eqnarray}
+%\end{Slide}
+%
+%
+%\begin{Slide}{Atributos com custo}
+%Considere:
+%\begin{itemize}
+%\item Diagnóstico médico. Teste de sangue tem um custo de \$150 
+%\item Como aprender uma árvore de decisão que leve em
+%  consideração o custo de cada teste que deve ser realizado?
+%\item Uma solução: \emph{substituir o ganho de informação}
+%  por:
+%
+%\begin{equation}
+%\frac{Ganho(S,A)}{Custo(A)}
+%\end{equation}
+%\end{itemize}
+%\end{Slide}
+
+\begin{Slide}{Resumo}
+\begin{itemize}
+\item O \emph{bias indutivo} implícito do ID3 inclui uma preferência
+  por \emph{árvores menores}. A busca através do espaço de
+  hipóteses expande a árvore somente o necessário para
+  classificar os exemplos de treinamento disponíveis. 
+%\item \emph{Sobreajuste} é um aspecto importante na aprendizagem de
+%  árvores de decisão. Métodos para \emph{poda} posterior são
+%  importantes para evitar o sobreajuste.
+\item Várias extensões do algoritmo básico \emph{ID3} (\emph{C4.5}, \emph{J4.8},
+  ...).
+
+%\newpage 
+
+\item Aprendizagem de árvores de decisão fornece um método
+  prático para a aprendizagem de conceito e para a aprendizagem de
+  outras funções de \emph{valor discreto}.
+\item A família de algoritmos ID3 infere árvores de decisão
+  expandindo-as a partir da raiz e descendo, selecionando o próximo
+  \emph{melhor atributo} para cada novo ramo de decisão.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Exercícios}
+Forneça árvores de decisão para representar as seguintes
+funções booleanas:
+\begin{itemize}
+\item $A \wedge \neg B$
+\item $A \vee (B \wedge C)$
+\item A XOR B
+\item $(A \wedge B) \vee (C \wedge D)$
+\end{itemize}
+
+\newpage
+
+Considere o seguinte conjunto de treinamento:
+
+\begin{table}
+  \small	
+  \begin{tabular}[htbp]{cccc}
+    \toprule
+    Exemplo & Classificação & $a_{1}$ & $a_{2}$ \\
+    \midrule
+    1 & + & T & T \\
+    2 & + & T & T \\
+    3 & - & T & F \\
+    4 & + & F & F \\
+    5 & - & F & T \\
+    6 & - & F & T \\
+    \bottomrule
+  \end{tabular}
+  \end{table}
+
+\newpage
+
+\begin{itemize}
+\item Qual é a entropia de todo o conjunto de treinamento com
+  relação ao atributo objetivo: \emph{Classificação}?
+\item Qual é o ganho de informação do atributo $a_{2}$
+  relativo ao conjunto de exemplos?
+\end{itemize}
+
+\end{Slide}
+
+%\begin{Slide}{Diagnóstico para o uso de lentes de contato}
+%\begin{itemize}
+%\item Um algoritmo indutor de árvores de decisão serve para este problema?
+%\end{itemize}
+%\end{Slide}
+
+
+\begin{Slide}{Árvores de decisão e R}
+\begin{alltt}
+	library(RWeka)
+	
+	data(iris)
+	model <- J48(Species ~ . , data = iris)
+	plot(model)
+	model
+\end{alltt}
+%http://rpubs.com/fbarth/5533
+
+\newpage
+
+{\small
+\begin{alltt}
+> novasPlantas <- data.frame(
++         Sepal.Length <- c(6.1, 6.08, 4.18), 
++         Sepal.Width <- c(2.96, 2.51, 2.67), 
++         Petal.Width <- c(0.34, 2.49, 1.43), 
++         Petal.Length <- c(3.04, 4.07, 2.9)
++    )
+> predict(model, novasPlantas)
+[1] setosa     virginica  versicolor
+Levels: setosa versicolor virginica
+> 
+\end{alltt}
+}
+\end{Slide}
+
+\begin{Slide}{Próxima atividade}
+	http://rpubs.com/fbarth/arvoreDecisao
+\end{Slide} 
+
+
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize}
+  \item Tom Mitchell. Machine Learning, 1997. (Capítulo 3)
+  \item Russel e Norvig. Inteligência Artificial, 2a. edição,
+    capítulo 18.
+  \item \emph{Weka} no \emph{R}:
+    http://cran.r-project.org/web/packages/RWeka/RWeka.pdf.
+  \item Yanchang Zhao. R and Data Mining: Examples and Case
+    Studies. (Capítulo 4): http://cran.r-project.org/doc/contrib/Zhao\_R\_and\_data\_mining.pdf
+  \end{itemize}
+\end{Slide}
+
+
+\end{document}
+

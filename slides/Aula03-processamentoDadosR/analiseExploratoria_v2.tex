@@ -1,0 +1,812 @@
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+%\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Pré-processamento [no R] e Análise Exploratória} 
+\author{Fabrício J. Barth}
+\institution{}
+\date{Maio de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Sumário}
+\begin{itemize}
+\item Projeto R
+\item O que são \emph{dados}?
+\item Caracterização dos dados.
+\item Raw data versus dado tratado.
+\item Representação de dados no R.
+\item \emph{Análise Exploratória} de dados [no R].
+\item Exercícios.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Projeto R}
+\begin{itemize}
+\item http://www.r-project.org/
+\item R Studio - http://www.rstudio.com/
+\item É free
+\item É a linguagem de programação mais popular para análise de dados
+\item Script é melhor que clicar e arastar:
+
+\begin{itemize}
+\item É mais fácil de comunicar $\rightarrow$ \textsc{RMarkdown}.
+\item Reproduzível.
+\item É necessário pensar mais sobre o problema.
+\end{itemize}
+
+\item Existe uma quantia grande de pacotes disponíveis
+
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Definição de dados}
+	
+Dados são valores de variáveis quantitativas ou qualitativas que pertencem a um conjunto de itens.	
+
+\newpage
+
+Dados são valores de variáveis quantitativas ou qualitativas que pertencem a um \emph{conjunto de itens}.	
+
+\begin{itemize}
+	\item \emph{conjunto de itens}: objetos de interesse. 
+\end{itemize}
+
+
+\newpage
+
+Dados são valores de \emph{variáveis} quantitativas ou qualitativas que pertencem a um conjunto de itens.	
+
+\begin{itemize}
+	\item \emph{variáveis}: uma medida ou uma característica de um item.
+\end{itemize}
+
+\newpage
+
+Dados são valores de variáveis \emph{quantitativas} ou \emph{qualitativas} que pertencem a um conjunto de itens.	
+
+\begin{itemize}
+	\item \emph{qualitativas}: cidade de origem, sexo, fez ou não tratamento.
+	\item \emph{quantitativas}: peso, altura, pressão do sangue.
+\end{itemize}
+
+\end{Slide}
+
+
+\begin{Slide}{Caracterização dos dados}
+\begin{itemize}
+\item A escala define as operações que podem ser realizadas sobre os
+  valores do atributo. 
+\item Em relação à escala, os atributos podem ser classificados como
+  \emph{nominais}, \emph{ordinais}, \emph{discreto} e
+  \emph{contínuo}. 
+\item Os dois primeiros são do tipo qualitativo e os dois últimos são
+  quantitativos.
+
+\newpage
+
+
+\item Na escala \emph{nominal}, os valores são apenas \emph{nomes
+    diferentes}, carregando a menor quantidade de informação
+  possível. Não existe uma relação de ordem entre seus valores.
+
+\item Os valores em uma escala \emph{ordinal} refletem também uma
+  ordem das categorias representadas. Dessa forma, além dos operadores
+  de igualdade e desigualdade, operadores como $<$, $>$, $\ge$, $\le$ podem ser utilizados.
+
+\newpage
+
+\item Uma variável quantitativa que pode assumir, teoricamente,
+  qualquer valor entre dois limites recebe o nome de \emph{variável contínua}.
+
+\item Uma variável que só pode assumir valores pertencentes a um
+  conjunto enumerável recebe o nome de \emph{variável discreta}.
+
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Raw data versus dados processados}
+\textbf{Raw data}
+\begin{itemize}
+\item Fonte original dos dados
+\item Geralmente difícil para fazer algum tipo de análise
+\end{itemize}
+
+http://en.wikipedia.org/wiki/Raw\_Data
+
+\newpage
+
+\textbf{Dados processados}
+\begin{itemize}
+\item Dados que estão prontos para serem analisados
+\item O processamento pode incluir \textit{merging},
+  \textit{subsetting}, \textit{transforming}, entre outras operações.
+\item Todas as etapas devem ser registradas
+\end{itemize}
+
+http://en.wikipedia.org/wiki/Compute\_data\_processing
+\end{Slide}
+
+\begin{Slide}{Exemplo de dados brutos}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.95\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/log.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Exemplo de dados brutos}
+\tiny
+\textit{consideração o projeto da aprendizagem que pensa como didaticamente os
+cursos devem ser projetados com o uso da tecnologia adequada. Isso
+inclui levar em conta os aspectos sociais e culturais envolvidos.
+Deixo abaixo algumas indicações de leitura que tratam isso. Assim,
+acho que dizer que tecnologia deve ser usada de forma responsável, não
+é discutir MOOCs.
+Outro ponto importante é destacar que os MOOCs aparecem no contexto da
+educação aberta e Ciencia aberta e inclui REAs, que costumavam ser
+chamados de objetos de aprendizem e agora discutem-se as licenças, as
+perspectivas de reutilização e de localização;  os periódicos abertos
+que reagem aos altos valores de assinaturas dos periódicos
+tradicionais, as novas formas de publicação incluindo blogs; a
+educação hibrida; os ambientes pessoais de aprendizagem, etc. No geral}
+\end{Slide}
+
+\begin{Slide}{Exemplo de dado processado}
+\begin{table}[htpb]
+\centering
+\tiny
+\caption{Exemplo de tabela com as transações dos usuários}
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+usuário & $categoria_{1}$ & $categoria_{2}$ & $categoria_{3}$ &
+$\cdots$ & $categoria_{m}$\\
+\midrule
+$user_{1}$ & 0 & 2 & 0& $\cdots$ & 1\\
+%\midrule
+$user_{2}$ & 1& 1& 0 & $\cdots$ & 0\\
+%\midrule
+$user_{3}$ & 2& 0 & 1& $\cdots$& 0\\
+%\midrule
+$user_{4}$ &0 & 1& 0& $\cdots$& 0\\
+%\midrule
+$\cdots$ & $\cdots$& $\cdots$& $\cdots$& $\cdots$&$\cdots$\\
+%\midrule
+$user_{n}$ & 1& 1& 0& $\cdots$& 1\\
+\bottomrule
+\end{tabular}
+\label{tab:transacoesUser}
+\end{table}
+\end{Slide}
+
+\begin{Slide}{Tidy data}
+	
+	Define um padrão para a organização dos dados.
+	
+\begin{itemize}
+\item Cada variável (atributo) forma uma coluna.
+\item Cada observação (exemplo) forma uma linha.
+\item Cada tabela ou arquivo armazena dados sobre uma observação
+  (i.e., pessoas / hospitais)
+\item http://vita.had.co.nz/papers/tidy-data.pdf
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{Representação de dados no R}
+\end{PartSlide}
+
+\begin{Slide}{Tipos de dados importantes para Aprendizagem de Máquina no R}
+\begin{itemize}
+\item Classes: Character, Numeric, Integer, Logical
+\item Objetos: Vector, Matrices, Data frames, List, Factors, Missing
+  Values
+\item Operadores: Subsetting, Logical Subsetting
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Character}
+\small
+\begin{alltt}
+nome = "maria"
+class(nome)
+
+## [1] "character"
+
+nome
+
+## [1] "maria"
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Numeric}
+\small
+\begin{alltt}
+peso = 76.2
+class(peso)
+
+## [1] "numeric"
+
+peso
+
+## [1] 76.2
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Integer}
+\small
+\begin{alltt}
+qtdFilhos = 1L
+class(qtdFilhos)
+
+## [1] "integer"
+
+qtdFilhos
+
+## [1] 1
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Logical}
+\small
+\begin{alltt}
+temCarro = TRUE
+class(temCarro)
+
+## [1] "logical"
+
+temCarro
+
+## [1] TRUE
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Vectors}
+Um conjunto de valores da mesma classe.
+\small
+\begin{alltt}
+pesos = c(76.2, 80.3, 90, 117.4)
+pesos
+
+## [1] 76.2 80.3 90 117.4
+
+nomes = c("maria", "carlos", "pedro")
+nomes
+
+## [1] "maria" "carlos" "pedro"
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Lists}
+Um conjunto de valores que pode ser heterogêneo.
+\small
+\begin{alltt}
+pesosV = c(76.2, 80.3, 90, 117.4)
+nomesV = c("maria", "carlos", "pedro", "antônio")
+
+myList <- list(pesos = pesosV, nomes = nomesV)
+myList
+
+## $pesos
+## [1]  76.2  80.3  90.0 117.4
+## 
+## $nomes
+## [1] "maria"   "carlos"  "pedro"   "antônio"
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Matrizes}
+Vetores com múltiplas dimensões.
+\small
+\begin{alltt}
+myMatrix = matrix(c(1, 2, 3, 4), byrow = T, nrow = 2)
+myMatrix
+
+## [,1] [,2] 
+## [1,] 1 2 
+## [2,] 3 4
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Data frames}
+Múltiplos vetores de classes diferentes, mas com o mesmo tamanho.
+\small
+\begin{alltt}
+vector1 = c(188.2, 181.3, 193.4)
+vector2 = c("jeff", "roger", "andrew", "brian")
+myDataFrame = data.frame(heights = vector1, 
+                         firstNames = vector2)
+
+## Error: arguments imply differing number of rows: 3, 4
+
+myDataFrame
+
+## Error: object 'myDataFrame' not found
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Data frames}
+\small
+\begin{alltt}
+> vector1 = c(188.2, 181.3, 193.4)
+> vector2 = c("jeff", "roger", "andrew")
+> myDataFrame = data.frame(heights = vector1,
+                           firstNames = vector2)
+> myDataFrame
+
+  heights firstNames
+1   188.2       jeff
+2   181.3      roger
+3   193.4     andrew
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Factors}
+Variáveis qualitativas que podem ser incluídas no modelo.
+\small
+\begin{alltt}
+smoker = c("yes", "no", "yes", "yes") 
+smokerFactor = as.factor(smoker)
+smokerFactor
+
+## [1] yes no yes yes 
+## Levels: no yes
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Missing values}
+No R os valores faltantes são codificados como NA
+\small
+\begin{alltt}
+vector1 <- c(188.2, 181.3, 193.4, NA) 
+vector1
+
+## [1] 188.2 181.3 193.4 NA
+
+is.na(vector1)
+
+## [1] FALSE FALSE FALSE TRUE
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Subsetting}
+\small
+\begin{alltt}
+vector1 = c(188.2, 181.3, 193.4, 192.3)
+vector2 = c("jeff", "roger", "andrew", "brian")
+myDataFrame = data.frame(heights = vector1, 
+                         firstNames = vector2)
+vector1[1]
+
+## [1] 188.2
+
+vector1[c(1, 2, 4)]
+
+## [1] 188.2 181.3 192.3
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Subsetting}
+\small
+\begin{alltt}
+myDataFrame[1, 1:2]
+
+## heights firstNames
+## 1 188.2 jeff
+
+myDataFrame$firstNames
+
+## [1] jeff roger andrew brian 
+## Levels: andrew brian jeff roger
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Logical subsetting}
+\small
+\begin{alltt}
+myDataFrame[myDataFrame$firstNames == "jeff", ]
+
+## heights firstNames 
+## 1 188.2 jeff
+
+myDataFrame[heights < 190, ]
+
+## heights firstNames
+## 1 188.2 jeff
+## 2 181.3 roger
+## 4 192.3 brian
+\end{alltt}
+\end{Slide}
+
+\begin{PartSlide}{Análise Exploratória de Dados}
+\end{PartSlide}
+
+\begin{Slide}{Dados utiizados}
+
+Os exemplos a seguir fazem uso de dois datasets distintos:
+
+\begin{itemize}
+\item \emph{survey}: dados sobre alunos de uma turma de estatística. 
+\end{itemize}
+
+\begin{alltt}
+library(UsingR)
+data(survey)
+names(survey)
+sapply(survey, class)
+\end{alltt}
+
+\newpage
+
+\begin{itemize}
+\item \emph{iris}: dados sobre flores do gênero iris.
+\end{itemize}
+
+\begin{alltt}
+data(iris)
+head(iris)
+help(iris)
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Caracterização dos dados}
+No R, é possível testar se um atributo é \emph{qualitativo} (factor) ou \emph{quantitativo} (numeric).
+
+\small
+\begin{alltt}
+is.numeric(survey$Pulse)
+is.factor(survey$Sex)
+is.numeric(survey$Smoke)
+is.factor(survey$Height)
+
+is.numeric(iris$Sepal.Length)
+is.factor(iris$Species)
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Caracterização dos dados}
+Os atribudos dos datasets \textsc{iris} e \textsc{survey} podem ser classificados como
+indicado nas tabelas abaixo:
+
+\small
+\begin{alltt}
+class(survey$Pulse) = integer (quantitativo discreto)
+class(survey$Sex) = factor (qualitativo)
+class(survey$Smoke) = factor (ordinal - qualitativo)
+class(survey$Height) = numeric (quantitativo contínuo)
+
+class(iris$Sepal.Length) = numeric (quantitativo contínuo)
+class(iris$Species) = factor (qualitativo)
+\end{alltt}
+\end{Slide}
+
+
+\begin{Slide}{Exploração de dados}
+Uma das formas mais simples de explorar um conjunto de dados é a
+extração de medidas de uma área da estatística denominada \emph{estatística
+descritiva}. A estatística descritiva resume de forma quantitativa as
+principais características de um conjunto de dados.
+
+\newpage
+
+Tais características podem ser:
+
+\begin{itemize}
+\item Frequência;
+\item Localização ou tendência central (por exemplo, a média);
+\item Dispersão ou espalhamento (por exemplo, o desvio padrão);
+\item Distribuição ou formato.
+\end{itemize}
+
+\newpage
+
+No R é trivial identificar a média e mediana de um dado conjunto de valores 
+para um atributo qualquer, como apresentado abaixo:
+
+\begin{alltt}
+mean(survey$Pulse)
+median(survey$Pulse)
+\end{alltt}
+
+Ou sumarizar todos estes valores através de um único comando:
+
+\begin{alltt}
+summary(survey$Pulse)
+\end{alltt}
+
+\newpage
+
+Além das informações textuais obtidas por
+
+\begin{alltt}
+summary(iris$Sepal.Width)
+\end{alltt}
+
+É possível obter um resumo visual da centralidade dos dados através do gráfico
+\textit{boxplot}. No R é simples gerar este tipo de gráfico.
+
+\small
+\begin{alltt}
+par(mfrow=c(1,2))
+boxplot(iris$Sepal.Width, 
+        outline= FALSE, main="Boxplot",
+        xlab="Sepal Width")
+boxplot(iris$Sepal.Width, 
+        main="Boxplot modificado", 
+        xlab="Sepal Width")
+\end{alltt}
+
+\end{Slide}
+
+\begin{Slide}{Boxplot}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/boxplot.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Boxplot original}
+Do lado esquerdo da figura é apresentado o gráfico \textit{boxplot} original. Nele, a linha
+horizontal mais baixa e a linha horizontal mais alta indicam, respectivamente, os valores
+mínimo e máximo presentes nos dados. Os lados inferior e superior do retângulo representam
+o 1o quartil e o 3o quartil, respectivamente. A linha no interior do
+retângulo é o 2o quartil, ou mediana. 
+\end{Slide}
+
+\begin{Slide}{Boxplot modificado}
+O segundo gráfico ilustra uma variação do gráfico \textit{boxplot}, conhecida como
+\textit{boxplot} modificado. Neste gráfico, os valores acima do limite superior e abaixo do
+limite inferior são considerados \textit{outliers}. Neste gráfico, 4 valores \textit{outliers}
+são representados por círculos, 3 maiores que o 3o quartil + 1,5 x (3o quartil - 1o quartil) e
+1 menor que 1o quartil - 1,5 x (3o quartil - 1o quartil).
+\end{Slide}
+
+
+\begin{Slide}{Espalhamento de valores}
+As medidas mais utilizadas para avaliar o \emph{espalhamento} de
+valores é a \emph{variância} (var) e o \emph{desvio padrão} (sd). Sendo que o
+desvio padrão é dado pela raiz quadrada da variância.
+
+\newpage
+
+Desvio padrão:
+\begin{equation}
+s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n}{(x_{i} - \overline{x})^{2}}}
+\end{equation}
+
+Variância:
+\begin{equation}
+s = \frac{1}{n-1} \sum_{i=1}^{n}{(x_{i} - \overline{x})^{2}}
+\end{equation}
+
+\end{Slide}
+
+\begin{PartSlide}{Ferramentas visuais para Análise Exploratória de Dados}
+\end{PartSlide}
+
+\begin{Slide}{Plot}
+\small
+\begin{alltt}
+plot(iris$Petal.Length, iris$Petal.Width, pch=19)
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/plot.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Plot}
+\tiny
+\begin{alltt}
+plot(iris$Petal.Length, iris$Petal.Width, pch=21, 
+     bg=c("red","green","yellow")[as.numeric(iris$Species)])
+legend(locator(1), levels(iris$Species), 
+     fill=c("red","green","yellow"))
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.7\columnwidth}{0.7\textheight}
+{\includegraphics{figuras/plot2.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Outras bibliotecas para Plot}
+\tiny
+\begin{alltt}
+library(ggplot2)
+qplot(iris$Petal.Length, iris$Petal.Width, col=iris$Species, size=iris$Sepal.Length)
+\end{alltt}
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.7\textheight}
+{\includegraphics{figuras/qplot.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Comparando valores}
+\tiny
+\begin{alltt}
+par(mfrow=c(1,2))
+plot(jitter(as.numeric(iris$Species)), iris$Petal.Length, pch=19, xlab="Species")
+plot(iris$Petal.Length ~ iris$Species)
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/plot3.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Histograma}
+\tiny
+\begin{alltt}
+> hist(iris$Petal.Length)
+> summary(iris$Petal.Length)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   1.600   4.350   3.758   5.100   6.900
+> var(iris$Petal.Length)
+[1] 3.116278
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.6\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/plot4.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Histograma}
+\tiny
+\begin{alltt}
+> hist(iris$Sepal.Width)
+> summary(iris$Sepal.Width)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  2.000   2.800   3.000   3.057   3.300   4.400
+> var(iris$Sepal.Width)
+[1] 0.1899794
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.6\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/plot5.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Scatter Plot}
+\scriptsize
+\begin{alltt}
+plot(iris[,1:4], pch=21, 
+     bg=c("red","green","yellow")[as.numeric(iris$Species)])
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.75\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/plot6.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Correlação}
+Dados multivariados permitem análises da relação entre
+  dois ou mais atributos. Por exemplo, para atributos quantitativos,
+  pode-se utilizar uma medida de correlação para identificar a relação
+  linear entre dois atributos.
+\end{Slide}
+
+\begin{Slide}{Coeficiente de correlação de Pearson}
+Este coeficiente, normalmente representado por $\rho$ assume apenas
+valores entre -1 e 1.
+
+\begin{itemize}
+\item $\rho = 1$ significa uma correlação perfeita positiva entre as
+  duas variáveis. 
+\item $\rho = -1$ significa uma correlação perfeita negativa entre as
+  duas variáveis.
+\item $\rho = 0$ significa que as duas variáveis não dependem
+  linearmente uma da outra. No entanto, pode existir uma depência não
+  linear. Assim, o resultado $\rho = 0$ deve ser investigado por
+  outros meios.
+\end{itemize}
+
+\newpage
+
+\begin{equation}
+\rho = \frac{\sum_{i=1}^{n} (x_{i} - \bar{x})(y_{i} - \bar{y}) }
+{\sqrt{\sum_{i=1}^{n} (x_{i} - \bar{x})^{2}} \times
+  \sqrt{\sum_{i=1}^{n} (y_{i} - \bar{y})^{2}}}
+\end{equation}
+
+\begin{equation}
+\rho = \frac{cov(X,Y)}{\sqrt{var(X) \times var(Y)}}
+\end{equation}
+
+\end{Slide}
+
+
+\begin{Slide}{Exemplo de medidas de correlação}
+\footnotesize
+\begin{alltt}
+> cor(iris[,1:4])
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
+Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
+Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
+Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000
+\end{alltt}
+\end{Slide}
+
+
+\begin{Slide}{Resumindo a relação entre dados numéricos}
+\tiny
+\begin{alltt}
+library(psych)
+pairs.panels(iris[,1:4])
+\end{alltt}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.7\columnwidth}{0.7\textheight}
+{\includegraphics{figuras/resumoCorrelacao.png}}
+\end{figure}
+\end{Slide}
+
+%\begin{Slide}{Heatmap para atributos de entrada do dataset iris}
+%\tiny
+%\begin{alltt}
+%
+%\end{alltt}
+%\begin{figure}[htbp]
+%\centering 
+%\resizebox*{0.7\columnwidth}{0.7\textheight}
+%{\includegraphics{figuras/plot7.png}}
+%\end{figure}
+%\end{Slide}
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize} 
+  \item Capítulo 3 do livro EMC Education Services, editor. Data
+    Science and Big Data Analytics: Discovering, Analysing,
+    Visualizing and Presenting Data. John Wiley \& Sons, 2015.
+  \item Hadley Wickham. Tidy data. Journal of Statistical Software,
+    59(10), 2014.  
+  \end{itemize}
+\end{Slide}
+
+%\begin{PartSlide}{Próximas Atividades: Exercícios}
+%\end{PartSlide}
+
+%\bibliographystyle{plain}
+%\bibliography{doutorado,mestrado,publicacoes,atech,posDoutorado,vagas}
+
+\end{document}
+

@@ -1,0 +1,313 @@
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+%\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Design de projetos para criação de modelos preditivos} 
+\author{Fabrício Barth}
+\institution{}
+\date{Setembro de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Sumário e Objetivos}
+\begin{itemize}
+\item Etapas para construção de modelos preditivos
+\item Escolha dos dados
+\item Medidas de erro (para classificação e regressão)
+\item \textit{Bias}, \textit{Variance}, \textit{overfitting} e \textit{underfitting}
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{Etapas para construção de modelos preditivos}
+\end{PartSlide}
+
+\begin{Slide}{Etapas para construção de modelos preditivos}
+\begin{itemize}
+\item Escolher o conjunto de dados corretos.
+
+\item Definir a métrica e a taxa de erro aceitável.
+
+\item Dividir os dados em:
+
+\begin{itemize}
+\item Treinamento.
+\item Teste.
+\item Validação (opcional).
+\end{itemize}
+
+\newpage
+
+\item Selecionar atributos que devem formar o conjunto de treinamento.
+
+\item Identificar modelos preditivos usando o conjunto de treinamento.
+
+\newpage
+
+\item Aplicar teste sobre o conjunto de treinamento.
+
+\item Se não existe conjunto de validação então aplicar o modelo 1x no
+  conjunto de teste.
+
+\item Se existe conjunto de validação então aplicar o modelo no
+  conjunto de teste e refinar o modelo.
+
+\item Se existe conjunto de validação então aplicar o modelo 1x no
+  conjunto de validação.
+
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{Escolha dos dados}
+\end{PartSlide}
+
+\begin{Slide}{Identificando o conjunto de dados corretos}
+\begin{itemize}
+\item Em alguns casos é fácil (avaliação de filmes $\rightarrow$ novas
+  avaliações de filmes).
+\item Em outros pode ser mais difícil (dados genéticos $\rightarrow$ doenças).
+
+\item Geralmente, quanto maior a quantidade de dados, melhor são os
+  modelos.
+
+\item Conhecer \textit{benchmarks} ajuda!
+
+\item \emph{Sempre começamos com dados brutos e precisamos processá-los}.
+
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{Medidas de erro}
+\end{PartSlide}
+
+\begin{Slide}{Definição de Erro para problemas de Classificação}
+
+\begin{table}[htpb]
+\centering
+\tiny
+\caption{Conjunto de teste}
+\vspace{0.2cm}
+\begin{tabular}{|l|c|c|}
+\toprule
+Exemplo & Classe real & Classe inferida\\
+\midrule
+1 & Positivo & Positivo\\
+2 & Positivo & Negativo\\
+3 & Negativo & Negativo\\
+4 & Negativo & Negativo\\
+5 & Negativo & Negativo\\
+6 & Positivo & Positivo\\
+7 & Positivo & Negativo\\
+8 & Negativo & Negativo\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{equation}
+erro(modelo) = \frac{qtd\_incorretos}{qtd\_exemplos}
+\end{equation}
+
+onde:
+\begin{itemize}
+\item $qtd\_exemplos$: quantidade de exemplos do conjunto de teste.
+\item $qtd\_corretos$: quantidade de exemplos do conjunto de teste
+  incorretamente classificados. 
+\end{itemize}
+
+\newpage
+
+Neste exemplo:
+
+\begin{table}[htpb]
+\centering
+\tiny
+\caption{Conjunto de teste}
+\vspace{0.2cm}
+\begin{tabular}{|l|c|c|}
+\toprule
+Exemplo & Classe real & Classe inferida\\
+\midrule
+1 & Positivo & Positivo\\
+2 & Positivo & Negativo\\
+3 & Negativo & Negativo\\
+4 & Negativo & Negativo\\
+5 & Negativo & Negativo\\
+6 & Positivo & Positivo\\
+7 & Positivo & Negativo\\
+8 & Negativo & Negativo\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{equation}
+erro(modelo) = \frac{2}{8} = 0.25
+\end{equation}
+
+\end{Slide}
+
+\begin{Slide}{Definição de Verdadeiro e Falso Positivo}
+\begin{itemize}
+\item Verdadeiro Positivo = identificado corretamente.
+\item Falso Positivo = identificado incorretamente.
+\item Verdadeiro Negativo = rejeitado corretamente.
+\item Falso Negativo = rejeitado incorretamente.
+\end{itemize}
+
+\newpage
+
+Exemplo de teste médico:
+
+\begin{itemize}
+\item Verdadeiro Positivo = Pessoa doente corretamente classificada
+  como doente.
+\item Falso Positivo = Pessoa saudável incorretamente classificada
+  como doente.
+\item Verdadeiro Negativo = Pessoa saudável corretamente classificada
+  como saudável. 
+\item Falso Negativo = Pessoa doente incorretamente classificada como
+  saudável.  
+\end{itemize}
+
+\end{Slide}
+
+\begin{Slide}{Matriz de classificação}
+
+\begin{table}[htpb]
+\centering
+\tiny
+\vspace{0.2cm}
+\begin{tabular}{|l|l|l|c|}
+\toprule
+& \textbf{Positivo de fato} & \textbf{Negativo de fato} & \textbf{Precisão}\\
+\midrule
+\textbf{Classificados} & Verdadeiro  & Falso & \\
+\textbf{pelo modelo} & Positivo & Positivo & $VP / (VP + FP)$\\ 
+\textbf{como positivo} & (VP)  &  (FP) & \\
+\midrule
+\textbf{Classificados} & Falso & Verdadeiro & \\
+\textbf{pelo modelo} & Negativo & Negativo & $VN / (VN + FN)$\\
+\textbf{como negativo} & (FN) & (VN) & \\
+\midrule
+\textbf{Cobertura} & & & Acurácia: \\
+& $VP / (VP + FN)$ & $VN / (FP + VN)$ & $(VP + VN) / (FP + FN)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{Slide}
+
+%\begin{Slide}{\textit{Cross-validation}}
+%\begin{figure}[htbp]
+%\centering 
+%\resizebox*{0.8\columnwidth}{0.8\textheight}
+%{\includegraphics{figuras/crossValidation.png}}
+%\end{figure}
+%\end{Slide}
+
+
+\begin{Slide}{Medida de Erro para problemas de Regressão}
+As medidas de erro mais usadas nesse caso são o raiz quadrada do erro quadrático médio
+(RMSE - \textit{root mean squared error}) e a distância absoluta média (MAE
+- \textit{mean absolute error}):
+
+\begin{eqnarray}
+RMSE(f) = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_{i} - f(\vec x_{i}))^{2}} \\
+MAE(f) = \frac{1}{n} \sum_{i=1}^{n} |y_{i} - f(\vec x_{i})|
+\end{eqnarray}
+\end{Slide}
+
+\begin{Slide}{Quando usar $RMSE$ ou $MAE$?}
+	\begin{itemize}
+		\item $RMSE$ é uma medida que valoriza os erros extremos, mesmo ocorrendo com pouca frequência. Por exemplo, se para o problema que está sendo analisado errar por 10 é pior que errar duas vezes por 5 então a mehor escolha é $RMSE$. Caso contrário, se errar por 10 é igual que errar duas vezes por 5 então a melhor escolha é $MAE$.
+		\item Do ponto de vista de interpretação, a melhor escolha é o $MAE$. 
+	\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{\textit{Bias}, \textit{Variance}, \textit{overfitting} e \textit{underfitting}}
+\end{PartSlide}
+
+\begin{Slide}{Exemplo}
+\begin{itemize}
+\item Suponha que você deseja construir um classificador com 5\% de erro.
+\item O erro do seu conjunto de treinamento é de 15\%.
+\item O erro do seu conjunto de treinamento é de 16\%.
+
+\newpage
+
+\item O erro associado ao conjunto de treinamento é chamado \textbf{bias}.
+\item O erro associado ao conjunto de teste é chamado \textbf{variance}.
+\item No exemplo anterior temos um \textbf{bias} de 15\%.
+\item E uma \textbf{variance} de 1\% (16 - 15)
+\item Sendo assim, temos um modelo com alto \textbf{bias}. 
+\item Que também é conhecido como \textbf{underfitting}.
+\newpage
+
+\item Considere um outro exemplo onde:
+\begin{itemize}
+	\item erro de treinamento = 1\%
+	\item erro de teste = 11\%
+\end{itemize}
+\item Bias = 1\%
+\item Variance = 10\% (11 -1)
+\item Sendo assim, temos um problema de alta \textbf{variance}. 
+\item Ou, \textbf{overfitting}. 
+
+\newpage
+
+\item Considere:
+\begin{itemize}
+	\item erro de treinamento = 0.5\%
+	\item erro de teste = 1\%
+\end{itemize}
+
+\item Parabéns! O seu modelo está muito bom!
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{Como tratar bias, variance, underfitting e overfitting}
+\end{PartSlide}
+
+\begin{Slide}{Tratando bias e variance}
+Uma fórmula simples para tratar bias e variance é:
+	\begin{itemize}
+		\item Se o modelo possui alto bias, incremente o tamanho do seu modelo ou os atributos utilizados.
+		\item Se o modelo tem alta variance então adicione mais dados ao conjunto de treinamento. Ou elimine atributos menos significativos no modelo.
+		% explorar mais este tópico
+	\end{itemize}
+\end{Slide}	
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize}
+  \item Tom Mitchell. Machine Learning, 1997. (Capítulo 5).
+  \item Iah H. Witteh and Eibe Frank. Data Mining, 2000. (Capítulo 5).
+  \item \textit{Prediction study design. Data Analysis
+      Course}. Coursera.org
+%  \item Imagens retiradas de 
+%  http://genome.tugraz.at/proclassify/help/pages/XV.html 
+  \end{itemize}
+\end{Slide}
+
+
+\end{document}
+

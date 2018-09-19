@@ -1,0 +1,100 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+\usepackage{algorithm}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Random Forest} 
+\author{Fabrício Barth}
+\institution{}
+\date{Setembro de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Ensemble Learning}
+\begin{itemize}
+	\item Métodos que geram diversos modelos e agregam o seu resultado.
+	\item No caso do Random Forest, são geradas diversas árvores e cada árvore é gerada considerando apenas um sub-conjunto do conjunto de treinamento.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Random Forest}
+\begin{itemize}
+	\item O algoritmo possui apenas dois parâmetros configuráveis: 
+	\begin{itemize}
+		\item quantidade de atributos considerados em cada árvore ($m_{try}$), e;
+		\item quantidade de árvores ($n_{tree}$).
+	\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Random Forest}
+Para problemas de classificação e regressão o algoritmo funciona da seguinte forma:
+\begin{itemize}
+	\item Cria $n_{tree}$ sub-conjuntos de exemplos a partir do dataset original.
+	\item Para cada sub-conjunto de exemplos cria-se uma árvore de classificação ou regressão sem poda. 
+	A criação de cada árvore considera apenas um sub-conjunto de exemplos: $m_{try}$ atributos selecionados aleatoriamente e $2/3$ dos exemplos também selecionados aleatoriamente. 
+	
+	\newpage
+	
+	\item A predição para novos dados acontece pela agregação das predições das $n_{tree}$ árvores.
+	\item Para problemas de \textbf{classificação} é considerado a maioria dos votos.
+	\item Para problemas de \textbf{regressão} é considerado a média dos votos.  
+	
+\end{itemize}	
+\end{Slide}
+
+\begin{Slide}{Estimativa de erro}
+	\begin{itemize}
+		\item Uma estimativa de erro, usando apenas o conjunto de treinamento, pode ser obtida através do conjunto de treinamento. Ao invés de ser utilizado algum outro método, como \textit{cross-validation}.
+		\item Para cada árvore construída é usado um sub-conjunto de exemplos. $1/3$ dos exemplos são mantidos fora do conjunto de treinamento. Estes exemplos mantidos fora do conjunto de treinamento são utilizados como teste.
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo}
+	http://rpubs.com/fbarth/exemploRandomForest
+\end{Slide}
+
+
+\begin{Slide}{Material de \textbf{consulta}}
+  \begin{itemize}
+  \item Liaw and Wiener. Classification and Regression by randomForest. R News 2 (3): 18--22 (2002)
+  \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/~breiman/RandomForests/
+  \end{itemize}
+\end{Slide}
+
+
+\end{document}
+
