@@ -63,7 +63,15 @@ abline(h=maeModel2, col="green")
 legend("bottomright", inset = 0.15, title="Dataset",
        c("Train","Test","MAE com Bairro"), fill=c("red","blue","green"), horiz=FALSE)
 
+#
+# Melhorando o modelo sem bairro + Random Forest
+#
 
-
+library(randomForest)
+myFormula <- preco ~ area + suites + dormitorios + banheiros + vagas
+modelRF <- randomForest(myFormula, data=train, do.trace=100, importance = TRUE)
+predRF <- predict(modelRF, newdata = test)
+errorModelRF <- rmse(predRF - test$preco)
+maeModelRF <- mae(predRF - test$preco)
 
 
