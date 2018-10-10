@@ -31,7 +31,7 @@ Cada equipe, composta por até 4 integrantes, deve submeter o seu modelo no site
 
 ## Entrega
 
-O prazo máximo para entrega do relatório é ~~24 de outubro de 2018~~.
+O prazo máximo para entrega do relatório é *24 de outubro de 2018*.
 
 Cada equipe deve entregar o script R Markdown que descreve a aquisição, pré-processamento, modelagem e avaliação do modelo, com matriz de classificação. Neste mesmo documento deve-se descrever qual foi o resultado obtido no site (acurácia e posição no ranking).  
 
