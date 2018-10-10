@@ -1,0 +1,40 @@
+---
+title: "Projeto 01: criando um classificador para identificar bombas de água com falha"
+date: "10/10/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Contexto e objetivo
+
+Usando dados disponibilizados por [Taarifa and the Tanzanian Ministry of Water](http://maji.go.tz/) sobre bombas de água localizadas na Tanzania, será que é possível predizer qual bomba de água está funcional, qual precisa de algum reparo e qual não funciona por completo?
+
+O objetivo deste projeto é criar um modelo capaz de predizer uma destas três classes baseado em um conjunto de variáveis sobre tipo de bomba de água, quando foi instalada e como é administrada. Uma compreensão adequada de quais serão os pontos de água que irão falhar pode melhorar a manutenção das bombas de água e garantir que água limpa e potável seja sempre disponibilizada para todas as comunidades da Tanzania.
+
+## Dataset
+
+O dataset está disponível no site [Driven Data dentro da competição Pump it Up: Data Mining the Water Table](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/). Para ter acesso ao dataset é necessário se cadastrar na competição.
+
+## O que deve ser entregue
+
+Cada equipe, composta por até 4 integrantes, deve submeter o seu modelo no site Driven Data e criar um relatório descrevendo o que foi feito. Deve-se utilizar todos os conceitos, algoritmos e ferramentas discutidos nesta disciplina até o momento para encontrar o modelo com maior acurácia possível. 
+
+## O relatório deve conter:
+
+* Como os dados foram adquiridos e como os dados foram pré-processados;
+* A análise descritiva dos dados. Não é necessário apresentar toda a análise. Apenas apresente aquilo que é relevante para o relatório final, por exemplo, os principais padrões que contribuem para a construção do classificador.
+* Quais as etapas para construção do classificador e avaliação do classificador. Qual foi a acurácia no conjunto de teste disponível?
+* Os resultados encontrados pelos classificadores desenvolvidos e a colocação obtida no site Driven Data. Qual foi a acurácia ao submeter no site Driven Data?
+
+## Entrega
+
+O prazo máximo para entrega do relatório é ~~24 de outubro de 2018~~.
+
+Cada equipe deve entregar o script R Markdown que descreve a aquisição, pré-processamento, modelagem e avaliação do modelo, com matriz de classificação. Neste mesmo documento deve-se descrever qual foi o resultado obtido no site (acurácia e posição no ranking).  
+
+# Referências
+
+* [https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/)
