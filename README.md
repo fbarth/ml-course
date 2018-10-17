@@ -30,5 +30,5 @@ ou artigos que serão utilizados na disciplina;
 * [Design de projetos](slides/Aula03-design/projetoEvalidacao.pdf)
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
-
+* [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
 
