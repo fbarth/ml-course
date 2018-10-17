@@ -1,0 +1,11 @@
+#
+# Anteriormente, nos tentamos inferir a tag de um atomo
+# baseado apenas no texto do atomo.
+# Agora vamos usar informacoes sobre o contexto de um atomo
+# (palavras que estao ao seu entorno) para inferir a sua tag.
+#
+
+#
+# Bigram Taggers
+#
+

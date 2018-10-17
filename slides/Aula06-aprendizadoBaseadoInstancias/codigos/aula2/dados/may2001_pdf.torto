@@ -1,0 +1,267 @@
+Workshop on Personalized Television .  In International Conference on User Modeling .  Sondhofen ,  German .       .  
+ PERSONALCASTING 
+ Tailored Broadcast News 
+ Mark T .  Maybury 
+ Information Technology Division 
+ The MITRE Corporation 
+    
+Burlington Road 
+ Bedford ,  MA       ,  USA 
+ maybury@mitre.org 
+ http :  /  / www.mitre.org/resources/centers/it 
+ INTRODUCTION 
+ Increasing sources and amounts of information challenge 
+ users around the globe .  Broadcast new sources and 
+ newspapers provide society with the vast majority of 
+ real�time information .  Unfortunately ,  cost efficiencies 
+ and real�time pressures demand that producers ,  editors 
+ and writers select and organize content for stereotypical 
+ audiences .  In this paper we illustrate how content 
+ understanding ,  user modeling ,  and tailored presentation 
+ generation promise personalcasts on demand .  
+ NEWS ON DEMAND 
+ People are daily offered vast quantities of news in the 
+ form of multiple media  ( text ,  audio ,  video )  .  For the past 
+ several years ,  a community of scientists has been 
+ developing news on demand algorithms and technologies 
+ to provide more convenient access to broadcast news 
+  ( Maybury      )  .  Applications promising on�demand 
+ access to multimedia information such as radio and 
+ broadcast news on a broad range of computing platforms 
+  ( e.g .  kiosk ,  mobile phone ,  PDA )  offer new engineering 
+ challenges .  Systems have been developed that 
+ automatically index ,  cluster/organize ,  and extract 
+ information from news .  Synergistic processing of 
+ speech ,  language and image/gesture promise both 
+ enhanced interaction at the interface and enhanced 
+ understanding of artifacts such as web ,  radio ,  and 
+ television sources  ( Maybury      )  .  Coupled with user 
+ and discourse modeling ,  new services such as delivery of 
+ intelligent instruction and individually tailored 
+ personalcasts become possible .  
+ BROADCAST NEWS NAVIGATOR 
+ To illustrate personalcasting ,  we describe the Broadcast 
+ News Navigator  ( BNN )  .  In our research ,  we have 
+ created a system that exploits video ,  audio ,  and closed 
+ caption text information sources to automatically 
+ segment ,  extract ,  and summarize news programs 
+  ( Maybury ,  Merlino ,  and Morey      )  .  Figure  
+shows 
+ the results of BNN responding to a user query requesting 
+ all reports regarding  Cuba  
+between   
+May and June 
+    ,       .  For each story matching the query ,  the system 
+ presents a key frame ,  the three most frequent named 
+ entities within the story ,  and the source and date of the 
+ story .  
+ Figure   .  Automated Retrieval of Stories about Cuba 
+ This ,  in essence ,  provides the user with a  Cuba  
+channel 
+ of information ,  personalizing the channel to their 
+ information interests .  Moreover ,  the user can create 
+ arbitrarily complex queries combining key words ,  named 
+ entities  ( e.g .  ,  people ,  organizations ,  locations )  ,  source 
+  ( e.g .  ,  CNN ,  MS�NBC ,  ABC )  or time intervals  ( e.g .  ,  
+ specific days ,  weeks or years )  .  These queries result in 
+ selected video stories specific to their interest .  
+ The user can then select any of the key frames to get 
+ access to details of the story ,  such as shown in Figure   .  
+ In this presentation ,  the user has access to all of the 
+ people ,  organizations and locations mentioned in the 
+ story ,  an automatically extracted one line summary of the 
+ news  ( the sentence with the most frequent named 
+ entities )  ,  a key frame extracted from the story segment ,  
+ and a pointer to the full closed caption text and video 
+ source for review .  An empirical evaluations reported in 
+ Merlino and Maybury  (      )  demonstrated that users 
+ could enhance their retrieval performance  ( a weighted 
+ combination of precision and recall )  by utilizing BNN s 
+  
+ 
+Workshop on Personalized Television .  In International Conference on User Modeling .  Sondhofen ,  German .       .  
+ StorySkim and Details presentations .  In addition to task 
+ performance ,  users reported user satisfaction  (  
+dislike ,  
+   
+like )  of   .   
+ ( for retrieval )  and   .   
+for mixed 
+ media display  ( e.g .  ,  story skim ,  story details )  .  
+ Figure   .  Details of some Cuba Stories 
+ The system provides navigation support ,  so that the user 
+ can select named entities and find stories including them .  
+ Further ,  by employing a clustering algorithm ,  the system 
+ enables the user to select stories similar to the current 
+ story .  
+ USER MODELING AND TAILORING 
+ The control flow diagram in Figure  
+shows a traditional 
+ search session in BNN .  They user poses a query and 
+ receives a story skim of the kind shown in Figure   .  The 
+ user then selects a story and is provided the details as 
+ exemplified in Figure   .  From this story detail ,  the user 
+ can simply review the summary and all named entities or 
+ explicitly choose a media element to display ,  such as the 
+ full video source or the text transcript .  However ,  each of 
+ these user actions affords an opportunity for modeling 
+ user interest .  User interest profiles can be created from 
+ explicit and/or implicit user input and then used to tailor 
+ presentations to the user s interests and preferences .  
+ As shown in Figure   ,  in BNN the user can explicitly 
+ define a user profile by defining simple keywords ,  or 
+ semantic entities such as individuals ,  locations ,  or 
+ organizations indicating their interest .  They can also 
+ specify preferred broadcast sources to search  ( e.g .  ,  
+ CNN ,  ABC News )  .  This profile could easily be 
+ extended to indicate media type preferences for 
+ presentation  ( e.g .  ,  key frame only ,  full video ,  text 
+ summary )  .  The user s interest profiles can be run 
+ periodically and sent to the requester as an alert or story 
+ skims or details like those shown in Figures  
+and   .  In 
+ addition to this explicit collection ,  an implicit method 
+ can build an interest model by watching the user session 
+ to track the user s query ,  selection of particular stories ,  
+ and choice of media .  The system could then build an 
+ interest model .  
+ Figure   .  Traditional Searching using BNN 
+ Because the original broadcast news source is segmented 
+ into its component parts ,  key elements are extracted and 
+ others are summarized .  This enables a system not only 
+ to select stories based on users content interest ,  but also 
+ to assemble them in the manner a user prefers .  For 
+ example ,  the user could be presented with only key 
+ frame ,  with summary sentences ,  with people or place 
+ names or with the entire source .  A natural extension of 
+ this work would be to add a feedback and collaborative 
+ filtering mechanism so that not only would the individual 
+ user s model modify with search ,  but the user could 
+ benefit from searches performed by others in a 
+ community .  
+ Figure   .  User Modeling and Tailored Presentation 
+ FUTURE RESEARCH 
+ Many outstanding research problems must be solved to 
+ realize automatically created user tailored news .  
+ Important issues include :  
+   .  Instrumentation of user applications to automatically 
+ log and infer models of user interest .  With users 
+ increasingly learning ,  working and playing in digital 
+ environments ,  instrumentation of user interactions  ( e.g .  ,  
+ User 
+ Query 
+ Explicit 
+ Profiles 
+ and 
+ Presentation 
+ Preferences 
+ Interest Model 
+  ( keyword ,  
+ named entities ,  
+ source ,  date )  
+ Story 
+ Selection 
+ Story Details 
+ Story Skim 
+ Personal News 
+ Request 
+ Source 
+ Selection 
+ Video Summary 
+ Named 
+ Entities 
+ Tailored News 
+ American 
+ capitalists ,  
+ Cuban  .  .  .  
+ User 
+ Query Story 
+ Selection 
+ Story Details 
+ Story Skim 
+ Source 
+ Selection 
+ Video Summary 
+ Named 
+ Entities 
+ American 
+ capitalists ,  
+ Cuban  .  .  .  
+  
+ 
+Workshop on Personalized Television .  In International Conference on User Modeling .  Sondhofen ,  German .       .  
+ Linton et al      )  is feasible and has shown value .  In 
+ information seeking sessions ,  detecting selections and 
+ rejections of information provides an opportunity to 
+ induce individual and group profiles that can assist in 
+ content selection and presentation generation .  
+   .  Tailoring .  More sophisticated mechanisms are 
+ required to tailor content to specific topics or users .  In 
+ addition to content selection ,  material must be ordered 
+ and customized to individual user interests .  This will 
+ require methods of presentation generation that integrate 
+ extracted or canned text with generated text .  
+   .  Information Extraction .  Over the longer term we are 
+ working to create techniques to automatically 
+ summarize ,  fuse and tailor selected events and stories .  
+ This requires deeper understanding of the source news 
+ material beyond extracting named entities ,  key frames ,  or 
+ key sentences .  
+   .  Multilingual content .  Because news is global in 
+ production and dissemination ,  it is important to support 
+ access to and integration of foreign language content .  
+ This poses not only multilingual processing challenges 
+ but also requires dealing with different country/cultural 
+ structures and formats .  
+   .  Cross story fusion .  An important problem is not only 
+ summarization of individual stories but summarizing 
+ across many stories ,  possibly from difference sources or 
+ languages .  This is particularly challenging when the 
+ sources may be inconsistent in content or form .  
+   .  Persistence/transience of interest profiles .  User 
+ information needs tend to change over time ,  with profiles 
+ rapidly becoming out of date .  Monitoring user queries 
+ and story selections is one method that can address this 
+ problem .  Generalizing from their specific interests can 
+ yield an even richer user model .  
+   .  Evaluation .  Community defined multimedia 
+ evaluations will be essential for progress .  Key to this 
+ progress will be a shared infrastructure of benchmark 
+ tasks with training and test sets to support cross�site 
+ performance comparisons .  
+ REFERENCES 
+ Boykin ,  S .  and Merlino ,  M .  Feb .       .  A .  Machine 
+ learning of event segmentation for news on demand .  
+ Communications of the ACM .  Vol    (   )  :     �    .  
+ Linton ,  F .  ,  Joy ,  D .  ,   
+Schaefer ,  H�P .       .  Building 
+ User and Expert Models by Long�Term Observation 
+ of Application Usage .  In J .  Kay  ( Ed .  )  ,  UM   :  User 
+ Modeling :  Proceedings of the Seventh International 
+ Conference  ( pp .      �     )  .  New York :  Springer 
+ Verlag .   [ Selected data are accessible from an 
+ archive on http :  /  / zeus.gmd.de/ml um /  ]  
+ Maybury ,  M .  Feb .       .  News on demand :  
+ Introduction .  Communications of the ACM .  Vol 
+    (   )  :     �    .  
+ Maybury ,  M .  ,  Merlino ,  A .  ,  and Morey ,  D .       .  
+ Broadcast News Navigation using Story Segments ,  
+ ACM International Multimedia Conference ,  Seattle ,  
+ WA ,  November   �    ,      �     .  
+ Merlino ,  A .  and Maybury ,  M .       .  An Empirical Study 
+ of the Optimal Presentation of Multimedia 
+ Summaries of Broadcast News .  Mani ,  I .  and 
+ Maybury ,  M .   ( eds .  )  Automated Text Summarization ,  
+ MIT Press .  
+ ACKNOWLEDGEMENTS 
+ A large group of MITRE staff have collaborated over the 
+ years to create advanced news understanding systems .  
+ These include Andy Merlino ,  the co�inventor and project 
+ leader of the Broadcast News Navigator activity .  Also 
+ central to this effort are Stanley Boykin and Warren 
+ Greiff who currently lead the BNN project ,  focusing 
+ their efforts on applying machine learning techniques to 
+ program segmentation discovery .  
+  
+ 
+

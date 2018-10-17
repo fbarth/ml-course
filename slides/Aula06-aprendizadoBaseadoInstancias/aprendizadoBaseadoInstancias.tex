@@ -1,0 +1,331 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{amsmath}
+\usepackage[latin1]{inputenc}
+\usepackage{graphics} 
+\usepackage{makeidx} 
+\usepackage{fancyvrb} 
+\usepackage{amssymb} 
+\usepackage{float,algorithmic,algorithm,alltt}
+\usepackage{booktabs}  % melhora o desenho das tabelas com \toprule \midrule e \bottomrule 
+\floatstyle{plain} 
+\newfloat{codigo}{tbp}{lop} 
+\floatname{codigo}{Código} 
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Aprendizagem Baseada em Instâncias} 
+\author{Fabrício Barth}
+\institution{}
+\date{Outubro de 2018}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Sumário}
+\begin{itemize}
+\item Problema (\emph{Blue Flag Iris})
+\item Espaço Euclidiano
+\item Aprendizagem Baseada em Instâncias (Modelos Baseados em Distâncias)
+\item Regra \textit{kNN} (\emph{k} vizinhos mais próximos)
+\end{itemize}
+\end{Slide}
+
+
+\begin{PartSlide}{Problema}
+\end{PartSlide}
+
+
+\begin{Slide}{Blue Flag Iris}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.45\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/iris}}
+\end{figure}
+\begin{itemize}
+\item Considere uma base de dados sobre um determinado tipo de flor. 
+\item Esta base de dados possui informações sobre o \emph{comprimento}
+  e \emph{largura} das \emph{sépalas} e das \emph{pétalas} de várias flores parecidas
+  (todas azuis).
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+\item A \textit{Blue Flag Iris} é classificada em três tipos: 
+\begin{itemize}
+\item Iris Setosa.
+\item Iris Versicolor.
+\item Iris Virginica.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Blue Flag Iris - Dados}
+\begin{figure}
+\fontsize{8pt}{8pt}
+\center
+\VerbatimInput
+[xleftmargin=5mm,numbers=left,obeytabs=true]{dados/iris_parte.arff}
+\end{figure}
+Todas as medidas são em cm.
+\end{Slide}
+
+
+\begin{Slide}{Blue Flag Iris - Problema}
+\begin{itemize}
+\item O que faz uma \textit{Blue Flag Iris} ser do tipo \textit{Iris Setosa}, \textit{Iris Versicolor} ou \textit{Iris Virginica}?
+\item Como extrair esta informação a partir dos dados existentes?
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Aplicando uma abordagem baseada em instâncias}
+\begin{itemize}
+\item Muitos métodos de aprendizagem constroem uma descrição geral e explícita da função alvo
+a partir de exemplos de treinamento.
+\item Os métodos de aprendizagem baseados em instâncias simplesmente \emph{armazenam} os exemplos de treinamento.
+
+\newpage
+
+\item A generalização é feita somente quando uma nova instância é classificada.
+\item Métodos de aprendizagem baseados em instâncias assumem que as instâncias podem ser representadas como pontos em
+um \emph{espaço euclidiano}. 
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Espaço Euclidiano}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/instanciasTreinamento}}
+\end{figure}
+x = Petal Width, y = Petal Length, z = Sepal Length.
+\end{Slide}
+
+
+\begin{Slide}{Espaço Euclidiano}
+\begin{itemize}
+\item (Petal Width, Petal Length) \emph{2-dimensional}
+\item (Petal Width, Petal Length, Sepal Length) \emph{3-dimensional}
+\item (Petal Width, Petal Length, Sepal Length, Sepal Width) \emph{4-dimensional}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Aprendizagem Baseada em Instâncias}
+\begin{itemize}
+\item A aprendizagem consiste somente em armazenar os exemplos de treinamento.
+\item Após a aprendizagem, para encontrar o valor do conceito alvo associado a uma nova instância, um conjunto
+de instâncias similares são buscadas na memória e utilizadas para classificar a nova instância.
+
+\newpage
+
+\item No final, teremos um conjunto de distâncias (medida de similaridade) entre a nova instância e todos
+os exemplos de treinamento.
+\item Qual o valor do conceito alvo (classe) atribuímos à nova instância? \emph{O conceito alvo associado ao
+exemplo de treinamento mais similar !!} 
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo com nova instância}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/novaInstancia}}
+\end{figure}
+x = Petal Width, y = Petal Length, z = Sepal Length.
+\end{Slide}
+
+\begin{Slide}{Aprendizagem \textit{k}-NN}
+\begin{itemize}
+\item \textit{k}-NN = \textit{K Nearest Neighbor} = \textit{k} vizinhos mais próximos.
+\item O algoritmo \textit{k}-NN é o método de aprendizagem baseado em instâncias mais elementar.
+
+\newpage
+
+\item O algoritmo \textit{k}-NN assume que todas as instâncias correpondem a pontos em um espaço 
+\textit{n}-dimensional ($\Re^{n}$).
+\item Os "vizinhos mais próximos" de uma instância são definidos em termos da distância Euclidiana.
+\end{itemize}
+
+\begin{equation}
+\mid \overrightarrow{x} - \overrightarrow{y} \mid =
+\sqrt{\sum_{i=1}^{n}(x_{i} - y_{i})^{2}}
+\end{equation}
+
+\end{Slide}
+
+\begin{Slide}{Aprendizagem \textit{k}-NN}
+\begin{itemize}
+\item \emph{A regra dos vizinhos mais próximos}:
+\item Classificar a nova instância, atribuindo a ela o rótulo mais freqüente entre as \textit{k}
+amostras mais próximas.  
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Classificando a nova instância}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/knn}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Classificando a nova instância (k=1)}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/knn1}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Classificando a nova instância (k=2)}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/knn2}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Classificando a nova instância (k=3)}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/knn3}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Classificando a nova instância (k=4)}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/knn4}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Exemplo \textit{k}-NN}
+\begin{itemize}
+\item k=3 (valor ímpar) e $e_{i} = (0.10,0.25)$
+\item Exemplos de treinamento:
+\begin{itemize}
+\item $(0.15,0.35,c_{1})$
+\item $(0.10,0.28,c_{2})$
+\item $(0.09,0.30,c_{5})$
+\item $(0.12,0.20,c_{2})$
+\end{itemize}
+
+\newpage
+
+\item Os vetores mais próximos a $e_{i}$, com suas classes, são:
+\begin{itemize}
+\item $(0.10,0.28,c_{2})$
+\item $(0.12,0.20,c_{2})$
+\item $(0.15,0.35,c_{1})$
+\end{itemize}
+
+\item Uma votação atribui a classe $c_{2}$ a $e_{i}$, pois $c_{2}$ é a classe representada
+com mais freqüencia.
+
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Como escolher o melhor k?}
+\begin{itemize}
+	\item Escolher o valor de \textbf{k} é crítico.
+	\item Um \textbf{k} muito pequeno resulta em uma solução que não tolera ruído.
+	\item Um \textbf{k} muito grande vai contra a filosofia do \textbf{KNN}.
+	\item Regra genérica para escolha de k:
+	\begin{equation}
+	k = n^{(1/2)}
+	\end{equation}
+\end{itemize}
+
+%\newslide
+%
+%\begin{itemize}
+%	\item Executar a primeira validação com
+%	\begin{equation}
+%	k = n^{(1/2)}
+%	\end{equation}
+%	\item Medir a acurácia e executar outra validação com $k + 1$ e assim sucessivamente até a nova acurácia não for melhor que a acurácia anterior.
+%\end{itemize}
+	
+\end{Slide}
+
+\begin{Slide}{Cuidado: normalizar dados}
+	\begin{alltt}
+		normalize <- function(x) \{
+			return ((x - min(x)) / (max(x) - min(x))) 
+		\}
+	\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Knn no R}
+	\tiny
+	\begin{alltt}
+	data(iris)
+	
+	normalize <- function(x)\{
+		return ((x - min(x)) / (max(x) - min(x))) 
+	\}
+	
+	iris_norm <- as.data.frame(lapply(iris[1:4], normalize))
+	summary(iris_norm)
+	
+	set.seed(1234)
+	ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
+	
+	iris.training <- iris[ind==1, 1:4]
+	iris.test <- iris[ind==2, 1:4]
+	
+	iris.trainLabels <- iris[ind==1, 5]
+	iris.testLabels <- iris[ind==2, 5]
+	
+	library(class)
+	iris_pred <- knn(train = iris.training, test = iris.test, cl = iris.trainLabels, k=3)
+	
+	t <- table(iris_pred, iris.testLabels)
+	t
+	\end{alltt}	
+\end{Slide}
+
+\begin{Slide}{Considerações}
+\begin{itemize}
+\item \emph{Vantagens}:
+\begin{itemize}
+\item A informação presente nos exemplos de treinamento nunca é perdida.
+\end{itemize}
+\item \emph{Desvantagens}:
+\begin{itemize}
+\item Toda a computação ocorre no momento da classificação!!!
+\item A computação aumenta com a quantidade de exemplos de treinamento.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\nocite{mit1997}
+
+\bibliography{doutorado,mestrado}
+\bibliographystyle{apalike}
+\end{document}
