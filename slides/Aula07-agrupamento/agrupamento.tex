@@ -21,15 +21,12 @@
 %\input{autorHeaders}
 
 \title{Algoritmos de Agrupamento - Aprendizado Não Supervisionado} 
-\author{Fabrício Jailson Barth}
-\institution{
-%Sistemas Inteligentes\\ Análise e Desenvolvimento de Software \\
-%Faculdades de Tecnologia Bandeirantes
-}
-\date{Abril de 2013}
+\author{Fabrício J. Barth}
+\institution{}
+\date{Novembro de 2018}
 
 \SlideHeader{}
-            {%Disciplina de Sistemas Inteligentes
+            {%Pós Graduação
 }
 \SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
             {\theslide}
@@ -69,24 +66,43 @@
 \begin{Slide}{Introdução e Definições}
 \begin{itemize}
 \item Os algoritmos de agrupamento particionam um conjunto de objetos em
-agrupamentos \cite{man2003}.
+agrupamentos.
 \item Normalmente, objetos são descritos e
 agrupados usando um conjunto de atributos e valores.
-\item Não existe nenhuma informação sobre a classe ou
-  categoria dos objetos.
+\item \emph{Não existe nenhuma informação sobre a classe ou
+  categoria dos objetos}.
 
-%\newpage
+\newpage
 
-%\item Os algoritmos de agrupamento manipulam um conjunto de objetos. Este
-%conjunto de objetos é chamada de \emph{bags}.
+\item Os algoritmos de agrupamento manipulam um conjunto de
+  objetos. Este conjunto de objetos é chamado de \emph{bags}.
 
-%\item As \emph{bags} permitem
-%o aparecimento de múltiplos objetos com a mesma representação.
+\item As \emph{bags} permitem
+o aparecimento de múltiplos objetos com a mesma representação.
 
 \item \emph{O objetivo dos algoritmos de agrupamento é colocar os objetos
 similares em um mesmo grupo e objetos não similares em grupos
 diferentes}.
 \end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo de dataset}
+\small
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width \\ 
+  \hline
+1 & 5.10 & 3.50 & 1.40 & 0.20 \\ 
+  2 & 4.90 & 3.00 & 1.40 & 0.20 \\ 
+  3 & 4.70 & 3.20 & 1.30 & 0.20 \\ 
+  4 & 4.60 & 3.10 & 1.50 & 0.20 \\ 
+  5 & 5.00 & 3.60 & 1.40 & 0.20 \\ 
+  6 & 5.40 & 3.90 & 1.70 & 0.40 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \end{Slide}
 
 
@@ -98,16 +114,14 @@ diferentes}.
 \item agrupamento de documentos (textos) similares
 \item identificação de grupos em redes sociais
 \item segmentação de clientes
-%\item pessoas - sistemas de recomendação
-%\item palavras - processamento de linguagem natural
-%\item entre outras coisas $\cdots$
+\item pessoas - sistemas de recomendação
+\item palavras - processamento de linguagem natural
 \item identificação de plantas com características comuns
+\item entre outras coisas $\cdots$
 \end{itemize}
 
 \end{itemize}
 \end{Slide}
-
-
 
 %\begin{Slide}{Agrupamento de palavras}
 %\begin{itemize}
@@ -135,8 +149,6 @@ diferentes}.
 %são unidos.
 %
 %\end{Slide}
-
-
 
 %\begin{Slide}{Aplicações no PLN}
 %Existem dois principais usos dos algoritmos de agrupamento em PLN \cite{man2003}:
@@ -251,8 +263,8 @@ agrupamentos planos, ambos os tipos de abordagens são comuns.
 \begin{Slide}{Agrupamento Plano \textit{hard} (Exemplo)}
 \begin{figure}[htbp]
 \centering 
-\resizebox*{1\columnwidth}{0.75\textheight}
-{\includegraphics{figuras/agrupamentoPlanoVisual}}
+\resizebox*{0.85\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterIris}}
 \end{figure}
 \end{Slide}
 
@@ -265,15 +277,29 @@ que contêm todos os objetos de seus descendentes.
 \end{itemize}
 \end{Slide}
 
-
 \begin{Slide}{Agrupamento Hierárquico (Exemplo)}
 \begin{figure}[htbp]
 \centering  
-\resizebox*{1\columnwidth}{0.8\textheight}
-{\includegraphics{figuras/agrupamentoHierarquico}}
+\resizebox*{1\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterIrisHierarquico}}
 \end{figure}
 \end{Slide}
 
+\begin{Slide}{Agrupamento Hierárquico (Exemplo)}
+\small
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width \\ 
+  \hline
+108 & 7.30 & 2.90 & 6.30 & 1.80 \\ 
+  131 & 7.40 & 2.80 & 6.10 & 1.90 \\ 
+  \emph{42} & \emph{4.50} & \emph{2.30} & \emph{1.30} & \emph{0.30} \\ 
+   \hline
+\end{tabular}
+\end{table}
+\end{Slide}
 
 \begin{PartSlide}{\textsc{Algoritmos para Agrupamento Plano}}
 \end{PartSlide}
@@ -315,6 +341,14 @@ que contêm todos os objetos de seus descendentes.
 \centering 
 \resizebox*{1\columnwidth}{0.72\textheight}
 {\includegraphics{figuras/desenhoKmeans}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{1\textheight}
+{\includegraphics{figuras/kmeansFunc}}
 \end{figure}
 
 \end{Slide}
@@ -368,57 +402,112 @@ onde $M$ é igual ao número de pontos no agrupamento $C$.
 \end{PartSlide}
 
 
-\begin{Slide}{Blue Flag Iris}
+\begin{Slide}{Iris Problem}
 \begin{figure}[htbp]
 \centering 
 \resizebox*{0.45\columnwidth}{0.4\textheight}
 {\includegraphics{figuras/iris}}
 \end{figure}
 \begin{itemize}
-\item Considere uma base de dados sobre um determinado tipo de flor. 
+\item Considere uma base de dados sobre flores do gênero \emph{Iris}. 
 \item Esta base de dados possui informações sobre o \emph{comprimento}
-  e \emph{largura} do \emph{caule} e das \emph{pétalas} de várias flores parecidas
-  (todas azuis).
+  e \emph{largura} das \emph{sépalas} e das \emph{pétalas} das flores.
 \end{itemize}
 \end{Slide}
 
 
 \begin{Slide}{Blue Flag Iris - Dados}
-\begin{figure}
-\fontsize{8pt}{8pt}
-\center
-\VerbatimInput
-[xleftmargin=5mm,numbers=left,obeytabs=true]{dados/iris_parte.arff}
-\end{figure}
+\small
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width \\ 
+  \hline
+1 & 5.10 & 3.50 & 1.40 & 0.20 \\ 
+  2 & 4.90 & 3.00 & 1.40 & 0.20 \\ 
+  3 & 4.70 & 3.20 & 1.30 & 0.20 \\ 
+  4 & 4.60 & 3.10 & 1.50 & 0.20 \\ 
+  5 & 5.00 & 3.60 & 1.40 & 0.20 \\ 
+  6 & 5.40 & 3.90 & 1.70 & 0.40 \\ 
+   \hline
+\end{tabular}
+\end{table}
 Todas as medidas são em cm.
 \end{Slide}
 
+\begin{Slide}{Pergunta}
+Será que as plantas deste gênero podem ser dividas em espécies? 
+\end{Slide}
 
 \begin{Slide}{Aplicando o algoritmo K-means}
+\small
+\begin{alltt}
+> model <- kmeans(iris, centers = 3)
+> model
+K-means clustering with 3 clusters of sizes 50, 62, 38
+
+Cluster means:
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+1     5.006000    3.428000     1.462000    0.246000
+2     5.901613    2.748387     4.393548    1.433871
+3     6.850000    3.073684     5.742105    2.071053
+
+> model$withinss
+[1] 15.15100 39.82097 23.87947
+\end{alltt}
+
+\newpage
+
 \begin{figure}[htbp]
 \centering 
-\resizebox*{1\columnwidth}{0.75\textheight}
-{\includegraphics{figuras/agrupamentoPlano}}
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/clusterIris}}
 \end{figure}
 
 \newpage
 
 \begin{figure}[htbp]
 \centering 
-\resizebox*{1\columnwidth}{0.75\textheight}
-{\includegraphics{figuras/agrupamentoPlanoVisual}}
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/clusterIris2}}
 \end{figure}
-x = Petal Width, y = Petal Length, z = Sepal Length.
 
 \newpage
 
 \begin{figure}[htbp]
 \centering 
-\resizebox*{1\columnwidth}{0.75\textheight}
-{\includegraphics{figuras/agrupamentoPlanoVisual_2}}
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/clusterIris3}}
 \end{figure}
-x = Petal Width, y = Petal Length, z = Sepal Length.
 
+\end{Slide}
+
+\begin{Slide}{Heatmap}
+\begin{alltt}
+set.seed(143)
+dataMatrix <- as.matrix(iris)
+heatmap(dataMatrix)
+\end{alltt}
+\newpage
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.6\columnwidth}{1\textheight}
+{\includegraphics{figuras/heatmap}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Dúvida...}
+Qual é o melhor número de clusters (k)?
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/variosModelos}}
+\end{figure}
 \end{Slide}
 
 
@@ -486,8 +575,8 @@ x = Petal Width, y = Petal Length, z = Sepal Length.
 \begin{Slide}{Como determinar o melhor \textit{k}?}
 \begin{figure}[htbp]
 \centering 
-\resizebox*{0.9\columnwidth}{0.75\textheight}
-{\includegraphics{figuras/elbowMethod}}
+\resizebox*{0.85\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/bestNumberK}}
 \end{figure}
 \tiny
 A medida de distribuição dos pontos normalmente empregada é \textit{sum of squared errors}.
@@ -503,6 +592,167 @@ A medida de distribuição dos pontos normalmente empregada é \textit{sum of squar
 %\end{itemize}
 %\end{Slide}
 
+\begin{Slide}{Exercícios}
+\begin{itemize}
+\item Usando o dataset \emph{survey} da biblioteca
+  \emph{UsingR}, identifique clusters de pessoas com base apenas nos
+  atributos \emph{Wr.Hnd} e \emph{NW.Hnd}. 
+\item Fazendo uso dos dados coletados em \footnote{\tiny https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all\_month.csv},
+  agrupe os abalos sísmicos levando-se em consideração a magnitude e
+  profundidade do abalo.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Clusters com dados em escalas diferentes}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterSemEscala}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterSemEscala2}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Rescaling data}
+Feature scaling:
+\begin{equation}
+x_{new} = \frac{x - x_{min}}{x_{max} - x_{min}}
+\end{equation}
+
+Standardization:
+\begin{equation}
+x_{new} = \frac{x - mean(x)}{x_{max} - x_{min}}
+\end{equation}
+\begin{equation}
+x_{new} = \frac{x - \mu}{\sigma} = \frac{x - mean(x)}{sd(x)}
+\end{equation}
+\end{Slide}
+
+\begin{Slide}{Cluster com dados normalizados}
+\footnotesize
+\begin{alltt}
+standardization <- function(x)\{
+  return ((x - mean(x)) / sd(x))
+\}
+
+filtrados$depthR <- standardization(filtrados$depth)
+filtrados$magR <- standardization(filtrados$mag)
+elbow(filtrados[,c('depthR','magR')])
+model <- kmeans(filtrados[,c('depthR','magR')], centers = 6)
+
+plot(filtrados$depthR, filtrados$magR, 
+     col=model$cluster,
+     pch=11, main="Cluster de abalos sísmicos",
+     xlab="Profundidade (rescaled)", ylab="Magnitude (rescaled)")
+points(model$centers, col = "yellow", pch=19,cex=2,lwd=3)
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Cluster com dados normalizados}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.95\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterComEscala}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Diagnóstico}
+\begin{itemize}
+\item Os clusters estão bem separados uns dos outros?
+\item Os centroides dos clusters estão bem separados uns dos outros?
+\item Existe algum cluster com poucos pontos?
+\item Os pontos de cada cluster estão bem agrupados?
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Diagnóstico}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{0.85\textheight}
+{\includegraphics{figuras/clusterDiagnostico}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Trabalhando com dados qualitativos}
+\begin{itemize}
+\item O algoritmo k-means trabalha apenas com dados numéricos, pois
+  utiliza a distância euclidiana como função para calcular a distância
+  entre objetos.
+\item Para trabalhar com dados qualitativos é necessário fazer uso de
+  outra função de distância, por exemplo a \emph{distância de
+    Hamming}. 
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Distância de Hamming}
+\begin{equation}
+d(x_{i}, x_{j}) = \sum_{q=1}^{d}\alpha(x_{i}^{q},x_{j}^{q})
+\end{equation}
+\begin{equation}
+\alpha(x_{i}^{q},x_{j}^{q}) = \left\{ \begin{array}{rl}
+ 1 &\mbox{ if $x_{i}^{q} \neq x_{j}^{q}$} \\
+ 0 &\mbox{ otherwise}
+       \end{array} \right.
+\end{equation}
+\end{Slide}
+
+\begin{Slide}{Cluster de valores categóricos no R}
+\begin{itemize}
+\item Função \emph{kmodes} do pacote \emph{klaR}
+\end{itemize}
+
+\newpage
+
+\footnotesize
+\begin{alltt}
+library(klaR)
+library(UsingR)
+data("survey")
+sapply(survey, class)
+
+levels(survey$W.Hnd)
+levels(survey$Fold)
+levels(survey$Clap)
+
+maos <- survey[,c('W.Hnd','Fold','Clap')]
+plot(maos$W.Hnd, maos$Fold)
+sum(is.na(maos))
+maos <- maos[c(-43,-45),]
+
+model <- kmodes(maos, 3)
+model$size
+model$modes
+\end{alltt}
+\end{Slide}
+
+\begin{Slide}{Alguns cuidados}
+\begin{itemize}
+\item Que atributos devem ser incluídos na análise? 
+\item Que unidades de medida (por exemplo, milhas, kilômetros, metros)
+  devem ser utilizados em cada atributo?
+\item Os atributos precisam ser normalizados?
+\item Que outras considerações devem ser aplicadas?
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Considerações adicionais}
+\begin{itemize}
+\item O algoritmo k-means é sensível com relação aos pontos iniciais
+  escolhidos para os centroides.
+\item Por isso, é importante executar várias vezes o algoritmo k-means
+  para o mesmo \emph{K} e escolher o resultado de cluster com menor
+  WSS (\textit{Within sum of squares}). 
+\item No \textsc{R} isto é feito com o parâmetro \emph{nstart} da
+  função \emph{k-means}.
+\end{itemize}
+\end{Slide}
+
 \begin{PartSlide}{\textsc{Algoritmos para Agrupamento Hierárquico}}
 \end{PartSlide}
 
@@ -515,6 +765,32 @@ podem implementar abordagens:
 \item \emph{bottom-up (agglomerative clustering)}
 \item \emph{top-down (divisive clustering)}
 \end{itemize}
+\end{Slide}
+
+\begin{Slide}{Agrupamento hierárquico}
+
+\small
+\begin{itemize}
+\item Uma abordagem \emph{bottom-up}:
+
+\begin{itemize}
+\item Escolhe os dois pontos mais próximos;
+\item Coloca eles juntos;
+\item Encontra o próximo ponto mais próximo.
+\end{itemize}
+
+\item Requer:
+
+\begin{itemize}
+\item Uma equação para calcular a distância entre os pontos;
+\item Uma aborgadem de união (single link, complete link, group-average).
+\end{itemize}
+
+\item Gera: \textbf{uma árvore que mostra o quanto os itens estão
+    próximos uns dos outros.}
+
+\end{itemize}
+
 \end{Slide}
 
 \begin{Slide}{Agrupamento hierárquico \emph{bottom-up}}
@@ -557,6 +833,46 @@ podem implementar abordagens:
 \end{itemize}
 \end{Slide}
 
+\begin{Slide}{Funcionamento do algoritmo}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/datasetClusterHie}}
+\end{figure}
+
+\newpage
+
+\scriptsize
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+  \hline
+1 & 0.00 & 0.31 & 0.46 & 0.25 & 1.85 & 1.72 & 1.50 & 1.45 & 2.13 & 2.14 \\ 
+  2 & 0.31 & 0.00 & 0.17 & 0.57 & 1.73 & 1.57 & 1.38 & 1.32 & 1.83 & 1.89 \\ 
+  3 & 0.46 & \emph{0.17} & 0.00 & 0.71 & 1.60 & 1.44 & 1.25 & 1.18 & 1.67 & 1.73 \\ 
+  4 & 0.25 & 0.57 & 0.71 & 0.00 & 1.95 & 1.84 & 1.62 & 1.58 & 2.36 & 2.34 \\ 
+  5 & 1.85 & 1.73 & 1.60 & 1.95 & 0.00 & 0.21 & 0.36 & 0.42 & 1.58 & 1.02 \\ 
+  6 & 1.72 & 1.57 & 1.44 & 1.84 & 0.21 & 0.00 & 0.23 & 0.26 & 1.39 & 0.87 \\ 
+  7 & 1.50 & 1.38 & 1.25 & 1.62 & 0.36 & 0.23 & 0.00 & 0.08 & 1.46 & 1.02 \\ 
+  8 & 1.45 & 1.32 & 1.18 & 1.58 & 0.42 & 0.26 & \emph{0.08} & 0.00 & 1.40 & 0.99 \\ 
+  9 & 2.13 & 1.83 & 1.67 & 2.36 & 1.58 & 1.39 & 1.46 & 1.40 & 0.00 & 0.65 \\ 
+  10 & 2.14 & 1.89 & 1.73 & 2.34 & 1.02 & 0.87 & 1.02 & 0.99 & 0.65 & 0.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{1\textheight}
+{\includegraphics{figuras/exemploClusterHie}}
+\end{figure}
+\end{Slide}
+
+
 
 \begin{Slide}{Tipos de funções de similaridade}
 \begin{itemize}
@@ -577,15 +893,69 @@ podem implementar abordagens:
 
 \newpage
 
+
 \begin{figure}[htbp]
 \centering 
 \resizebox*{1\columnwidth}{1\textheight}
-{\includegraphics{figuras/pontos}}
+{\includegraphics{figuras/pontos.eps}}
 \end{figure}
+
+\end{Slide}
+
+\begin{Slide}{Exemplos}
+
+\begin{itemize}
+\item Vamos utilizar um dataset sobre carros com medidas de
+  velocidades e distância de parada. Este dataset foi gerado em
+  1920. As velocidades foram medidas em \textit{mph} e a distância em
+  \textit{ft}. 
+\end{itemize}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/pontosCars}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/pontosCarsNorm}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{1\textheight}
+{\includegraphics{figuras/exemploClusterHieComplete}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{1\textheight}
+{\includegraphics{figuras/exemploClusterHieSingle}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.85\columnwidth}{1\textheight}
+{\includegraphics{figuras/exemploClusterHieAverage}}
+\end{figure}
+
 \end{Slide}
 
 
 \begin{Slide}{Agrupamento hierárquico \emph{top-down}}
+\footnotesize
 \begin{figure}[htbp]
 \begin{algorithmic} 
 \STATE \textbf{Entrada}: um conjunto $x =\{x_{1},\cdots,x_{n}\}$ de objetos,
@@ -618,16 +988,15 @@ monotônica decrescente das folhas para a raiz da árvore:
 \end{Slide}
 
 
+\begin{PartSlide}{\textsc{Considerações Finais}}
+\end{PartSlide}
+
 \begin{Slide}{Algumas considerações sobre agrupamentos}
 \begin{itemize}
 \item Um agrupamento é um grupo de objetos centrados em torno de um ponto central.
 \item Os agrupamentos mais compactos são os preferidos.
 \end{itemize}
 \end{Slide}
-
-
-\begin{PartSlide}{\textsc{Considerações Finais}}
-\end{PartSlide}
 
 \begin{Slide}{Sumário dos atributos dos algoritmos}
 
@@ -652,13 +1021,32 @@ de dados é muito grande.
 \item O algoritmo \emph{K-means} é o método mais simples e deve ser usado
 sobre novos conjuntos de dados porque os resultados são geralmente
 suficientes.
-%\item \emph{K-means} assume um espaço de representação Euclidiano, e não
-%pode ser usado para muitos conjuntos de dados, por exemplo, dados nominais.
+\item \emph{K-means} assume um espaço de representação Euclidiano, e
+  não pode ser usado para muitos conjuntos de dados, por exemplo,
+  dados nominais. 
 \end{itemize}
 \end{Slide}
 
-\nocite{mit1997}
+\begin{Slide}{Referências}
+\begin{itemize}
+%  \item Capítulo 4 do livro EMC Education Services, editor. Data
+%    Science and Big Data Analytics: Discovering, Analysing,
+%    Visualizing and Presenting Data. John Wiley \& Sons, 2015.
+\item Capítulo 10 do livro Gareth James, Daniela Witten, Trevor
+      Hastie, and Robert Tibshirani. An Introduction to Statistical
+      Learning with Applications in R. Springer, 4th edition, 2014. 
+\end{itemize}
+\end{Slide}
 
-\bibliography{doutorado,mestrado,publicacoes}
-\bibliographystyle{apalike}
+%\begin{Slide}{Próximas etapas}
+%\begin{itemize}
+%\item Exercícios, e;
+%\item Projeto!
+%\end{itemize}
+%\end{Slide}
+
+%\nocite{mit1997}
+
+%\bibliography{doutorado,mestrado,publicacoes}
+%\bibliographystyle{apalike}
 \end{document}
