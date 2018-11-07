@@ -20,6 +20,7 @@ ou artigos que serão utilizados na disciplina;
 * Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
+* Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
 
 ## Slides de suporte
 
