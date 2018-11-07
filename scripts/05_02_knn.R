@@ -42,3 +42,13 @@ confusionMatrix(t)
 pred <- knn(train = training, test = test, cl = training.Y, k=34)
 t <- table(pred, test.Y)
 confusionMatrix(t)
+
+result <- data.frame(k=integer(), accr=integer())
+for (i in 1:100){
+  pred <- knn(train = training, test = test, cl = training.Y, k=i)
+  accr <- confusionMatrix(table(pred, test.Y))$overall[1]
+  result <- rbind(result, c(i,accr))
+  print(paste(i,"  ",accr))
+}
+names(result) <- c('k','accr')
+plot(result$accr ~   result$k, type='l')
