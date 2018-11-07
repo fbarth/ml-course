@@ -31,4 +31,4 @@ ou artigos que serão utilizados na disciplina;
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
-
+* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
