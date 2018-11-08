@@ -7,3 +7,18 @@ elbow <- function(dataset) {
 
 library(UsingR)
 data(survey)
+
+
+data <- survey[,2:3]
+data <- data[complete.cases(data),]
+
+elbow(data)
+
+model <- kmeans(data, centers = 4, nstart = 100)
+data$cluster <- model$cluster
+plot(data$Wr.Hnd, data$NW.Hnd, pch=19, col=data$cluster)
+
+model <- kmeans(data, centers = 6, nstart = 100)
+data$cluster <- model$cluster
+plot(data$Wr.Hnd, data$NW.Hnd, pch=19, col=data$cluster)
+
