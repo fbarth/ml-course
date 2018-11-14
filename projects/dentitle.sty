@@ -1,0 +1,42 @@
+
+% modified for ASCII jLaTeX  5-Feb-93  by Hiroshi OHNO
+%     { \jLarge ==> \Large , removing \dg }
+
+\def\makedendentitle#1#2{\par
+ \begingroup
+ \if@twocolumn
+ \twocolumn[\@dendentitle{#1}{#2}]
+ \else \newpage
+ \global\@topnum\z@ \@dendentitle{#1}{#2} \fi\thispagestyle{plain}\@thanks
+ \endgroup
+ \let\makedendentitle\relax
+ \let\@dendentitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\def\@dendentitle#1#2{\newpage
+ \null
+%\vskip 2em 
+ \color{blue}
+ \newlength \dendenwidth
+ \dendenwidth = -2ex
+ \advance \dendenwidth by \textwidth
+ \begin{center}
+ \framebox[\textwidth]{
+   \parbox{\dendenwidth}
+     {
+       \vskip .5ex
+       #1 \hfill \@date \\ 
+         \parbox{\dendenwidth}{
+           \vskip 1em
+           \centering {\Large \bf \@title \par} 
+           \vskip 1em
+         }
+       \vskip 0ex 
+       #2 \hfill \@author 
+       \vskip .5ex
+     }
+ }
+ \end{center}
+% \vskip 3em
+ \vskip 1em
+}

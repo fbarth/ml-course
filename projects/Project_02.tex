@@ -1,0 +1,110 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{babel}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{alltt,fancyvrb}
+\usepackage{listings}
+\usepackage{float,ctable}
+\usepackage{dentitle}
+\usepackage{personal}
+
+\renewcommand{\rmdefault}{cmss}
+
+\begin{document}
+
+\title{Descobrindo segmentos de adolescentes em redes sociais}
+\author{Prof. Fabricio Barth}
+\date{$2^{o}$ semestre de 2018}
+\makedendentitle{ESPM}{Curso TECH}{}
+
+\section{Introdução}
+
+Interagir com amigos em redes sociais, tais como Facebook,
+tem se tornado um ritual entre os adolescentes do mundo todo. Estes
+adolescentes, ao mesmo tempo que interagem com os seus amigos, também
+estão sugeitos a propagandas de diversos produtos e empresas.
+
+É muito importante para as empresas, e até mesmo para os usuários de
+redes sociais, que tais propagandas sejam melhor direcionadas, ou
+seja, que sejam entregues para aqueles que realmente tem interesse naquele
+tipo de produto.
+
+Dado o texto produzido por adolescentes em Serviços de Redes Sociais,
+acredita-se que podemos identificar grupos de adolescentes que compartilham
+interesses em comum, tais como esporte, religião ou música.
+
+Algoritmos de clustering podem automizar este processo de descoberta
+de segmentos naturais desta população. No entanto, cabe a vocês decidirem
+se tais agrupamentos são interessantes ou não para o uso em
+propaganda. 
+
+\section{Dados}
+
+Para esta análise, nós vamos utilizar um dataset que representa uma
+amostra aleatória de 30.000 estudantes de \textit{high school}
+americana que possuem perfil em uma rede social\footnote{Em inglês,
+  Social Network System - SNS} em 2006. Para proteger o anonimato dos
+usuários da rede, o nome da rede social não é fornecido. 
+
+O dataset pode ser encontrado em
+\footnote{no projeto da disciplina no arquivo data/snsdata.csv}.
+
+Os atributos deste dataset são:
+
+\begin{itemize}
+\item \textbf{gradyear}: ano de graduação.
+\item \textbf{gender}: sexo, masculino ou feminino.
+\item \textbf{age}: idade representada por um número real.
+\item \textbf{friends}: quantidade de amigos na rede social.
+\item \textbf{demais atributos}: basketball, football, soccer, entre
+  outros indicam classes onde os textos das pessoas foram
+  classificados. Textos de usuários publicados na rede social foram
+  processados para gerar esta tabela. Como esta tabela foi gerada é um
+  problema de \textit{text mining} e deverá ser abstraí­do.
+\end{itemize} 
+
+\section{Método de trabalho}
+
+Sugere-se seguir as seguintes etapas para a execução desta análise:
+
+\begin{itemize}
+\item Aquisição, análise exploratória e pré-processamento dos dados; 
+\item Construção do modelo;
+\item Análise do modelo, e;
+\item Preparação do relatório e principais artefatos que devem ser
+  entregues. 
+\end{itemize}
+
+\section{Itens que devem ser entregues}
+
+Os seguintes itens devem ser entregues:
+
+\begin{itemize}
+\item Um relatório apresentando os principais resultados da
+  análise. Este relatório pode ser entregue na forma de slides,
+  documento PDF ou documento HTML.
+\item Independente do formato do relatório, o conteúdo do mesmo deve
+  possuir os seguintes itens:
+\begin{itemize}
+\item introdução, com descrição do contexto e objetivo do trabalho;
+\item descrição do método utilizado para alcançar o objetivo, e;
+\item conclusção, ou seja, descrição dos resultados encontrados com a
+  análise realizada. 
+\end{itemize}
+\item O relatório deve possuir duas figuras que ilustram e sumarizam
+  bem os achados. Cada uma das figuras deve ter um \textit{caption}
+  com uma descrição autocontida da figura.
+\item O script que realiza todas as transformações e análises no
+  dataset. Este item geralmente não é entregue para o cliente
+  final. No entanto, será relevante para a avaliação deste trabalho.
+\end{itemize}
+
+\section{Equipes e prazos}
+
+Este trabalho poderá ser feito em equipes com até cinco integrantes e deverá
+ser entregue até o dia 28 de novembro de 2018 em sala de aula.
+
+\end{document}

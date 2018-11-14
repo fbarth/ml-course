@@ -1,0 +1,48 @@
+% Personal settings.
+% Edson Satoshi Gomi.
+
+% \newcommand{\doublesp}{\renewcommand{\baselinestretch}{1.2}}
+
+\setlength{\columnsep}{1cm}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\textheight}{24cm}
+\setlength{\textwidth}{17cm}
+\setlength{\oddsidemargin}{-0.3cm}
+\setlength{\evensidemargin}{-0.3cm}
+\setlength{\parskip}{1ex}
+\renewcommand{\include}{\input}
+
+% \doublesp
+
+\newcommand{\And}{\wedge}
+\newcommand{\Or}{\vee}
+\newcommand{\Not}{\neg}
+\newcommand{\Derive}{\vdash}
+\newcommand{\Entail}{\models}
+\newcommand{\Union}{\bigcup}
+\newcommand{\Intersection}{\cap}
+\newcommand{\Belongs}{\in}
+\newcommand{\Contained}{\subseteq}
+\newcommand{\False}{\Box}
+\newcommand{\True}{\rule{1ex}{1ex}}
+\newcommand{\If}{\leftarrow}
+\newcommand{\OnlyIf}{\rightarrow}
+\newcommand{\Iff}{\leftrightarrow}
+\newcommand{\Subsumes}{\succeq}
+
+\newcommand{\pname}[1]{\textmd{\texttt{#1}}}  % style for program names.
+\newcommand{\typew}[1]{\textmd{\texttt{#1}}}  % style for program code.
+
+%  Commands to make compatible the syntax of ECC and Linux.
+%  Symbolic link created at /usr/lib/texmf/tex/latex/graphics:
+%           ln -s epsfig.sty epsf.sty
+%  Syntax: \epscenter{file=figura.eps,width=xx,height=yy}
+%          \epsfile{file=figura.eps,width=xx,height=yy}
+\newcommand{\epscenter}[1]{\centerline{\epsfile{#1}}}
+\newcommand{\epsfile}[1]{\epsfig{#1}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
