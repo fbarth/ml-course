@@ -21,6 +21,8 @@ ou artigos que serão utilizados na disciplina;
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
+* Grocery Store: data("Groceries")
+* Iris dataset: data(iris)
 
 ## Slides de suporte
 
@@ -33,3 +35,4 @@ ou artigos que serão utilizados na disciplina;
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
 * [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
+* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
