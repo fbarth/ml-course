@@ -1,273 +1,489 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010/MacPorts 2010_2) (format=pdflatex 2011.2.19)  28 DEC 2012 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  13 NOV 2018 22:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\input regrasAssociacao.tex
-(./regrasAssociacao.tex (./jomislides.cls
+**regrasAssociacao.tex
+(./regrasAssociacao.tex
+LaTeX2e <2016/03/31>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(./jomislides.cls
 Document Class: jomislides 2002/05/23
-(/opt/local/share/texmf-texlive-dist/tex/latex/seminar/seminar.cls
-Document Class: seminar 2008/10/15, 1.5
-Document Style: `seminar' v1.5 <2008/10/15> (tvz)
-\slidewidth=\dimen102
-\slideheight=\dimen103
-\footheight=\dimen104
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/seminar/seminar.cls
+Document Class: seminar 2014/01/17, 1.61
+Documentclass: `seminar' v1.61 <2014/01/17> (tvz,hv)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pst-ovl/pst-ovl.sty
+Package: pst-ovl 2014/01/02 v0.01 LaTeX wrapper for `pst-ovl' (HV)
+File: pst-ovl.tex 2014/05/12 v0.06 overlay macros `pst-ovl' (HV)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pst-ovl/pst-ovl.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count79
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count80
+\pstFP@xia=\count81
+\pstFP@xib=\count82
+\pstFP@xfa=\count83
+\pstFP@xfb=\count84
+\pstFP@rega=\count85
+\pstFP@regb=\count86
+\pstFP@regs=\count87
+\pstFP@times=\count88
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks16
+\pgfutil@tempdima=\dimen102
+\pgfutil@tempdimb=\dimen103
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks19
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@x=\dimen104
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@xa=\dimen105
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@xb=\dimen106
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@xc=\dimen107
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@y=\dimen108
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@ya=\dimen109
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@yb=\dimen110
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgf@yc=\dimen111
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\c@pgf@counta=\count89
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\c@pgf@countb=\count90
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\c@pgf@countc=\count91
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\c@pgf@countd=\count92
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgfutil@tempcnta=\count93
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+\pgfutil@tempcntb=\count94
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen112
+\pgfmath@count=\count95
+\pgfmath@box=\box26
+\pgfmath@toks=\toks20
+\pgfmath@stack@operand=\toks21
+\pgfmath@stack@operation=\toks22
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count96
+))
+\pgffor@iter=\dimen113
+\pgffor@skip=\dimen114
+\pgffor@stack=\toks23
+\pgffor@toks=\toks24
+)
+\psLoopIndex=\count97
+
+`PSTricks' v2.64b  <2015/14/11> (tvz)
+\pst@dima=\dimen115
+\pst@dimb=\dimen116
+\pst@dimc=\dimen117
+\pst@dimd=\dimen118
+\pst@dimg=\dimen119
+\pst@dimh=\dimen120
+\pst@dimm=\dimen121
+\pst@dimn=\dimen122
+\pst@dimo=\dimen123
+\pst@dimp=\dimen124
+\pst@hbox=\box27
+\pst@ibox=\box28
+\pst@boxg=\box29
+\pst@cnta=\count98
+\pst@cntb=\count99
+\pst@cntc=\count100
+\pst@cntd=\count101
+\pst@cntg=\count102
+\pst@cnth=\count103
+\pst@cntm=\count104
+\pst@cntn=\count105
+\pst@cnto=\count106
+\pst@cntp=\count107
+\@zero=\count108
+\pst@toks=\toks25
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen125
+\psxunit=\dimen126
+\psyunit=\dimen127
+\pst@C@@rType=\count109
+\pslinewidth=\dimen128
+\psk@startLW=\dimen129
+\psk@endLW=\dimen130
+\pst@customdefs=\toks26
+\pslinearc=\dimen131
+\pst@symbolStep=\dimen132
+\pst@symbolWidth=\dimen133
+\pst@symbolLinewidth=\dimen134
+\everypsbox=\toks27
+\psframesep=\dimen135
+\pslabelsep=\dimen136
+\sh@wgridXunit=\dimen137
+\sh@wgridYunit=\dimen138
+\pst@shift=\dimen139
+)
+`pst-ovl' v0.06, 2014/05/12 (tvz,hv)
+\theoverlaybox=\box30
+))
+\slidewidth=\dimen140
+\slideheight=\dimen141
+\footheight=\dimen142
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count110
+\c@section=\count111
+\c@subsection=\count112
+\c@subsubsection=\count113
+\c@paragraph=\count114
+\c@subparagraph=\count115
+\c@figure=\count116
+\c@table=\count117
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
-\bibindent=\dimen105
+\bibindent=\dimen143
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/seminar/sem-page.sty)
-\before@document=\toks14
-\after@document=\toks15
-\before@enddocument=\toks16
-\c@slide=\count87
-\slide@count=\count88
-\@slidebox=\box26
-\not@slidebox=\box27
-\slide@hook=\toks17
-\after@slide=\toks18
-\slide@footins=\insert233
-\slide@listdepth=\count89
-\saved@specials=\box28
-\before@newslide=\toks19
-\after@slidepage=\toks20
+(/usr/local/texlive/2015/texmf-dist/tex/latex/seminar/sem-page.sty)
+\before@document=\toks28
+\after@document=\toks29
+\before@enddocument=\toks30
+\c@slide=\count118
+\slide@count=\count119
+\@slidebox=\box31
+\not@slidebox=\box32
+\slide@hook=\toks31
+\after@slide=\toks32
+\slide@footins=\insert199
+\slide@listdepth=\count120
+\saved@specials=\box33
+\before@newslide=\toks33
+\after@slidepage=\toks34
 \slidesep=\skip43
-\c@note=\count90
-\slideframewidth=\dimen106
-\slideframesep=\dimen107
-\semin=\dimen108
-\semcm=\dimen109
+\c@note=\count121
+\slideframewidth=\dimen144
+\slideframesep=\dimen145
+\semin=\dimen146
+\semcm=\dimen147
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/fancybox/fancybox.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/fancybox/fancybox.sty
 Package: fancybox 2010/05/15 1.4
 
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-\@fancybox=\box29
-\shadowsize=\dimen110
-\@Sbox=\box30
-\do@VerbBox=\toks21
-\the@fancyput=\toks22
-\this@fancyput=\toks23
-\EndVerbatimTokens=\toks24
+\@fancybox=\box34
+\shadowsize=\dimen148
+\@Sbox=\box35
+\do@VerbBox=\toks35
+\the@fancyput=\toks36
+\this@fancyput=\toks37
+\EndVerbatimTokens=\toks38
 \Verbatim@Outfile=\write3
 \Verbatim@Infile=\read1
-) (/opt/local/share/texmf-texlive-dist/tex/latex/graphics/color.sty
-Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/color.cfg
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 130.
+Package color Info: Driver file: pdftex.def on input line 143.
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
-\Gread@gobject=\count91
-))
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks25
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/graphics.cfg
+\Gread@gobject=\count122
+)
+Package color Info: Redefining color black on input line 177.
+Package color Info: Redefining color white on input line 178.
+Package color Info: Redefining color red on input line 181.
+Package color Info: Redefining color green on input line 182.
+Package color Info: Redefining color blue on input line 183.
+Package color Info: Redefining color cyan on input line 186.
+Package color Info: Redefining color magenta on input line 187.
+Package color Info: Redefining color yellow on input line 188.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 )
-\Gin@req@height=\dimen111
-\Gin@req@width=\dimen112
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/seminar/slidesec.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/seminar/slidesec.sty
 File `slidesec.sty' v0.9  92/05/07  <tvz>
-\@temptokenb=\toks26
-\c@slidesection=\count92
-\c@slidesubsection=\count93
-) (/opt/local/share/texmf-texlive-dist/tex/latex/url/url.sty
+\@temptokenb=\toks39
+\c@slidesection=\count123
+\c@slidesubsection=\count124
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2010/06/18 v6.81g Hypertext links for LaTeX
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2010/04/26 v1.7 LaTeX kernel commands for general use (HO)
-)
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
-)
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
-))
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/pdfescape.sty
-Package: pdfescape 2010/03/01 v1.9 Provides hex, PDF name and string conversion
-s (HO)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2010/04/01 v0.9 Utility functions of pdfTeX for LuaTeX (HO)
-
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-))
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2010/01/28 v2.1 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
-Package ifvtex Info: VTeX not detected.
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/hycolor.sty
-Package: hycolor 2009/12/12 v1.6 Color options of hyperref/bookmark (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen151
+\Hy@linkcounter=\count125
+\Hy@pagecounter=\count126
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/xcolor-patch.sty
-Package: xcolor-patch 2009/12/12 xcolor patch
-))
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/letltxmacro.sty
-Package: letltxmacro 2008/06/24 v1.3 Let assignment for LaTeX macros (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\@linkdim=\dimen113
-\Hy@linkcounter=\count94
-\Hy@pagecounter=\count95
+\Hy@SavedSpaceFactor=\count127
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2010/06/18 v6.81g Hyperref: PDFDocEncoding definition (HO)
-)
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/intcalc.sty
-Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
-)
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count128
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen152
+\Fld@menulength=\count129
+\Field@Width=\dimen153
+\Fld@charsize=\dimen154
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count130
+\c@Item=\count131
+\c@Hfootnote=\count132
 )
-Package hyperref Info: Hyper figures OFF on input line 3658.
-Package hyperref Info: Link nesting OFF on input line 3663.
-Package hyperref Info: Hyper index ON on input line 3666.
-Package hyperref Info: Plain pages OFF on input line 3673.
-Package hyperref Info: Backreferencing OFF on input line 3678.
 
-Implicit mode ON; LaTeX internals redefined
-Package hyperref Info: Bookmarks ON on input line 3874.
-LaTeX Info: Redefining \url on input line 4159.
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/bitset.sty
-Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+Package hyperref Message: Driver: hpdftex.
 
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/bigintcalc.sty
-Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
-))
-\Fld@menulength=\count96
-\Field@Width=\dimen114
-\Fld@charsize=\dimen115
-\Field@toks=\toks27
-Package hyperref Info: Hyper figures OFF on input line 5137.
-Package hyperref Info: Link nesting OFF on input line 5142.
-Package hyperref Info: Hyper index ON on input line 5145.
-Package hyperref Info: backreferencing OFF on input line 5152.
-Package hyperref Info: Link coloring OFF on input line 5157.
-Package hyperref Info: Link coloring with OCG OFF on input line 5162.
-Package hyperref Info: PDF/A mode OFF on input line 5167.
-LaTeX Info: Redefining \ref on input line 5207.
-LaTeX Info: Redefining \pageref on input line 5211.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count133
+\c@bookmark@seq@number=\count134
 
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/atbegshi.sty
-Package: atbegshi 2010/03/25 v1.12 At begin shipout hook (HO)
-)
-\Hy@abspage=\count97
-\c@Item=\count98
-\c@Hfootnote=\count99
-)
-* hyperref using driver hpdftex *
-(/opt/local/share/texmf-texlive-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2010/06/18 v6.81g Hyperref driver for pdfTeX
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/atveryend.sty
-Package: atveryend 2010/03/24 v1.5 Hooks at very end of document (HO)
-)
-\Fld@listcount=\count100
-\c@bookmark@seq@number=\count101
-
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2010/03/16 v1.6 Rerun checks for auxiliary files (HO)
-
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/uniquecounter.sty
-Package: uniquecounter 2009/12/18 v1.1 Provides unlimited unique counter (HO)
-)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-71.
+82.
 )
 \Hy@SectionHShift=\skip44
 )
 (./background.sty) (./pagetrans.sty) (./pause.sty)
-(/opt/local/share/texmf-texlive-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks28
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks40
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/tools/multicol.sty
-Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
-\c@tracingmulticols=\count102
-\mult@box=\box31
-\multicol@leftmargin=\dimen116
-\c@unbalance=\count103
-\c@collectmore=\count104
-\doublecol@number=\count105
-\multicoltolerance=\count106
-\multicolpretolerance=\count107
-\full@width=\dimen117
-\page@free=\dimen118
-\premulticols=\dimen119
-\postmulticols=\dimen120
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2016/02/08 v1.8o multicolumn formatting (FMi)
+\c@tracingmulticols=\count135
+\mult@box=\box36
+\multicol@leftmargin=\dimen155
+\c@unbalance=\count136
+\c@collectmore=\count137
+\doublecol@number=\count138
+\multicoltolerance=\count139
+\multicolpretolerance=\count140
+\full@width=\dimen156
+\page@free=\dimen157
+\premulticols=\dimen158
+\postmulticols=\dimen159
 \multicolsep=\skip45
 \multicolbaselineskip=\skip46
-\partial@page=\box32
-\last@line=\box33
-\mult@rightbox=\box34
-\mult@grightbox=\box35
-\mult@gfirstbox=\box36
-\mult@firstbox=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
+\partial@page=\box37
+\last@line=\box38
+\maxbalancingoverflow=\dimen160
+\mult@rightbox=\box39
+\mult@grightbox=\box40
+\mult@gfirstbox=\box41
+\mult@firstbox=\box42
 \@tempa=\box43
 \@tempa=\box44
 \@tempa=\box45
@@ -280,142 +496,148 @@ Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
 \@tempa=\box52
 \@tempa=\box53
 \@tempa=\box54
-\c@columnbadness=\count108
-\c@finalcolumnbadness=\count109
-\last@try=\dimen121
-\multicolovershoot=\dimen122
-\multicolundershoot=\dimen123
-\mult@nat@firstbox=\box55
-\colbreak@box=\box56
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\c@columnbadness=\count141
+\c@finalcolumnbadness=\count142
+\last@try=\dimen161
+\multicolovershoot=\dimen162
+\multicolundershoot=\dimen163
+\mult@nat@firstbox=\box60
+\colbreak@box=\box61
+\mc@col@check@num=\count143
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/tools/array.sty
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen124
-\extrarowheight=\dimen125
-\NC@list=\toks29
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen164
+\extrarowheight=\dimen165
+\NC@list=\toks41
 \extratabsurround=\skip47
 \backup@length=\skip48
 )
-\TX@col@width=\dimen126
-\TX@old@table=\dimen127
-\TX@old@col=\dimen128
-\TX@target=\dimen129
-\TX@delta=\dimen130
-\TX@cols=\count110
-\TX@ftn=\toks30
+\TX@col@width=\dimen166
+\TX@old@table=\dimen167
+\TX@old@col=\dimen168
+\TX@target=\dimen169
+\TX@delta=\dimen170
+\TX@cols=\count144
+\TX@ftn=\toks42
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks31
-\inpenc@posthook=\toks32
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks43
+\inpenc@posthook=\toks44
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/latin1.def
-File: latin1.def 2008/03/30 v1.1d Input encoding file
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2015/03/17 v1.2c Input encoding file
 ))
-(/opt/local/share/texmf-texlive-dist/tex/latex/seminar/seminar.bug)
-(/opt/local/share/texmf-texlive-dist/tex/latex/seminar/seminar.bg2
+(/usr/local/texlive/2015/texmf-dist/tex/latex/seminar/seminar.bug)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/seminar/seminar.bg2
 seminar.bg2: various corrections for the Seminar document class
 added since seminar.bug and few add-ons for overlays
-(Version 2.1 of <May 31, 2002> (D.G.))
-\Seminar@SlideBoxBackground=\box57
+(Version 2.3 of <2014/05/12> (DG, hv))
+\Seminar@SlideBoxBackground=\box62
 )
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 74.
 Package hyperref Info: Option `colorlinks' set `true' on input line 78.
 Package color Info: Redefining color botcol on input line 83.
 Package color Info: Redefining color medcol on input line 84.
- (/opt/local/share/texmf-texlive-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
-\everycr=\toks33
+Package color Info: Redefining color gray on input line 90.
+Package color Info: Redefining color darkgray on input line 91.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+\everycr=\toks45
 \minrowclearance=\skip49
 ))
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/alltt.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 )
-(/opt/local/share/texmf-texlive-dist/tex/latex/booktabs/booktabs.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen131
-\lightrulewidth=\dimen132
-\cmidrulewidth=\dimen133
-\belowrulesep=\dimen134
-\belowbottomsep=\dimen135
-\aboverulesep=\dimen136
-\abovetopsep=\dimen137
-\cmidrulesep=\dimen138
-\cmidrulekern=\dimen139
-\defaultaddspace=\dimen140
-\@cmidla=\count111
-\@cmidlb=\count112
-\@aboverulesep=\dimen141
-\@belowrulesep=\dimen142
-\@thisruleclass=\count113
-\@lastruleclass=\count114
-\@thisrulewidth=\dimen143
+\heavyrulewidth=\dimen171
+\lightrulewidth=\dimen172
+\cmidrulewidth=\dimen173
+\belowrulesep=\dimen174
+\belowbottomsep=\dimen175
+\aboverulesep=\dimen176
+\abovetopsep=\dimen177
+\cmidrulesep=\dimen178
+\cmidrulekern=\dimen179
+\defaultaddspace=\dimen180
+\@cmidla=\count145
+\@cmidlb=\count146
+\@aboverulesep=\dimen181
+\@belowrulesep=\dimen182
+\@thisruleclass=\count147
+\@lastruleclass=\count148
+\@thisrulewidth=\dimen183
 )
 (./regrasAssociacao.aux)
 \openout1 = `regrasAssociacao.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
-(/opt/local/share/texmf-texlive-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen144
-\scratchbox=\box58
-\nofMPsegments=\count116
-\nofMParguments=\count117
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen145
-\MPnumerator=\count119
-\everyMPtoPDFconversion=\toks35
-) (/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/epstopdf-base.sty
+\scratchcounter=\count149
+\scratchdimen=\dimen184
+\scratchbox=\box63
+\nofMPsegments=\count150
+\nofMParguments=\count151
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count152
+\MPscratchDim=\dimen185
+\MPnumerator=\count153
+\makeMPintoPDFobject=\count154
+\everyMPtoPDFconversion=\toks47
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 436.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring ON on input line 25.
+\AtBeginShipoutBox=\box64
+Package hyperref Info: Link coloring ON on input line 19.
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/refcount.sty
-Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2009/12/18 v1.3 Cleanup title references (HO)
+\c@section@level=\count155
 )
-\c@section@level=\count120
-)
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./regrasAssociacao.out) (./regrasAssociacao.out)
 \@outlinefile=\write4
@@ -432,15 +654,30 @@ Overfull \hbox (1.83334pt too wide) has occurred while \output is active
  []
 
 [1
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 
+
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 
 pdfTeX warning (ext4): destination with the same identifier (name{1.-1}) has be
 en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.44 \maketitle
-               {/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+l.38 \maketitle
+               {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdfte
+x.map}]
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 49.
+
+
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -457,7 +694,7 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.52 \end{Slide}
+l.51 \end{Slide}
                 ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
@@ -475,16 +712,11 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.71 \end{Slide}
-                ] <figuras/dataset.png, id=93, 390.45876pt x 221.82875pt>
-File: figuras/dataset.png Graphic file (type png)
+l.63 \end{Slide}
+                ]
 
-<use figuras/dataset.png>
-
-LaTeX Warning: Slide 4 overfull by 8.0486pt on input line 84.
-
-
-Overfull \vbox (5.35416pt too high) has occurred while \output is active []
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 66.
 
 
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
@@ -503,8 +735,8 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.84 \end{Slide}
-                 <./figuras/dataset.png>]
+l.79 \end{Slide}
+                ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -521,8 +753,8 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.94 \end{Slide}
-                ]
+l.99 \newpage
+             ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -532,18 +764,7 @@ Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [][] 
  []
 
-[6
-
-pdfTeX warning (ext4): destination with the same identifier (name{6.0}) has bee
-n already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.109 \end{Slide}
-                 ] <figuras/regras.png, id=113, 365.365pt x 144.54pt>
-File: figuras/regras.png Graphic file (type png)
-
-<use figuras/regras.png>
+[6]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -553,15 +774,7 @@ Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [][] 
  []
 
-[7
-
-pdfTeX warning (ext4): destination with the same identifier (name{7.0}) has bee
-n already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.120 \end{Slide}
-                  <./figuras/regras.png>]
+[7]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -578,12 +791,19 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.129 \end{Slide}
-                 ]
+l.143 \end{Slide}
+                 ] <figuras/dataset.png, id=140, 390.45876pt x 221.82875pt>
+File: figuras/dataset.png Graphic file (type png)
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 134.
+<use figuras/dataset.png>
+Package pdftex.def Info: figuras/dataset.png used on input line 150.
+(pdftex.def)             Requested size: 390.4578pt x 221.82819pt.
 
+
+LaTeX Warning: Slide 9 overfull by 8.0486pt on input line 156.
+
+
+Overfull \vbox (5.35416pt too high) has occurred while \output is active []
 
 
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
@@ -602,16 +822,8 @@ n already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.137 \end{Slide}
-                 ]
-<figuras/pre-processamento-dados.png, id=133, 787.94376pt x 490.83376pt>
-File: figuras/pre-processamento-dados.png Graphic file (type png)
-
-<use figuras/pre-processamento-dados.png>
-
-LaTeX Warning: Slide 10 overfull by 4.6481pt on input line 146.
-
-
+l.156 \end{Slide}
+                  <./figuras/dataset.png>]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -628,12 +840,8 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.146 \end{Slide}
-                  <./figuras/pre-processamento-dados.png>]
-<figuras/modelagem.png, id=141, 1055.945pt x 275.0275pt>
-File: figuras/modelagem.png Graphic file (type png)
-
-<use figuras/modelagem.png>
+l.167 \end{Slide}
+                 ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -650,12 +858,8 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.155 \end{Slide}
-                  <./figuras/modelagem.png>]
-<figuras/regras-areas.png, id=149, 1023.825pt x 102.3825pt>
-File: figuras/regras-areas.png Graphic file (type png)
-
-<use figuras/regras-areas.png>
+l.185 \end{Slide}
+                 ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -672,12 +876,14 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.164 \end{Slide}
-                  <./figuras/regras-areas.png>]
-<figuras/regras-areas-visual.png, id=157, 661.47125pt x 301.125pt>
-File: figuras/regras-areas-visual.png Graphic file (type png)
+l.196 \end{Slide}
+                 ] <figuras/regras.png, id=166, 365.365pt x 144.54pt>
+File: figuras/regras.png Graphic file (type png)
 
-<use figuras/regras-areas-visual.png>
+<use figuras/regras.png>
+Package pdftex.def Info: figuras/regras.png used on input line 202.
+(pdftex.def)             Requested size: 365.3641pt x 144.53963pt.
+
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -694,8 +900,8 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.173 \end{Slide}
-                  <./figuras/regras-areas-visual.png>]
+l.206 \end{Slide}
+                  <./figuras/regras.png>]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -712,25 +918,8 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.184 \end{Slide}
-                 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 189.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 189.
-
-Overfull \hbox (7.20699pt too wide) in paragraph at lines 189--189
-[][][]\OT1/cmr/m/n/8 http://fbarth.net.br/materiais/webMining/webUsageMining.pd
-f| 
- []
-
-
-LaTeX Warning: Slide 15 overfull by 18.93729pt on input line 198.
-
-
-Overfull \vbox (5.55424pt too high) has occurred while \output is active []
-
-
+l.213 \newpage
+              ]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -740,15 +929,7 @@ Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [][] 
  []
 
-[15
-
-pdfTeX warning (ext4): destination with the same identifier (name{15.0}) has be
-en already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.198 \end{Slide}
-                 ]
+[15]
 Overfull \hbox (1.83334pt too wide) has occurred while \output is active
 [] 
  []
@@ -765,43 +946,244 @@ en already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.206 \end{Slide}
+l.233 \newpage
+              ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[17]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[18
+
+pdfTeX warning (ext4): destination with the same identifier (name{18.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.262 \end{Slide}
                  ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[19
+
+pdfTeX warning (ext4): destination with the same identifier (name{19.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.273 \end{Slide}
+                 ]
+
+LaTeX Warning: Slide 20 overfull by 5.12985pt on input line 291.
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[20
+
+pdfTeX warning (ext4): destination with the same identifier (name{20.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.291 \end{Slide}
+                 ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[21
+
+pdfTeX warning (ext4): destination with the same identifier (name{21.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.296 \end{Slide}
+                 ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[22
+
+pdfTeX warning (ext4): destination with the same identifier (name{22.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.301 \end{Slide}
+                 ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[23
+
+pdfTeX warning (ext4): destination with the same identifier (name{23.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.311 \newpage
+              ]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[24]
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[25
+
+pdfTeX warning (ext4): destination with the same identifier (name{25.0}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.328 \newpage
+              ]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 331.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 331.
+
+Overfull \hbox (7.20699pt too wide) in paragraph at lines 331--331
+[][][]\OT1/cmr/m/n/8 http://fbarth.net.br/materiais/webMining/webUsageMining.pd
+f| 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[26]
+Overfull \hbox (25.43593pt too wide) in paragraph at lines 338--342
+\OT1/cmss/m/n/10 http://en.wikibooks.org/wiki/Data[]Mining[]Algorithms[]In[]R/ 
+
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[] 
+ []
+
+
+Overfull \hbox (1.83334pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[27]
 
 *******************************************************
 ***** !! PRINT THIS DOCUMENT IN LANDSCAPE MODE !! *****
 *******************************************************
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 351.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 351.
 (./regrasAssociacao.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
-Package rerunfilecheck Info: File `regrasAssociacao.out' has not changed.
-(rerunfilecheck)             Checksum: B699450207CF20F2D6A1A2BD158CA743;994.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 351.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 351.
+
+
+Package rerunfilecheck Warning: File `regrasAssociacao.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `regrasAssociacao.out':
+(rerunfilecheck)             Before: 5DA148459A48BA1B024E929668FA827B;1203
+(rerunfilecheck)             After:  535898376823B3EB094A6B5850FB1B36;1151.
  ) 
 Here is how much of TeX's memory you used:
- 5901 strings out of 494770
- 87677 string characters out of 3171403
- 168844 words of memory out of 3000000
- 8933 multiletter control sequences out of 15000+200000
- 8826 words of font info for 31 fonts, out of 3000000 for 9000
- 134 hyphenation exceptions out of 8191
- 41i,16n,24p,302b,659s stack positions out of 5000i,500n,10000p,200000b,50000s
-</opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
-opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></op
-t/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></op
-t/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></op
-t/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></opt
-/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></opt/
-local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></op
-t/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></o
-pt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on regrasAssociacao.pdf (16 pages, 264907 bytes).
+ 12820 strings out of 493027
+ 216939 string characters out of 6134069
+ 305362 words of memory out of 5000000
+ 16110 multiletter control sequences out of 15000+600000
+ 9536 words of font info for 33 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 48i,16n,42p,499b,726s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{28.0} has been referenced but does not exist, rep
+laced by a fixed one
+
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on regrasAssociacao.pdf (27 pages, 204608 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 56 named destinations out of 1000 (max. 500000)
- 159 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 315 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

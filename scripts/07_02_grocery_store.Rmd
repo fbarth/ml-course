@@ -1,0 +1,108 @@
+Exemplo de regras de associação em uma base de itens comprados em uma Grocery store
+===================================================================================
+
+Pacotes necessários para construir regras de associação:
+
+```{r message=FALSE, warning=FALSE}
+library(arules)
+library(arulesViz)
+```
+
+Leitura do dataset, que já é distribuido em conjunto com o pacote arules:
+
+````{r}
+data("Groceries")
+Groceries
+````
+
+Também podemos utilizar o comando *inspect(Groceries)* para ver o conteúdo de todo o dataset. 
+
+Análise de itens mais frequentes:
+
+```{r fig.width=7, fig.height=6}
+itemFrequencyPlot(Groceries, support=0.1)
+```
+
+Gerando conjuntos de itens frequentes:
+
+```{r}
+itemsets <- apriori(Groceries, parameter = list(minlen=1, maxlen=1,
+                                                support=0.02, target="frequent itemsets"))
+inspect(head(sort(itemsets, by="support"), 10))
+```
+
+Agora, descobrindo apenas conjuntos de itens frequentes de tamanho igual a 2:
+
+```{r}
+itemsets <- apriori(Groceries, parameter = list(minlen=2, maxlen=2,
+                                                support=0.02, target="frequent itemsets"))
+inspect(head(sort(itemsets, by="support"), 10))
+```
+
+Descobrindo as regras:
+
+````{r}
+rules <- apriori(Groceries, parameter= list(supp=0.001, conf=0.6))
+summary(rules)
+````
+
+Visualização do dataset por completo:
+
+```{r fig.width=7, fig.height=20}
+image(sample(Groceries,500))
+```
+
+Visualização das regras:
+
+```{r fig.width=7, fig.height=6}
+plot(rules)
+```
+
+Ordenando as regras por *lift*:
+
+```{r}
+inspect(head(sort(rules, by="lift"), 10))
+```
+
+Filtrando um pouco mais as regras encontradas:
+
+```{r}
+confidentRules <- rules[quality(rules)$confidence > 0.8 | quality(rules)$lift > 10]
+summary(confidentRules)
+```
+
+Outra forma para visualizar as regras (prestar atenção no plot onde o confidence está no
+eixo X e o lift no eixo Y):
+
+```{r fig.width=7, fig.height=6}
+plot(confidentRules@quality, pch=19)
+```
+
+Outra forma de visualização:
+
+```{r  fig.width=10, fig.height=10}
+plot(confidentRules, method = "matrix", measure = c("lift", "confidence"),
+     control = list(reorder = 'measure'))
+```
+
+Restringindo ainda mais:
+
+```{r}
+confidentRules <- confidentRules[quality(confidentRules)$confidence > 0.9]
+```
+
+```{r  fig.width=10, fig.height=10}
+plot(confidentRules, method = "matrix", measure = c("lift", "confidence"),
+     control = list(reorder = 'measure'))
+```
+
+Imprimindo as regras com os maiores *lift*:
+
+```{r}
+highLiftRules <- head(sort(rules, by="lift"), 5)
+```
+
+
+```{r fig.width=10, fig.height=10}
+plot(highLiftRules, method="graph", control=list(type="items"))
+```

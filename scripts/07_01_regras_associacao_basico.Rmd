@@ -1,0 +1,42 @@
+Exemplo de regras de associação em uma base de transações
+==========================================================
+
+Pacotes necessários para construir regras de associação:
+
+```{r message=FALSE, warning=FALSE}
+library(arules)
+library(arulesViz)
+```
+
+Leitura do dataset de exemplo:
+
+````{r}
+tr <- read.transactions("../data/basket_exemplo.csv", format="basket", sep=",")
+tr
+inspect(tr)
+````
+
+Análise de itens mais frequentes:
+
+```{r fig.width=7, fig.height=6}
+image(tr)
+```
+
+```{r fig.width=7, fig.height=6}
+itemFrequencyPlot(tr, support=0.3)
+```
+
+Descoberta das regras:
+
+Os limites informados são suporte igual a 0.3 e confiança igual a 0.8.
+
+````{r}
+rules <- apriori(tr, parameter= list(supp=0.3, conf=0.8))
+inspect(rules)
+````
+
+Visualização das regras:
+
+```{r fig.width=7, fig.height=6}
+plot(rules)
+plot(rules, method="graph", control=list(type="items"))

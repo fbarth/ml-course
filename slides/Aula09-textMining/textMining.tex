@@ -1,0 +1,859 @@
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{listings}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Text Mining} 
+\author{Fabrício J. Barth}
+\institution{fabricio.barth@gmail.com}
+\date{Setembro de 2016}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+
+\begin{Slide}{Objetivo}
+O objetivo desta aula é apresentar a área de Text Mining. Serão
+apresentados e discutidos conceitos e aplicações, além de técnicas e
+ferramentas para a implementação de soluções de Text Mining. 
+\end{Slide}
+
+
+\begin{Slide}{Sumário}
+\begin{itemize}
+\item Revisar os conceitos: aprendizagem de máquina, \textit{knowledge discovery
+    in databases} e a linguagem de programação R.
+\item Pré-processamento em Text Mining: \textit{Bag of words}, n-grams.
+\item Clustering e Classificação com dados não estruturados:
+\begin{itemize}
+\item Análise de mensagens dos twitter usando algoritmos de
+  agrupamento.
+\item Desenvolvimento de algoritmos anti-spam.
+\item Desenvolvimento de Sistemas de Pergunta \& Resposta.
+\end{itemize}
+\item Reconhecimento de Entidades Nomeadas.
+\item Considerações finais.
+\item Referências.
+\end{itemize}
+\end{Slide}
+
+\begin{PartSlide}{\textbf{Conceitos}}
+\end{PartSlide}
+
+\begin{Slide}{Knowledge Discovery in Databases (KDD)}
+
+KDD é o processo não trivial de identificação de padrões em dados que
+sejam válidos, novos, potencialmente úteis e compreensíveis [Fayyad,
+1996].
+
+\newpage
+
+\emph{Descobrir conhecimento útil}:
+
+\begin{itemize}
+\item Sintetizar informação: 
+\small
+\begin{itemize}
+\item a partir de logs de servidores web,
+  identificar qual é o caminho mais frequente de navegação dos
+  usuários no site.
+\item a partir de notícias publicadas em veículos web, sumarizar os
+  principais eventos do dia.
+\end{itemize}
+
+\item Prescrever ações:
+
+\begin{itemize}
+\item a partir do histórico de candidaturas em vagas de um candidato,
+  recomendar novas vagas para o mesmo.
+\item a partir de conteúdo previamente moderado, construir uma
+  aplicação capaz de moderar conteúdo automaticamente.
+\end{itemize}
+
+\end{itemize}
+
+\end{Slide}
+
+
+\begin{Slide}{Processo de KDD}
+\begin{enumerate}
+\item Qual é a pergunta?
+\item Aquisição e pré-processamento dos dados.
+\item Análise Exploratória.
+\item Modelagem: construção do modelo descritivo ou preditivo.
+\item Avaliação do modelo.
+\item Entrega: relatórios estáticos, dinâmicos, sistemas ou
+  funcionalidade de sistemas.
+\end{enumerate}
+\end{Slide}
+
+
+\begin{Slide}{Aprendizagem de máquina}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.6\textheight}
+{\includegraphics{figuras/hierarquia.eps}}
+%\caption{X}
+%\label{fig:X}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Exemplo de dataset com \emph{classe}}
+{\tiny
+%> library(xtable)
+%> xtable(iris[c(1,2,3,4,5,52,53,54,55,56,104,105,110,115),])
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Wed Oct 15 22:03:49 2014
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrl}
+  \hline
+ & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\ 
+  \hline
+1 & 5.10 & 3.50 & 1.40 & 0.20 & setosa \\ 
+  2 & 4.90 & 3.00 & 1.40 & 0.20 & setosa \\ 
+  3 & 4.70 & 3.20 & 1.30 & 0.20 & setosa \\ 
+  4 & 4.60 & 3.10 & 1.50 & 0.20 & setosa \\ 
+  5 & 5.00 & 3.60 & 1.40 & 0.20 & setosa \\ 
+  52 & 6.40 & 3.20 & 4.50 & 1.50 & versicolor \\ 
+  53 & 6.90 & 3.10 & 4.90 & 1.50 & versicolor \\ 
+  54 & 5.50 & 2.30 & 4.00 & 1.30 & versicolor \\ 
+  55 & 6.50 & 2.80 & 4.60 & 1.50 & versicolor \\ 
+  56 & 5.70 & 2.80 & 4.50 & 1.30 & versicolor \\ 
+  104 & 6.30 & 2.90 & 5.60 & 1.80 & virginica \\ 
+  105 & 6.50 & 3.00 & 5.80 & 2.20 & virginica \\ 
+  110 & 7.20 & 3.60 & 6.10 & 2.50 & virginica \\ 
+  115 & 5.80 & 2.80 & 5.10 & 2.40 & virginica \\ 
+   \hline
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+\begin{Slide}{Exemplo de modelo preditivo}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.6\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/arvore_iris.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Exemplos de aprendizagem não supervisionada}
+\begin{table}[htpb]
+\centering
+\tiny
+\caption{Exemplo de tabela com conexões entre usuários}
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+usuário & $user_{1}$ & $user_{2}$ & $user_{3}$ &
+$\cdots$ & $user_{n}$\\
+\midrule
+$user_{1}$ & 1 & 1 & 0& $\cdots$ & 1\\
+%\midrule
+$user_{2}$ & 1& 1& 0 & $\cdots$ & 0\\
+%\midrule
+$user_{3}$ & 1& 0 & 1& $\cdots$& 0\\
+%\midrule
+$user_{4}$ &0 & 1& 0& $\cdots$& 0\\
+%\midrule
+$\cdots$ & $\cdots$& $\cdots$& $\cdots$& $\cdots$&$\cdots$\\
+%\midrule
+$user_{n}$ & 1& 1& 0& $\cdots$& 1\\
+\bottomrule
+\end{tabular}
+\label{tab:transacoesUser}
+\end{table}
+\end{Slide}
+
+\begin{Slide}{Exemplo de identificação de grupos em redes sociais}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/agrupamentoRede.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Ferramentas que suportam o processo de KDD}
+
+O processo de KDD (pode/deve) ser suportado por ferramentas
+computacionais, tais como:
+\begin{itemize}
+\item R
+\item SPSS
+\item RapidMiner
+\item Weka
+\item Tableau
+\item Python, Julia, Octave, Matlab.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Projeto R}
+\begin{itemize}
+\item http://www.r-project.org/
+\item R Studio - http://www.rstudio.com/
+\item É free
+\item É a linguagem de programação mais popular para análise de dados
+\item Script é melhor que clicar e arastar:
+
+\begin{itemize}
+\item É mais fácil de comunicar.
+\item Reproduzível.
+\item É necessário pensar mais sobre o problema.
+\end{itemize}
+
+\item Existe uma quantia grande de pacotes disponíveis
+
+\end{itemize}
+\end{Slide}
+
+
+\begin{PartSlide}{Análise de mensagens do twitter usando algoritmos de
+    agrupamento}
+\end{PartSlide}
+
+\begin{Slide}{Componentes para uma solução...}
+\includegraphics[width=8cm]{figuras/componentesAgrupamentoIncompleto.pdf}
+\end{Slide}
+
+\begin{Slide}{Coletando dados do twitter com o R}
+\lstset{language=r}
+\lstset{commentstyle=\textit, basicstyle=\tiny ,showspaces=false}
+\lstset{frame=trBL,frameround=tttt}
+\lstinputlisting[caption=,label=processamento]{codigos/acessoTwitter.R}
+\end{Slide}
+
+\begin{PartSlide}{\textbf{Pré-processamento dos dados}}
+\end{PartSlide}
+
+
+\begin{Slide}{Acessar e fazer o download do projeto}
+https://github.com/fbarth/mlr
+\end{Slide}
+
+
+\begin{Slide}{Formato de um documento}
+\small  
+...
+Esta disciplina tem como objetivo apresentar os principais conceitos
+da área de Inteligência Artificial, caracterizar as principais
+técnicas e métodos, e implementar alguns problemas clássicos desta
+área sob um ponto de vista introdutório.
+\\
+A estratégia de trabalho, o conteúdo ministrado e a forma dependerão
+dos projetos selecionados pelos alunos. Inicialmente, os alunos
+deverão trazer os seus Projetos de Conclusão de Curso, identificar
+intersecções entre o projeto e a disciplina, e propor atividades para
+a disciplina. 
+...
+\end{Slide}
+
+\begin{Slide}{Conjunto de Exemplos - Atributo/Valor}
+{\small
+\begin{table}[htpb]
+\centering
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+\textbf{Doc.} & \textbf{apresent} & \textbf{form} &
+\textbf{tecnic} & \textbf{caracteriz} & $\cdots$  \\
+\midrule
+$d_{1}$ & 0.33 & 0.33 & 0.33 & 0.33 & $\cdots$ \\
+$d_{2}$ & 0 & 0.5 & 0.2 & 0.33 & $\cdots$ \\
+$d_{3}$ & 1 & 0.6 & 0 & 0 & $\cdots$ \\
+$d_{4}$ & 0.4 & 0.3 & 0.33 & 0.4 & $\cdots$ \\
+$d_{5}$ & 1 & 0.4 & 0.1 & 0.1 & $\cdots$ \\
+$d_{n}$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+\begin{Slide}{Atributo/Valor usando vetores}
+Como representar os documentos?
+
+\begin{equation}
+\overrightarrow{d_{i}} = (p_{i1}, p_{i2}, \cdots , p{in})
+\end{equation}
+\begin{itemize}
+\item Os atributos são as palavras que aparecem nos documentos.
+\item As palavras do texto precisam ser normalizadas: caixa baixa,
+  remover acentuação, remover stop-words, aplicar algoritmos de
+  steamming. 
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Remover stop-words}
+\begin{itemize}
+\item Em todos os idiomas existem átomos (palavras) que não significam
+  muito. \emph{Stop-words}
+\end{itemize}
+
+\small
+Esta disciplina \emph{tem como} objetivo apresentar \emph{os}
+principais conceitos \emph{da} área \emph{de} Inteligência
+Artificial\emph{,} caracterizar \emph{as} principais técnicas \emph{e} métodos\emph{, e} implementar alguns problemas clássicos \emph{desta}
+área \emph{sob um} ponto \emph{de} vista introdutório\emph{.}
+
+$\cdots$
+
+\end{Slide}
+
+
+\begin{Slide}{Algoritmos de steamming}
+\begin{itemize}
+\item Algumas palavras podem aparecer no texto de diversas maneiras:
+  \emph{técnica}, \emph{técnicas}, \emph{implementar}, \emph{implementação}...
+\item \emph{Stemming} - encontrar o radical da palavra e usar apenas o
+  radical. 
+\end{itemize}
+
+\newpage
+
+{\small  
+Radicalizador para o português:
+
+\begin{itemize}
+\item Regra de reducao de plurais (Regras N) 
+\item Regra de reducao de femininos (Regras G) 
+\item Regras de reducao de aumentativos e diminutivos (Regras T) 
+\item Regras de reducao de grau (Regras S) 
+\item Outras regras (Regras O) 
+\item Regras para formas verbais (Regras V) 
+\end{itemize}
+
+
+A sequência para as formas verbais reduz-se à aplicação da regra para
+redução ao infinito.
+
+Para os nomes (substantivos, adjetivos e advérbios) aplica-se a
+seguinte sequência: N $\rightarrow$ G $\rightarrow$ T $\rightarrow$ S $\rightarrow$ O 
+}
+\end{Slide}
+
+
+\begin{Slide}{Atributo/Valor usando vetores}
+\begin{itemize}
+\item Já conhecemos os atributos.
+\item E os valores?
+\begin{itemize}
+\item \emph{Booleana} - se a palavra aparece ou não no documento (1 ou 0)
+\item \emph{Por freqüência do termo} - a freqüência com que a palavra
+  aparece no documento (normalizada ou não)
+\item \emph{Ponderação tf-idf} - o peso é proporcional ao número de
+  ocorrências do termo no documento e inversamente proporcional ao
+  número de documentos onde o termo aparece.
+\end{itemize}
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Por freqüência do termo}
+\small  
+(apresent,0.33)
+(form,0.33)
+(tecnic,0.33)
+(caracteriz,0.33)
+(projet,1.0)
+(introdutori,0.33)
+(objet,0.33)
+(inteligente,0.33)
+(conclusa,0.33)
+(selecion,0.33)
+(intersecco,0.33)
+(classic,0.33)
+(identific,0.33)
+(conceit,0.33)
+(trabalh,0.33)
+(disciplin,1.0)
+(traz,0.33)
+\end{Slide}
+
+\begin{Slide}{Conjunto de Exemplos - Atributo/Valor}
+{\small
+\begin{table}[htpb]
+\centering
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+\textbf{Doc.} & \textbf{apresent} & \textbf{form} &
+\textbf{tecnic} & \textbf{caracteriz} & $\cdots$  \\
+\midrule
+$d_{1}$ & 0.33 & 0.33 & 0.33 & 0.33 & $\cdots$ \\
+$d_{2}$ & 0 & 0.5 & 0.2 & 0.33 & $\cdots$ \\
+$d_{3}$ & 1 & 0.6 & 0 & 0 & $\cdots$ \\
+$d_{4}$ & 0.4 & 0.3 & 0.33 & 0.4 & $\cdots$ \\
+$d_{5}$ & 1 & 0.4 & 0.1 & 0.1 & $\cdots$ \\
+$d_{n}$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+
+\begin{Slide}{Conjunto de Exemplos com \emph{Classe} - Atributo/Valor}
+{\small
+\begin{table}[htpb]
+\centering
+\vspace{0.2cm}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\toprule
+\textbf{Doc.} & \textbf{apresent} & \textbf{form} &
+\textbf{tecnic} & \textbf{caracteriz} & $\cdots$ & \textbf{Classe} \\
+\midrule
+$d_{1}$ & 0.33 & 0.33 & 0.33 & 0.33 & $\cdots$ & AG\\
+$d_{2}$ & 0 & 0.5 & 0.2 & 0.33 & $\cdots$ & RC \\
+$d_{3}$ & 1 & 0.6 & 0 & 0 & $\cdots$ & AM \\
+$d_{4}$ & 0.4 & 0.3 & 0.33 & 0.4 & $\cdots$ & AG\\
+$d_{5}$ & 1 & 0.4 & 0.1 & 0.1 & $\cdots$ & AM \\
+$d_{n}$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+}
+\end{Slide}
+
+\begin{Slide}{Representação Booleana}
+\begin{itemize}
+\item O peso é calculado levando-se em consideração a existência ou
+  não do termo no documento.
+\end{itemize}
+
+\begin{equation}
+p_{i,j} = \left\{
+	\begin{array}{ll}
+		1  & \mbox{if } f_{i,j} > 0 \\
+		0  & \mbox{if } f_{i,j} = 0
+	\end{array}
+\right.
+\end{equation}
+
+\end{Slide}
+
+\begin{Slide}{Representação por Frequência do Termo}
+\begin{itemize}
+\item O peso é calculado levando-se em consideração a frequência com
+  que o termo acontece no documento. Esta frequência pode ser
+  ponderada ou não.
+\end{itemize}
+
+\begin{eqnarray}
+p_{i,j} = f_{i,j} \\
+p_{i,j} = \frac{f_{i,j}}{\max_{z}f_{z,j}}
+\end{eqnarray}
+
+\end{Slide}
+
+\begin{Slide}{Representação por Ponderação tf-idf}
+\begin{itemize}
+\item O peso é proporcional ao número de ocorrências do termo no
+  documento e inversamente proporcional ao número de documentos onde o
+  termo aparece.
+\end{itemize}
+\begin{equation}
+p_{i,j} = \frac{f_{i,j}}{\max_{z}f_{z,j}} \times \log{\frac{N}{n_{i}}}
+\end{equation}
+{\small
+onde,
+\begin{itemize}
+\item $N$ = número de documentos.
+\item $n_{i}$ = número de documentos onde a palavra $i$ aparece.
+\item $\frac{f_{i,j}}{\max_{z}f_{z,j}}$ = freqüência normalizada da
+  palavra $i$ no documento $j$.
+\end{itemize}
+}
+\end{Slide}
+
+
+\begin{Slide}{Relembrando as propriedades do $\log$}
+\includegraphics[width=1\textwidth]{figuras/propriedadesLOG.pdf}
+\end{Slide}
+
+
+\begin{Slide}{Componentes para uma solução...}
+\begin{center}
+\includegraphics[width=7cm]{figuras/componentesAgrupamento.pdf}
+\end{center}
+\end{Slide}
+
+\begin{Slide}{Exemplo de projeto no R}
+Projeto MLR - Script twitter/exemploAgrupamentoTexto.R
+\end{Slide}
+
+\begin{PartSlide}{\textbf{Algoritmos para Agrupamento}}
+\end{PartSlide}
+
+\begin{Slide}{Definições de Algoritmos de Agrupamento}
+\begin{itemize}
+\item O objetivo dos algoritmos de agrupamento é colocar os objetos
+  \emph{similares} em um \emph{mesmo grupo} e objetos \emph{não
+    similares} em \emph{grupos diferentes}.
+\item Normalmente, objetos são descritos e agrupados usando um
+  conjunto de \emph{atributos e valores}.
+\item Não existe nenhuma informação sobre a classe ou categoria dos
+  objetos.
+\end{itemize} 
+\end{Slide}
+
+\begin{Slide}{Algoritmos para Agrupamento - \textit{K-means}}
+\begin{itemize}
+\item \emph{K} significa o número de agrupamentos (que deve ser
+  informado à priori).
+\item Sequência de ações \emph{iterativas}.
+\item A parada é baseada em algum critério de qualidade dos
+  agrupamentos (por exemplo, similaridade média).
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Algoritmo para Agrupamento - \textit{K-means}}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/desenhoKmeans_v2.pdf}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Algoritmo \emph{K-means}}
+\begin{itemize}
+\item A medida de distância pode ser a distância Euclidiana:
+\begin{equation}
+\mid \overrightarrow{x} - \overrightarrow{y} \mid =
+\sqrt{\sum_{i=1}^{n}(x_{i} - y_{i})^{2}}
+\end{equation}
+\item a função para computar o ponto central pode ser:
+\begin{equation}
+\overrightarrow{\mu} = \frac{1}{M} \sum_{\overrightarrow{x} \in C} \overrightarrow{x} 
+\end{equation}
+onde $M$ é igual ao número de pontos no agrupamento $C$.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.95\columnwidth}{1\textheight}
+{\includegraphics{figuras/clusters.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Como determinar o melhor \textit{k}?}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/elbowMethod}}
+\end{figure}
+\tiny
+A medida de distribuição dos pontos normalmente empregada é \textit{sum of squared errors}.
+\end{Slide}
+
+
+%\begin{Slide}{Agrupamento de mensagens do twitter com o R}
+%http://rpubs.com/fbarth/agrupamentoTwitterConalytics
+%\end{Slide}
+
+\begin{PartSlide}{Desenvolvimento de algoritmos anti-spam}
+\end{PartSlide}
+
+\begin{Slide}{Exemplos onde aplicar}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.3\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/email_spam.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.9\columnwidth}{1\textheight}
+{\includegraphics{figuras/social_spam.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Modelos preditivos para classificação}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.4\textheight}
+{\includegraphics{figuras/classification_model.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Desenvolvimento de modelos preditivos para classificação}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/building_classification_model.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Aprendizado de árvores de decisão}
+\includegraphics[width=1.1\textwidth]{figuras/arvore.png}
+\end{Slide}
+
+%
+%\begin{Slide}{Características}
+%\begin{itemize}
+%\item Representação de árvore de decisão:
+%\begin{itemize}
+%\item cada nodo interno testa um atributo;
+%\item cada aresta correponde a um valor de atributo;
+%\item cada nodo folha retorna uma classificação.
+%\end{itemize}
+%\end{itemize}
+%\end{Slide}
+
+%\begin{Slide}{Algoritmo ID3}
+%\begin{itemize}
+%\item O algoritmo ID3 cria uma árvore de uma maneira
+%  \emph{top-down} começando com a seguinte pergunta:
+
+
+%\begin{itemize}
+%\item Qual atributo deve ser testado na raiz da árvore?
+%\end{itemize}
+
+%\item Para responder esta questão, cada atributo do conjunto de
+%  treinamento é avaliado usando um teste estatístico para
+%  determinar quão bem o atributo (sozinho) classifica os exemplos
+%  de treinamento.
+%\end{itemize}
+%\end{Slide}
+
+
+%\begin{Slide}{}
+%\small
+%\begin{algorithm}
+%\caption{\emph{Top Down Induction of Decision Trees}}
+%  \begin{algorithmic}
+%	\STATE \textbf{Entrada}: Conjunto de Exemplos $E$. 
+%	\STATE \textbf{Saída}: Árvore de Decisão (Hipótese $h$).
+%	\STATE \textbf{1} Se todos os exemplos tem o mesmo resultado
+%	para a função sendo aprendida, retorna um nodo folha com este
+%	valor;
+%	\STATE \textbf{2} Cria um nodo de decisão $N$ e escolhe o
+%	melhor atributo $A$ para este nodo;
+%	\STATE \textbf{3} Para cada valor $V$ possível para $A$: \\
+%  \hspace*{0.5cm} \textbf{3.1} cria uma aresta em $N$ para o valor $V$;\\
+%  \hspace*{0.5cm} \textbf{3.2} cria um subconjunto $E_{V}$ de exemplos onde $A=V$;\\
+%  \hspace*{0.5cm} \textbf{3.3} liga a aresta com o nodo que retorna da aplicação do
+%	algoritmo considerando os exemplos $E_{V}$.
+%	\STATE \textbf{4} Os passos 1, 2 e 3 são aplicados
+%	recursivamente para cada novo subconjunto de exemplos de
+%	treinamento.
+%  \end{algorithmic}
+%\end{algorithm}   
+%\end{Slide}
+
+%\begin{Slide}{Exemplo de classificação de Spam usando J48}
+%O objetivo deste exercício é demonstrar a criação de um modelo preditivo
+%no formato de árvore de decisão para identificar spam. Para tanto,
+%será utilizado o dataset disponibilizado em
+%\textit{http://archive.ics.uci.edu/ml/datasets/Spambase}.
+%
+%http://rpubs.com/fbarth/classificacaoSpamJ48 
+%\end{Slide}
+%
+
+\begin{Slide}{Exemplo de classificação de Spam}
+\begin{itemize}
+\item Objetivo: identificação de spam no www.apontador.com.br
+  (\textit{Location Based Social Network}).
+\item Tipos de atributos utilizados para caracterizar o conjunto de
+  \textit{posts} no site: \textbf{conteúdo, sobre o usuário, sobre o lugar e
+  social}. 
+\end{itemize}
+
+\newpage
+
+\begin{figure}[htbp]
+\centering 
+\resizebox*{1\columnwidth}{1\textheight}
+{\includegraphics{figuras/classes_apontador.png}}
+%\caption{X}
+%\label{fig:X}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Questões...}
+\begin{itemize}
+\item $Q_{1}$: Será que é possível construir uma função de anti-spam
+  com acurácia acima de 90 \% apenas com atributos de conteúdo?
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Método para construção do modelo: Florestas de árvores de decisão}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.75\columnwidth}{0.75\textheight}
+{\includegraphics{figuras/randomForest.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Código}
+\begin{itemize}
+\item Projeto: https://github.com/fbarth/mlr
+\item Arquivo: scripts/antiSpam/attr\_conteudos.R
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Questões...}
+\begin{itemize}
+\item $Q_{1}$: Será que é possível construir uma função de anti-spam
+  com acurácia acima de 90 \% apenas com atributos de conteúdo?
+\item \textbf{$Q_{2}$: Será que é possível construir uma função de
+    anti-spam com acurácia acima de 90 \% utilizando todos os tipos de
+  atributos coletados?}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Código}
+\begin{itemize}
+\item Projeto: https://github.com/fbarth/mlr
+\item Arquivo: scripts/antiSpam/attr\_todos.R
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Considerações finais}
+\begin{itemize}
+\item Análise de mensagens do twitter
+
+\begin{itemize}
+\item Transformação de informação não-estruturada em estruturada.
+\item Uso do algoritmo k-means
+\item Este mesmo processo pode ser aplicado para outros problemas
+  similares: análise de notícias, análise de patentes e artigos científicos.
+\end{itemize}
+ 
+\newpage
+
+\item Desenvolvimento de algoritmos anti-spam
+
+\begin{itemize}
+\item Uso do algoritmo random forest.
+\item Como desenvolver e avaliar um modelo preditivo.
+\item Este mesmo processo pode ser aplicado para outros problemas
+  similares, inclusive problemas de recomendação de itens.
+\end{itemize}
+
+\end{itemize}
+\end{Slide}
+
+
+%\begin{PartSlide}{\textbf{Referências}}
+%\end{PartSlide}
+
+
+%\begin{Slide}{Material de \textbf{consulta}}
+%\small
+%\begin{itemize}
+%\item Estes slides, inclusive o código fonte em \LaTeX, podem ser
+%  acessados no projeto http://github.com/fbarth/lectures. Todo o
+%  material do projeto palestras é \textbf{Creative Commons}. Ou seja,
+%  pode copiar a vontade! Mas tem que citar a origem!
+%
+%\newpage
+% 
+%\item http://fbarth.net.br/materiais/webMiningR.html: tutorial
+%  apresentado no Mozilla Tech Day 2013.
+%\item http://rpubs.com/fbarth/: scripts em R para problemas de
+%  Aprendizagem de Máquina.
+%\item Outros projetos na conta fbarth do \textbf{GitHub}.
+%\item fabricio.barth@gmail.com
+%\end{itemize}
+%\end{Slide}
+
+
+\begin{Slide}{Referências}
+  \begin{itemize}
+
+  \item Bing Liu. Web Data Mining: exploring hyperlinks, contents, and
+    usage data, 2008.
+
+  \item Tom Mitchell. Machine Learning, 1997.
+
+  \item Iah H. Witteh and Eibe Frank. Data Mining: Practical Machine
+    Learning Tools and Techniques (Third Edition), 2011.
+
+  \item Pang-Ning Tan, Michael Steinbach and Vipin Kumar. Introduction
+    to Data Mining, 2006.
+
+  \item Andrew Ng. http://www.ml-class.org
+
+\newpage
+
+\small
+
+\item Andy and Matthew. Classification and regression by
+  randomForest. R News, vol. 3, number 3, pages 18-22, 2002.
+
+\item Costa, H.; Merschmann, L. H. C.; Barth, F.; Benevenuto,
+  F. Pollution, Bad-mouthing, and Local Marketing: The Underground of
+  Location-based Social Networks. Information Sciences, 2014. 
+
+\item RDataMining.com: Text
+  Mining. http://www.rdatamining.com/examples/text-mining. Acessado em
+  14 de junho de 2013.
+
+\item Ingo Feinerer. Introduction to the tm Package: Text Mining in
+  R. http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf. Acessado
+  em 14 de junho de 2013.
+
+
+\newpage
+
+\small
+
+\item Barth, F. J. Ferramentas para a detecção de grupos em Wikis. In:
+  VII Simpósio Brasileiro de Sistemas Colaborativos, 2010, Belo
+  Horizonte. Anais do VII Simpósio Brasileiro de Sistemas
+  Colaborativos. IEEE Computer Society, 2010. v.II. p.8 - 11.  
+
+\item Barth, F. J. ; Belderrain, M. C. R. ; Quadros, N. L. P. ;
+  Ferreira, L. L. ; Timoszczuk, A. P. . Recuperação e mineração de
+  informações para a área criminal. In: VI Encontro Nacional de
+  Inteligência Artificial, 2007, Rio de Janeiro. Anais do XXVII
+  Congresso da SBC, 2007.
+
+\end{itemize}
+
+\end{Slide}
+
+%\bibliographystyle{plain}
+%\bibliography{doutorado}
+
+\end{document}
+

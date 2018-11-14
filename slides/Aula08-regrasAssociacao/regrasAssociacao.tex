@@ -1,10 +1,3 @@
-%
-% Problemas para identificação de técnicas
-% de representação de conhecimento
-%
-% by Fabrício Jailson Barth 2006
-%
-
 \documentclass[landscape,pdftex]{jomislides}
 
 \slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
@@ -14,6 +7,7 @@
 %\usepackage{algorithmic}
 \usepackage{alltt}
 \usepackage{booktabs}
+\usepackage{hyperref}
 %\usepackage{algorithm}
 
 %
@@ -27,9 +21,9 @@
 %\input{autorHeaders}
 
 \title{Mineração de padrões frequentes} 
-\author{Fabrício Jailson Barth}
+\author{Fabrício J. Barth}
 \institution{}
-\date{Dezembro de 2012}
+\date{Novembro de 2018}
 
 \SlideHeader{}
             {}
@@ -43,15 +37,93 @@
 
 \maketitle
 
-\begin{Slide}{Sumário e Objetivos}
+\begin{Slide}{Objetivos}
+
+Os objetivos desta aula são:
+
 \begin{itemize}
-\item Mineração de itens frequentes.
-\item Definição de suporte e confiança. 
-\item Caso: Identificação de áreas correlatas.
+\item Apresentar e discutir métodos para identificar associações úteis
+  em grandes bases de dados (transacionais) usando medidas
+  estatísticas simples, e;
+\item Apresentar e discutir todas as etapas necessárias para executar
+  uma análise de \textit{market basket}.
 \end{itemize}
 \end{Slide}
 
-\begin{Slide}{Mineração de itens frequentes}
+\begin{Slide}{Sumário}
+\begin{itemize}
+\item A ideia geral do \textit{market basket analysis}.
+\item Algoritmo Apriori: mineração de itens frequentes.
+\item Definição de suporte, confiança e \textit{lift}. 
+\item Interpretando as regras.
+%\item Removendo redundâncias.
+\item Visualização das regras.
+\item Referências e leituras adicionais.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Resultado esperado de uma \textit{market basket
+      analysis}}
+
+\begin{center}
+$\{$pãozinho, pão de queijo$\}$ $\rightarrow$ $\{$suco de laranja$\}$
+\end{center}
+
+\begin{itemize}
+\item A regra acima representa a seguinte informação: se uma pessoa compra pãozinho e pão de
+queijo então existe uma possibilidade desta pessoa comprar também suco
+de laranja.
+\item Os itens indicados ente $\{\}$ fazem parte de um mesmo \textit{itemset}. 
+\end{itemize}
+
+\end{Slide}
+
+\begin{Slide}{Cenários de uso}
+
+\begin{itemize}
+
+\item Algoritmos de regras de associação são geralmente utilizados em
+  problemas de \textit{market basket analysis}. Exemplos de
+  \textit{market basket analysis} são:
+
+\begin{itemize}
+\item Que produtos devem ser incluídos os excluídos de um estoque a
+  cada mês.
+\item Propaganda cruzada entre produtos. 
+\item Modificação física ou lógica de produtos dentro de categorias de
+  produtos. 
+\item Programas promocionais: incentivo de compra de múltiplos
+  produtos. 
+\end{itemize}
+
+\newpage
+
+Além disso, pode-se utilizar algoritmos de regras de associação em
+outros cenários:
+
+\begin{itemize}
+\item Busca por padrões de sequência de DNA e proteinas que ocorrem
+  frequentemente em dados sobre câncer.   
+\item Identificação por padrões de compra em transações fraudulentas.
+\item Desenvolvimento de sistemas de recomendação.
+\item Clickstream analysis.
+\end{itemize}
+
+\newpage
+
+\item Regras de associação são utilizadas para procurar por conexões
+\textit{``interessantes''} entre um grande número de
+variáveis. 
+
+\item Pessoas são capazes de gerar tais \textit{insights}, mas
+geralmente é necessário um nível de experiência bem alto no domínio da
+aplicação e muito tempo pensando sobre o problema.
+
+\end{itemize}
+
+\end{Slide}
+
+\begin{Slide}{Algoritmo Apriori: mineração de itens frequentes}
 \begin{itemize}
 \item Dado:
 \begin{itemize}
@@ -83,29 +155,44 @@
 \end{figure}
 \end{Slide}
 
-\begin{Slide}{Mineração de itens frequentes}
+\begin{Slide}{Algoritmo Apriori: mineração de itens frequentes}
 \begin{itemize}
 \item Objetivo 2:
 \begin{itemize}
-\item encontrar o conjunto de regras de associação com confiança maior
-  que um mínimo definido pelo utilizador.
+\item encontrar o conjunto de regras de associação com
+  \textbf{confiança} maior ou igual que um mínimo definido pelo
+  utilizador.
 \end{itemize}
 \end{itemize}
 \end{Slide}
 
 \begin{Slide}{Suporte e Confiança}
 
-O suporte de um conjunto de itens $Z$, $suporte(Z)$, representa a
+\begin{itemize}
+\item O \textbf{suporte} de um conjunto de itens $Z$, $suporte(Z)$, representa a
 porcentagem de transações na base de dados que contêm os itens de
 $Z$.
 
-O suporte de uma regra de associação $A \rightarrow B$, $suporte(A
-\rightarrow B)$, é dado por $suporte(A \cup B)$. 
+\item A \textbf{confiança} de uma regra de associação $A \rightarrow B$, $confianca(A
+\rightarrow B)$, é dado por:
 
 \begin{equation}
-confianca(A \rightarrow B) = \frac{P(A \cup B)}{P(A)} = \frac{suporte(A
-\cup B)}{suporte(A)}
+confianca(A \rightarrow B) = \frac{Suporte(A \wedge B)}{Suporte(A)}
 \end{equation}
+
+\end{itemize}
+
+\end{Slide}
+
+\begin{Slide}{Exemplos de confiança}
+
+\begin{itemize}
+\item Se suporte($\{$pão, ovos, leite$\}$) = 0.15 e
+  suporte($\{$pão, ovos$\}$) = 0.15 então confianca($\{$pão, ovos$\}
+  \rightarrow \{$leite$\}$) = 1.
+\item Se suporte($\{$pão, ovos$\}$) = 0.15 e suporte($\{$pão$\}$) = 0.6
+  então confianca($\{$pão$\} \rightarrow \{$ovos$\}$) = 0.25.
+\end{itemize}
 \end{Slide}
 
 \begin{Slide}{Exemplo de regras geradas}
@@ -113,97 +200,153 @@ confianca(A \rightarrow B) = \frac{P(A \cup B)}{P(A)} = \frac{suporte(A
 \centering 
 \resizebox*{0.8\columnwidth}{0.4\textheight}
 {\includegraphics{figuras/regras.png}}
-\caption{Regras extraídas com confiança maior que 0,8 (processo
-  executado usando o RapidMiner.)}
+\caption{Regras extraídas com confiança maior que 0.8}
 \label{fig:fig2}
 \end{figure}
 \end{Slide}
 
-\begin{Slide}{Estudo de caso}
+\begin{Slide}{Confiança}
 \begin{itemize}
-\item Candidatos podem definir várias áreas no objetivo profissional.
-\item Empresas podem definir várias áreas em cada vaga.
-\item \textbf{É possível identificar áreas correlatas através de
-    regras de associação?}
+\item Uma confiança alta indica que uma regra ($X \rightarrow Y$) é
+  mais interessante ou mais confiável, baseada no dataset analisado.
+
+\newpage
+
+\item No entanto, o fato de apenas analisar $X \wedge Y$ e $X$, sem
+  analisar $Y$ pode gerar alguns problemas.
+
 \end{itemize}
 \end{Slide}
 
-\begin{Slide}{Características do experimento}
+\begin{Slide}{Exemplo}
+
+Considere 1.000 transações, onde:
+
 \begin{itemize}
-\item Dados utilizados: vagas criadas no $2^{o}$ semestre de 2012.
-\item 51.311 vagas (\textit{transações})
-\item 124 áreas (\textit{atributos})
+\item leite ocorre em 400
+\item pão ocorre em 900
+\item manteiga ocorre em 300
+\item leite e pão ocorrem em 300
+\item manteiga e leite ocorrem em 300
 \end{itemize}
-\end{Slide}
 
-\begin{Slide}{Fase de pré-processamento}
-\begin{figure}[htbp]
-\centering 
-\resizebox*{0.9\columnwidth}{0.7\textheight}
-{\includegraphics{figuras/pre-processamento-dados.png}}
-\caption{Processo especificado na ferramenta RapidMiner}
-\end{figure}
-\end{Slide}
+\newpage
 
-\begin{Slide}{Fase de modelagem}
-\begin{figure}[htbp]
-\centering 
-\resizebox*{1\columnwidth}{0.4\textheight}
-{\includegraphics{figuras/modelagem.png}}
-\caption{Processo especificado na ferramenta RapidMiner}
-\end{figure}
-\end{Slide}
+Sendo assim:
 
-\begin{Slide}{Regras geradas}
-\begin{figure}[htbp]
-\centering 
-\resizebox*{1\columnwidth}{0.2\textheight}
-{\includegraphics{figuras/regras-areas.png}}
-\caption{Regras geradas para Suporte = 0,05 e Confiança = 0,6}
-\end{figure}
-\end{Slide}
-
-\begin{Slide}{Representação visual das regras geradas}
-\begin{figure}[htbp]
-\centering 
-\resizebox*{0.85\columnwidth}{0.6\textheight}
-{\includegraphics{figuras/regras-areas-visual.png}}
-\caption{Regras geradas para Suporte = 0,05 e Confiança = 0,6}
-\end{figure}
-\end{Slide}
-
-\begin{Slide}{Heurísticas para Seleção de Regras de Associação}
 \begin{itemize}
-\item \textit{Lift}: um valor de \textit{lift} para uma regra ($A
-  \rightarrow B$) superior a 1 indica que $A$ e $B$ aparecem mais
+\item $confianca(\{leite\} \rightarrow \{pao\}) = \frac{0,3}{0,4} = 0,75$
+\item $confianca(\{leite\} \rightarrow \{manteiga\}) = \frac{0,3}{0,4} = 0,75$
+\end{itemize}
+
+\begin{itemize}
+\item Pão é algo que ocorre com muita frequência neste dataset.
+\item Esta informação não é levada em consideração pela
+  $confianca(\{leite\} \rightarrow \{pao\})$. 
+\item Talvez, esta correlação seja apenas uma coincidência. 
+\end{itemize}
+
+\end{Slide}
+
+\begin{Slide}{\textit{Lift} ou coeficiente de interesse}
+\begin{equation}
+Lift(X \rightarrow Y) = \frac{Suporte(X \wedge Y)}{Suporte(X) \times Suporte(Y)}
+\end{equation}
+
+\begin{itemize}
+\item \textit{Lift} ou coeficiente de interesse: um valor de \textit{lift} para uma regra ($A
+  \rightarrow B$) superior a 1 indica que $A$ e $B$ acontecem mais
   frequentemente juntos do que o esperado, isso significa que a
   ocorrência de $A$ tem um efeito positivo sobre a ocorrência de $B$.
-\item \textit{Convicção}: este valor indica que a probabilidade do
-  item $A$ ocorrer sem o item $B$ é $X$ vezes menor.
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplos}
+\begin{itemize}
+\item $lift(\{leite\} \rightarrow \{pao\}) = \frac{0,3}{0,4 \times 0,9} = 0,834$
+\item $lift(\{leite\} \rightarrow \{manteiga\}) = \frac{0,3}{0,4
+    \times 0,3} = 2,5$
+\end{itemize}
+
+Assim, fica claro que a ocorrência de $leite$ tem um efeito positivo
+sobre a ocorrência da $manteiga$. Mas isto não se aplica ao $leite$ e $pao$.
+\end{Slide}
+
+\begin{Slide}{Medida Lift}
+%A medidade de interesse \textit{lift} é uma das mais utilizadas para
+%avaliar dependências. 
+Dada uma regra de associação $A \rightarrow B$,
+esta medida indica o quanto mais freqüente torna-se $B$ quando ocorre
+$A$.
+
+\begin{itemize}
+\item Se $Lift(A \rightarrow B) = 1$, então $A$ e $B$ são independentes.
+\item Se $Lift(A \rightarrow B) > 1$, então $A$ e $B$ são positivamente
+dependentes.
+\item Se $Lift(A \rightarrow B) < 1$, $A$ e $B$ são negativamente dependentes.
+\end{itemize}
+
+Esta medida varia entre 0 e $\infty$ e possui interpretação simples: \textbf{quanto maior o valor de $Lift$, mais interessante a
+  regra, pois $A$ aumenta $B$}. 
+\end{Slide}
+
+\begin{Slide}{Exemplo básico de uso}
+%\href{https://rawgit.com/fbarth/posGraduacao/master/ExemplosRegrasAssociacao/scripts/exemploBasicoRegras.html}{Exemplo Básico sobre Regras de Associação} 
+ver arquivo scripts/07\_01\_regras\_associacao\_basico.Rmd
+\end{Slide}
+
+\begin{Slide}{Exemplo: \textit{Grocery Store}}
+%\href{https://rawgit.com/fbarth/posGraduacao/master/ExemplosRegrasAssociacao/scripts/exemploGrocery.html}{Exemplo usando um dataset de uma \textit{Grocery Store}}
+ver arquivo scripts/07\_02\_grocery\_store.Rmd
+\end{Slide}
+
+\begin{Slide}{Pontos fortes e fracos}
+\begin{itemize}
+\item \textbf{Fortes}:
+\begin{itemize}
+\item É facilmente aplicável em um volume grande de dados transacionais.
+\item Resultados no formato de regras é fácil de compreender.
+\item É útil na descoberta de padrões implícitos em bases de dados.
+\end{itemize} 
+\newpage
+\item \textbf{Fracos}:
+\begin{itemize}
+\item Não é muito útil para bases pequenas.
+\item Às vezes é difícil separar \textit{insights} de senso comum.
+\item É fácil gerar conclusões incorretas a partir de padrões aleatórios.
+\end{itemize}
 \end{itemize}
 \end{Slide}
 
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
+
+\item Capítulo 5 do livro EMC Education Services, editor. Data
+    Science and Big Data Analytics: Discovering, Analysing,
+    Visualizing and Presenting Data. John Wiley \& Sons, 2015.
+
+\newpage
+
   \item Fabrício Barth. Mineração de regras de associação em
     servidores Web com RapidMiner\footnote{http://fbarth.net.br/materiais/webMining/webUsageMining.pdf}.
-  \item Iah H. Witteh and Eibe Frank. Data Mining: Practical Machine
-    Learning Tools and Techniques (Third Edition), 2011.
-  \item Gonçalves. Regras de Associação e suas Medidas de Interesse
+ \item Gonçalves. Regras de Associação e suas Medidas de Interesse
     Objetivas e Subjetivas. INFOCOMP Journal of Computer Science,
     2005, 4, 26-35.
-  \item \textit{Faceli, Lorena, Gama, Carvalho. Inteligência
-      Artificial: uma abordagem de aprendizado de máquina, 2011.}
+
+\newpage
+
+  \item Data Mining Algorithms in R - Apriori
+    Algorithm. http://en.wikibooks.org/wiki/Data\_Mining\_Algorithms\_In\_R/
+    Frequent\_Pattern\_Mining/The\_Apriori\_Algorithm. Acessado
+    em 13 de junho de 2013.
+
+  \item RDataMining.com: Association
+    Rules. http://www.rdatamining.com/examples/association-rules. Acessado
+    em 13 de junho de 2013.
+
   \end{itemize}
 \end{Slide}
 
-\begin{Slide}{Arquivos RapidMiner utilizados}
-\begin{itemize}
-\item 20121228\_exemplo\_regras\_associacao.rmp
-\item 20121228\_geracao\_regras\_por\_vaga\_fase\_0.rmp
-\item 20121228\_geracao\_regras\_por\_vaga.rmp
-\end{itemize}
-\end{Slide}
 
 \end{document}
 
