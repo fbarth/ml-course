@@ -23,6 +23,7 @@ ou artigos que serão utilizados na disciplina;
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
 * Grocery Store: data("Groceries")
 * Iris dataset: data(iris)
+* SNS Data
 
 ## Slides de suporte
 
