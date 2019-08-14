@@ -11,19 +11,8 @@ foi informado em algum outro documento;
 * **references**: nesta pasta você vai encontrar alguns ebooks 
 ou artigos que serão utilizados na disciplina;
 * **reports**: aqui é o lugar onde os resultados dos exercícios e projetos serão publicados;
-* **scripts**: diretório que possui todos os scripts utilizados em sala de aula.
+* **scripts**: diretório que possui todos os scripts utilizados em sala de aula, e;
 * **slides**: diretório que possui todos os slides utilizados em sala de aula.
-
-## Problemas até o momento discutidos em sala de aula
-
-* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
-* Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
-* Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
-* Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
-* Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
-* Grocery Store: data("Groceries")
-* Iris dataset: data(iris)
-* SNS Data
 
 ## Slides de suporte
 
@@ -37,3 +26,14 @@ ou artigos que serão utilizados na disciplina;
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
 * [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
 * [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
+
+## Problemas até o momento discutidos em sala de aula (versão 2018)
+
+* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
+* Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
+* Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
+* Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
+* Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
+* Grocery Store: data("Groceries")
+* Iris dataset: data(iris)
+* SNS Data
