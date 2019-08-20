@@ -50,5 +50,5 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 ## Observações para o bom andamento da disciplina
 
 É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
-da funcionalidade ~Watching~. Desta forma, todos os alunos terão acesso as notícias, atividades 
+da funcionalidade *Watching*. Desta forma, todos os alunos terão acesso as notícias, atividades 
 e conteúdos novos da disciplina.
