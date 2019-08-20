@@ -20,8 +20,7 @@ um dos objetivos neste semestre será ter exemplos e implementações em Python.
 as duas linguagens de programação (R e Python) como ferramentas de suporte para o processo 
 [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining).
 
-No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](WatsonStudio.html) 
-como ambiente de desenvolvimento para esta disciplina.
+No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) como ambiente de desenvolvimento para esta disciplina.
 
 ## Slides de suporte
 
@@ -47,3 +46,9 @@ como ambiente de desenvolvimento para esta disciplina.
 * Grocery Store: data("Groceries")
 * Iris dataset: data(iris)
 * SNS Data
+
+## Observações para o bom andamento da disciplina
+
+É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
+da funcionalidade ~~Watching~~. Desta forma, todos os alunos terão acesso as notícias, atividades 
+e conteúdos novos da disciplina.
