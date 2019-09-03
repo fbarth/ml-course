@@ -1,0 +1,450 @@
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage[latin1]{inputenc}
+\usepackage[portuges]{babel}
+\usepackage{alltt}
+\usepackage{booktabs}
+
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\usepackage[procnames]{listings}
+\lstset{language=Python, 
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green},
+	procnamekeys={def,class}}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Regressão Linear} 
+\author{Fabrício Barth}
+\institution{}
+\date{Setembro de 2019}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Dados sobre carros}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/fig01_v2.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Código para plotar o exemplo anterior}
+\small
+\begin{lstlisting}
+import matplotlib.pyplot as plt
+cars.plot(kind='scatter', x='speed', y='dist', 
+	style='o')  
+plt.title('Relação entre velocidade e distância')  
+plt.xlabel('Velocidade')  
+plt.ylabel('Distância')  
+plt.show()
+\end{lstlisting}
+\footnote{O DataFrame cars já foi carregado anteriormente.}
+\end{Slide}
+
+
+\begin{Slide}{Relacões entre variáveis}
+\begin{itemize}
+\item Será que existe relação entre a distância com que um carro
+  consegue parar e a velocidade com que ele estava no momento da
+  freada?
+\item Métodos de regressão tentam identificar se existe uma relação
+  entre a variável dependente (o valor que precisa ser predito) e a
+  variável independente.
+\item Distância = variável dependente
+\item Velocidade = variável independente
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Definindo linhas}
+\begin{itemize}
+\item Uma linha pode ser definida na forma de $y = \alpha + \beta \times x$
+\item onde $x$ é a variável independente e $y$ a variável dependente.
+\item $b$ indica quanto a linha cresce a cada incremento de $x$.
+\item A variável $\alpha$ indica o valor de $y$ quando $x = 0$.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{Definindo modelos de regressão linear}
+\begin{itemize}
+\item O objetivo de um algoritmo que cria este tipo de função é definir
+  valores para $\alpha$ e $\beta$ de tal maneira que a linha consiga
+  representar o conjunto de dados. 
+\item Esta linha pode não representar o conjunto de dados
+  perfeitamente. Portanto, é necessário calcular o erro de alguma forma.
+\end{itemize}
+\end{Slide}
+
+
+\begin{Slide}{$distancia = 42.3 + 0 \times velocidade$}
+É uma função válida. Mas é uma função boa?
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/fig02_v2.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{$distancia = 42.3 + 0 \times velocidade$ em Python}
+\small
+\begin{lstlisting}
+y_predicted = cars['speed'].apply(
+	lambda x : 42.3 + 0 * x)
+
+cars.plot(kind='scatter', x='speed', y='dist', 
+	style='o')  
+plt.title('Relação entre velocidade e distância')  
+plt.xlabel('Velocidade')  
+plt.ylabel('Distância')  
+plt.plot(cars['speed'], y_predicted, color='r')
+plt.show()
+\end{lstlisting}
+\end{Slide}
+
+\begin{Slide}{Erro de $distancia = 42.3 + 0 \times velocidade$}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/fig02_anotada.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Determinando o valor de $\alpha$ e $\beta$ em uma
+    regressão linear simples}
+\begin{itemize}
+\item Para estimar os melhores valores para $\alpha$ e
+  $\beta$ é utilizado método chamado de \textbf{ordinary least squares
+    (OLS)}. 
+\item Com este método, os valores de $\alpha$ e $\beta$ são escolhidos
+  para minimizar a soma dos erros ao quadrado, ou seja, a distância
+  vertical entre o valor predito e o valor real.
+\end{itemize}
+
+\begin{equation}
+erro = \sum{(y_{i} - \hat{y}_{i})^{2}}
+\end{equation}
+
+onde, $y_{i}$ é o valor real e $\hat{y}_{i}$ é o valor predito.
+
+\end{Slide}
+
+
+\begin{Slide}{Uma função com um erro menor}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/fig03_v2.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Código em $Python$ para o slide anterior}
+\small
+\begin{lstlisting}
+from sklearn.linear_model import LinearRegression
+model = LinearRegression().fit(
+	cars['speed'].values.reshape(-1,1), 
+	cars['dist'].values.reshape(-1,1))
+y_predicted = model.predict(
+	cars['speed'].values.reshape(-1,1))
+\end{lstlisting}
+\newpage
+\small
+\begin{lstlisting}
+cars.plot(kind='scatter', x='speed', y='dist', 
+	style='o')  
+plt.title('Relação entre velocidade e distância')  
+plt.xlabel('Velocidade')  
+plt.ylabel('Distância')  
+plt.plot(cars['speed'], y_predicted, color='r')
+plt.show()
+\end{lstlisting}
+\end{Slide}
+
+
+\begin{Slide}{Regressão linear múltipla}
+\begin{equation}
+y = \alpha + \beta_{1} \times x_{1} + \beta_{2} \times x_{2} + \cdots
++ \beta_{i} \times x_{i} + e
+\end{equation}
+Podemos utilizar uma equação compactada:
+\begin{equation}
+Y = X \times {\rm \beta} + e 
+\end{equation}
+\end{Slide}
+
+
+\begin{Slide}{Regressão linear múltipla}
+\begin{figure}[htbp]
+\centering 
+\resizebox*{0.8\columnwidth}{0.8\textheight}
+{\includegraphics{figuras/regressaoMult.png}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{Regressão linear múltipla}
+Agora o objetivo é resolver $\hat{{\rm \beta}}$:
+
+\begin{equation}
+{\rm \beta} = (X^{T}X)^{-1} X^{T}Y
+\end{equation}
+
+onde:
+
+\begin{itemize}
+	\item $X^{T}$ é matriz transposta de $X$, e;
+	\item $X^{-1}$ a matriz inversa de $X$.
+\end{itemize}
+\end{Slide}
+
+
+%\begin{Slide}{Implementação em Python}
+%\begin{verbatim}
+%reg <- function(x,y){
+%  x <- as.matrix(x)
+%  x <- cbind(Intercept = 1, x)
+%  solve(t(x) %*% x) %*% t(x) %*% y
+%}
+%\end{verbatim}
+%onde: \texttt{solve()} retorna a matriz inversa, \texttt{t()} calcula a matriz
+%transposta e \texttt{\%*\%} multiplica duas matrizes.
+%\end{Slide}
+
+\begin{Slide}{Encontrando os coeficientes para o problema do carro}
+\begin{lstlisting}
+from sklearn.linear_model import LinearRegression
+model = LinearRegression().fit(
+	cars['speed'].values.reshape(-1,1), 
+	cars['dist'].values.reshape(-1,1))
+\end{lstlisting}
+Este dataset tem apenas uma variável independente. Por isso é necessário fazer o reshape da mesma.
+\end{Slide}
+
+\begin{Slide}{Exemplo de regressão linear simples usando $LinearRegression$}
+\begin{lstlisting}
+from sklearn.linear_model import LinearRegression
+model = LinearRegression().fit(
+	cars['speed'].values.reshape(-1,1), 
+	cars['dist'].values.reshape(-1,1))
+	
+print(model.intercept_)
+print(model.coef_)
+\end{lstlisting}
+\end{Slide}
+
+\begin{Slide}{Avaliação de modelos}
+\begin{lstlisting}
+from sklearn.metrics import mean_squared_error, 
+	r2_score
+rmse = mean_squared_error(cars['dist'], 
+	y_predicted)
+r2 = r2_score(cars['dist'], y_predicted)
+
+print(rmse)
+print(r2)
+\end{lstlisting}
+Da forma como é calculado é bom para avaliar o comportamento dos seus dados no passado, 
+mas não é adequado para avaliar a sua capacidade de generalização.
+\end{Slide}
+
+\begin{Slide}{Exemplo de regressão linear múltipla}
+\small
+\begin{lstlisting}
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, 
+	r2_score, mean_absolute_error
+from sklearn.datasets import load_boston
+boston = load_boston()
+model = LinearRegression().fit(
+	boston['data'], 
+	boston['target'])
+\end{lstlisting}
+\end{Slide}
+
+\begin{Slide}{Exemplo de regressão linear múltipla}
+\small
+\begin{lstlisting}
+print(model.intercept_)
+print(model.coef_)
+\end{lstlisting}
+
+36.45948838508987
+
+[-1.08011358e-01  4.64204584e-02  2.05586264e-02  2.68673382e+00
+-1.77666112e+01  3.80986521e+00  6.92224640e-04 -1.47556685e+00
+3.06049479e-01 -1.23345939e-02 -9.52747232e-01  9.31168327e-03
+-5.24758378e-01]
+
+\end{Slide}
+
+\begin{Slide}{Exemplo de regressão linear múltipla}
+\small
+\begin{lstlisting}
+y_predicted = model.predict(boston['data'])
+
+rmse = mean_squared_error(boston['target'], 
+	y_predicted)
+r2 = r2_score(boston['target'], y_predicted)
+print(rmse)
+print(r2)
+print('Mean Absolute Error:', 
+	mean_absolute_error(
+		boston['target'], y_predicted)) 
+\end{lstlisting}
+\end{Slide}
+
+
+\begin{Slide}{Exemplo de regressão linear múltipla}
+\begin{verbatim}
+21.894831181729206
+0.7406426641094094
+Mean Absolute Error: 3.270862810900314
+\end{verbatim}
+\end{Slide}
+
+\begin{PartSlide}{Exemplos didático para regressão linear e polinomial}
+\end{PartSlide}
+
+\begin{Slide}{Criação dados}
+\begin{figure}[htbp]
+	\centering 
+	\resizebox*{0.9\columnwidth}{0.8\textheight}
+	{\includegraphics{figuras/regPython01.png}}
+\end{figure}
+\end{Slide}
+
+\begin{Slide}{Criação do modelo e uso}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython02.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Outra forma de utilização do modelo}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.8\columnwidth}{0.6\textheight}
+		{\includegraphics{figuras/regPython03.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Plot do modelo}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.8\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython04.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Regressão polinomial}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.75\textheight}
+		{\includegraphics{figuras/regPython05.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Atributos gerados utilizado grau 2}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.5\columnwidth}{0.6\textheight}
+		{\includegraphics{figuras/regPython06.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Utilização do modelo}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython07.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Utilização do modelo}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.35\textheight}
+		{\includegraphics{figuras/regPython08.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Plot do modelo polinomial}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.8\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython09.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Modelo grau 4}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.9\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython10.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Modelo grau 4: resultados}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.7\textheight}
+		{\includegraphics{figuras/regPython11.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Modelo grau 4: plot}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.95\columnwidth}{0.8\textheight}
+		{\includegraphics{figuras/regPython12.png}}
+	\end{figure}
+\end{Slide}
+
+\begin{Slide}{Material de \textbf{consulta}}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{Slide}
+
+\bibliographystyle{plain}
+\bibliography{doutorado,mestrado,publicacoes,atech,posDoutorado,vagas}
+
+\end{document}
+

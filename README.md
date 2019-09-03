@@ -29,7 +29,8 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * [Pré-processamento de dados com R](slides/Aula03-processamentoDadosR/analiseExploratoria_v2.pdf)
 * [Pré-processamento de dados com Python - material incompleto](slides/Aula03-processamentoDadosPython/analiseExploratoria_python.pdf)
 * [Regressão Linear](slides/Aula04-regressao/regressao.pdf)
-* [Design de projetos](slides/Aula03-design/projetoEvalidacao.pdf)
+* [Regressão Linear com Python](slides/Aula04-regressao/regressao_py.pdf)
+* [Design de projetos: validação](slides/Aula03-design/projetoEvalidacao.pdf)
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
@@ -46,6 +47,8 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * Grocery Store: data("Groceries")
 * Iris dataset: data(iris)
 * SNS Data
+* [Cars](data/cars.csv)
+
 
 ## Observações para o bom andamento da disciplina
 
