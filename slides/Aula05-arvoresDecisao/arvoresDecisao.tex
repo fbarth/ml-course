@@ -16,6 +16,21 @@
 \usepackage{booktabs}
 \usepackage{algorithm}
 
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\usepackage[procnames]{listings}
+\lstset{language=Python, 
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green},
+	procnamekeys={def,class}}
+
 %
 % Slides
 % ======
@@ -29,7 +44,7 @@
 \title{Algoritmos Indutores de Árvores de Decisão} 
 \author{Fabrício J. Barth}
 \institution{}
-\date{Maio de 2018}
+\date{Outubro de 2019}
 
 \SlideHeader{}
             {}
@@ -396,7 +411,7 @@ Ganho(A) = \sum_{v \in Valores(A)} \frac{| S_{v}
 \begin{Slide}{Atributo alvo: Species do dataset Iris}
 	Qual é o atributo com maior ganho de informação? 
 
-(Desenvolver um script para cálculo do atributo com maior ganho de informação em R)   
+(Desenvolver um script para cálculo do atributo com maior ganho de informação em Python)   
 
 \end{Slide}
 
@@ -750,6 +765,20 @@ Considere o seguinte conjunto de treinamento:
 %\end{itemize}
 %\end{Slide}
 
+\begin{Slide}{Árvores de decisão e Python}
+	
+	\small
+	\begin{lstlisting}
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris = load_iris()
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(iris.data, iris.target)
+		
+tree.plot_tree(clf.fit(iris.data, iris.target)) 
+	\end{lstlisting}
+\end{Slide}
+
 
 \begin{Slide}{Árvores de decisão e R}
 \begin{alltt}
@@ -780,7 +809,7 @@ Levels: setosa versicolor virginica
 }
 \end{Slide}
 
-\begin{Slide}{Próxima atividade}
+\begin{Slide}{Exemplo de árvore de decisão em R}
 	http://rpubs.com/fbarth/arvoreDecisao
 \end{Slide} 
 
@@ -791,6 +820,10 @@ Levels: setosa versicolor virginica
   \item Tom Mitchell. Machine Learning, 1997. (Capítulo 3)
   \item Russel e Norvig. Inteligência Artificial, 2a. edição,
     capítulo 18.
+   \item https://scikit-learn.org/stable/modules/tree.html
+   
+   \newpage
+   
   \item \emph{Weka} no \emph{R}:
     http://cran.r-project.org/web/packages/RWeka/RWeka.pdf.
   \item Yanchang Zhao. R and Data Mining: Examples and Case
