@@ -45,7 +45,7 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
 * Grocery Store: data("Groceries")
-* Iris dataset: data(iris)
+* Iris dataset: data(iris) ou load_iris()
 * SNS Data
 * [Cars](data/cars.csv)
 
