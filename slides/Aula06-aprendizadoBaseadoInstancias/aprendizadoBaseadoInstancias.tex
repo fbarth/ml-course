@@ -23,6 +23,21 @@
 \newfloat{codigo}{tbp}{lop} 
 \floatname{codigo}{Código} 
 
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\usepackage[procnames]{listings}
+\lstset{language=Python, 
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green},
+	procnamekeys={def,class}}
+
 \begin{document}
 
 %\input{autorHeaders}
@@ -30,7 +45,7 @@
 \title{Aprendizagem Baseada em Instâncias} 
 \author{Fabrício Barth}
 \institution{}
-\date{Outubro de 2018}
+\date{Setembro de 2019}
 
 \SlideHeader{}
             {}
@@ -250,38 +265,79 @@ com mais freqüencia.
 \end{itemize}
 \end{Slide}
 
-\begin{Slide}{Como escolher o melhor k?}
-\begin{itemize}
-	\item Escolher o valor de \textbf{k} é crítico.
-	\item Um \textbf{k} muito pequeno resulta em uma solução que não tolera ruído.
-	\item Um \textbf{k} muito grande vai contra a filosofia do \textbf{KNN}.
-	\item Regra genérica para escolha de k:
-	\begin{equation}
-	k = n^{(1/2)}
-	\end{equation}
-\end{itemize}
+\begin{Slide}{Knn no Python}
+\small
+\begin{lstlisting}
+from sklearn.neighbors import KNeighborsClassifier
 
-%\newslide
-%
-%\begin{itemize}
-%	\item Executar a primeira validação com
-%	\begin{equation}
-%	k = n^{(1/2)}
-%	\end{equation}
-%	\item Medir a acurácia e executar outra validação com $k + 1$ e assim sucessivamente até a nova acurácia não for melhor que a acurácia anterior.
-%\end{itemize}
+knn = KNeighborsClassifier(n_neighbors = k)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)		
+\end{lstlisting}
 	
+\end{Slide}
+
+\begin{Slide}{Como escolher o melhor k?}
+	\begin{itemize}
+		\item Escolher o valor de \textbf{k} é crítico.
+		\item Um \textbf{k} muito pequeno resulta em uma solução que não tolera ruído.
+		\item Um \textbf{k} muito grande vai contra a filosofia do \textbf{KNN}.
+		\item Regra genérica para escolha de k:
+		\begin{equation}
+		k = n^{(1/2)}
+		\end{equation}
+	\end{itemize}
+	
+	\newslide
+	
+	\begin{itemize}
+		\item Executar a primeira validação com
+		\begin{equation}
+		k = n^{(1/2)}
+		\end{equation}
+		\item Medir a acurácia e executar outra validação com $k + 1$ e assim sucessivamente até a nova acurácia não for melhor que a acurácia anterior.
+	\end{itemize}
+	
+\end{Slide}
+
+\begin{Slide}{Outra forma para encontrar K} 
+	\tiny
+\begin{lstlisting}
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+	
+k_range = range(1,15)
+scores = {}
+scores_list = []
+	
+for k in k_range:
+   knn = KNeighborsClassifier(n_neighbors = k)
+   knn.fit(X_train, y_train)
+   y_pred = knn.predict(X_test)
+   scores[k] = metrics.accuracy_score(y_test,
+                    y_pred)
+ scores_list.append(scores[k])	
+\end{lstlisting}
+
+\newpage
+
+\begin{figure}[htbp]
+	\centering 
+	\resizebox*{0.9\columnwidth}{0.75\textheight}
+	{\includegraphics{figuras/accr}}
+\end{figure}
+
 \end{Slide}
 
 \begin{Slide}{Cuidado: normalizar dados}
 	\begin{alltt}
 		normalize <- function(x) \{
-			return ((x - min(x)) / (max(x) - min(x))) 
+		return ((x - min(x)) / (max(x) - min(x))) 
 		\}
 	\end{alltt}
 \end{Slide}
 
-\begin{Slide}{Knn no R}
+\begin{Slide}{Knn no R} 
 	\tiny
 	\begin{alltt}
 	data(iris)
@@ -324,7 +380,9 @@ com mais freqüencia.
 \end{itemize}
 \end{Slide}
 
-\nocite{mit1997}
+\begin{Slide}{Referências}
+	\nocite{mit1997}
+\end{Slide}
 
 \bibliography{doutorado,mestrado}
 \bibliographystyle{apalike}
