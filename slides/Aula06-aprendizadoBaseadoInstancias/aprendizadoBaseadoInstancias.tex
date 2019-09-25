@@ -329,12 +329,43 @@ for k in k_range:
 
 \end{Slide}
 
+\begin{Slide}{Cálculo da distância e identificação do exemplo mais próximo}
+	\centering 
+	\resizebox*{0.8\columnwidth}{0.9\textheight}
+	{\includegraphics{figuras/knn-1}}
+	
+	\newpage
+
+	\centering 
+	\resizebox*{0.8\columnwidth}{0.9\textheight}
+	{\includegraphics{figuras/knn-1-2}}	
+	
+\end{Slide}
+
+
 \begin{Slide}{Cuidado: normalizar dados}
-	\begin{alltt}
-		normalize <- function(x) \{
-		return ((x - min(x)) / (max(x) - min(x))) 
-		\}
-	\end{alltt}
+	
+	\begin{itemize}
+		\item Objetivo: Manter todos os valores entre 0 e 1. 
+		\item Ao utilizar o pacote $sklearn.preprocessing.MinMaxScaler$, a transformação implementada é: 
+		
+		\scriptsize
+		\begin{alltt}
+			X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+			X_scaled = X_std * (max - min) + min
+		\end{alltt}
+		
+		onde, $max$ e $min$ são fornecidos por parâmetro. Os valores $default$ são 1 e 0, respectivamente.
+		
+		\item Ver https://github.com/fbarth/ml-espm/blob/master/scripts/python/04\_02\_knn.ipynb
+		
+	\end{itemize}	
+	
+%	\begin{alltt}
+%		normalize <- function(x) \{
+%		return ((x - min(x)) / (max(x) - min(x))) 
+%		\}
+%	\end{alltt}
 \end{Slide}
 
 \begin{Slide}{Knn no R} 
@@ -381,7 +412,11 @@ for k in k_range:
 \end{Slide}
 
 \begin{Slide}{Referências}
+	\begin{itemize}
+	\item https://github.com/fbarth/ml-espm/blob/master/scripts/python/04\_01\_knn.ipynb
+	\item https://github.com/fbarth/ml-espm/blob/master/scripts/python/04\_02\_knn.ipynb
 	\nocite{mit1997}
+	\end{itemize} 
 \end{Slide}
 
 \bibliography{doutorado,mestrado}
