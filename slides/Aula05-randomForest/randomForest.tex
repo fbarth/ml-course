@@ -76,6 +76,36 @@ Para problemas de classificação e regressão o algoritmo funciona da seguinte for
 \end{itemize}	
 \end{Slide}
 
+\begin{Slide}{Particularidades de implementação no sklearn}
+	\scriptsize
+	\begin{alltt}
+	max\_features : int, float, string or None, optional (default="auto")
+	The number of features to consider when looking for the best split:
+	
+	If int, then consider max\_features features at each split.
+	If float, then max\_features is a fraction and int(max_features * n\_features) features are considered at each split.
+	If "auto", then max\_features=sqrt(n\_features).
+	If "sqrt", then max\_features=sqrt(n\_features) (same as ?auto?).
+	If "log2", then max\_features=log2(n\_features).
+	If None, then max\_features=n\_features.
+\end{alltt}
+
+\newpage
+
+\begin{alltt}
+	max\_depth : integer or None, optional (default=None)
+	The maximum depth of the tree. If None, then nodes are expanded 
+	until all leaves are pure or until all leaves contain less than
+	min\_samples\_split samples.
+	
+	warm\_start : bool, optional (default=False)
+	When set to True, reuse the solution of the previous call to fit 
+	and add more estimators to the ensemble, otherwise, just fit a 
+	whole new forest.
+\end{alltt}
+
+\end{Slide}
+
 \begin{Slide}{Estimativa de erro}
 	\begin{itemize}
 		\item Uma estimativa de erro, usando apenas o conjunto de treinamento, pode ser obtida através do conjunto de treinamento. Ao invés de ser utilizado algum outro método, como \textit{cross-validation}.
@@ -83,7 +113,9 @@ Para problemas de classificação e regressão o algoritmo funciona da seguinte for
 	\end{itemize}
 \end{Slide}
 
-\begin{Slide}{Exemplo}
+\begin{Slide}{Exemplos}
+	
+	https://github.com/fbarth/ml-espm/blob/master/scripts/python/05\_01\_random\_forest.ipynb
 	
 \end{Slide}
 
@@ -93,6 +125,8 @@ Para problemas de classificação e regressão o algoritmo funciona da seguinte for
   \item Liaw and Wiener. Classification and Regression by randomForest. R News 2 (3): 18--22 (2002)
   \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/~breiman/RandomForests/
   \item http://rpubs.com/fbarth/exemploRandomForest
+  \item https://scikit-learn.org/stable/modules/generated/
+  sklearn.ensemble.RandomForestClassifier.html
   \end{itemize}
 \end{Slide}
 
