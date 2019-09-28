@@ -37,7 +37,23 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
 * [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
-## Problemas até o momento discutidos em sala de aula (versão 2018)
+## Listas de exercícios
+
+As listas de exercícios abaixo não são obrigatórias. No entanto, é fortemente recomendado 
+que os participantes da disciplina façam os exercícios destas listas. Trata-se de uma excelente
+ferramenta para exercitar os conceitos vistos em sala de aula.   
+
+* [Lista 01](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/763da773-c309-4f99-8cb2-363cda8e39dd/view?access_token=0aef62cca019dde4f1af2b6ee05f1bc9d00741b2c1217e7c2a5c4e2bcc148b83)
+
+* [Lista 02](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/71e4391f-12f7-4c83-b296-8e71bc78a724/view?access_token=ac671b79eab7a3773710ccc991f561e7009de7c42fcbdebac7dcf7f8205e3503)
+
+## Observações para o bom andamento da disciplina
+
+É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
+da funcionalidade *Watching*. Desta forma, todos os alunos terão acesso as notícias, atividades 
+e conteúdos novos da disciplina.
+
+## Problemas até o momento discutidos em sala de aula (versão 2018 e 2019)
 
 * Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
 * Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
@@ -48,10 +64,3 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * Iris dataset: data(iris) ou load_iris()
 * SNS Data
 * [Cars](data/cars.csv)
-
-
-## Observações para o bom andamento da disciplina
-
-É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
-da funcionalidade *Watching*. Desta forma, todos os alunos terão acesso as notícias, atividades 
-e conteúdos novos da disciplina.
