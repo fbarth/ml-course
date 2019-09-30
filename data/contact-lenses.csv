@@ -1,24 +1,3 @@
-jovem,miope,nao,reduzido,nenhuma
-jovem,miope,nao,normal,fraca
-jovem,miope,sim,reduzido,nenhuma
-jovem,miope,sim,normal,forte
-jovem,hipermetrope,nao,reduzido,nenhuma
-jovem,hipermetrope,nao,normal,fraca
-jovem,hipermetrope,sim,reduzido,nenhuma
-jovem,hipermetrope,sim,normal,forte
-adulto,miope,nao,reduzido,nenhuma
-adulto,miope,nao,normal,fraca
-adulto,miope,sim,reduzido,nenhuma
-adulto,miope,sim,normal,forte
-adulto,hipermetrope,nao,reduzido,nenhuma
-adulto,hipermetrope,nao,normal,fraca
-adulto,hipermetrope,sim,reduzido,nenhuma
-adulto,hipermetrope,sim,normal,nenhuma
-idoso,miope,nao,reduzido,nenhuma
-idoso,miope,nao,normal,nenhuma
-idoso,miope,sim,reduzido,nenhuma
-idoso,miope,sim,normal,forte
-idoso,hipermetrope,nao,reduzido,nenhuma
-idoso,hipermetrope,nao,normal,fraca
-idoso,hipermetrope,sim,reduzido,nenhuma
-idoso,hipermetrope,sim,normal,nenhuma
+version https://git-lfs.github.com/spec/v1
+oid sha256:0529d0317a878ef9371e5e82a2f190224d3bf530a4d46f0451bba6ec0d2b353c
+size 842
