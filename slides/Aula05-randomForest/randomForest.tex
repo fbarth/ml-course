@@ -62,6 +62,7 @@
 \begin{itemize}
 	\item Métodos que geram diversos modelos e agregam o seu resultado.
 	\item No caso do Random Forest, são geradas diversas árvores e cada árvore é gerada considerando apenas um sub-conjunto do conjunto de treinamento.
+	\item Este tipo de algoritmo também é chamado de \textit{Bootstrap Aggregating} ou \textbf{\textit{Bagging}}.
 \end{itemize}
 \end{Slide}
 
@@ -197,13 +198,37 @@ CV_rfc.fit(X_train, y_train)
 	\end{itemize}
 \end{Slide}
 
+\begin{Slide}{Exemplo de código}
+	https://github.com/fbarth/ml-espm/blob/master/scripts/python/05\_02\_random\_forest.ipynb
+\end{Slide}
+
+\begin{Slide}{Considerações finais}
+	\begin{itemize}
+		\item Em comparação com as árvores de decisão, o que se perde é a estrutura simples e interpretável; o que se ganha é o aumento da precisão. 
+	\end{itemize}
+	
+\end{Slide}
+
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
+  	
+  	 \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/~breiman/RandomForests/
+  	 
   \item Liaw and Wiener. Classification and Regression by randomForest. R News 2 (3): 18--22 (2002)
-  \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/~breiman/RandomForests/
-  \item http://rpubs.com/fbarth/exemploRandomForest
+  
+  \newpage
+  
   \item https://scikit-learn.org/stable/modules/generated/
   sklearn.ensemble.RandomForestClassifier.html
+  
+  \item https://scikit-learn.org/stable/modules/generated/
+  sklearn.model\_selection.GridSearchCV.html
+  
+  \item https://scikit-learn.org/stable/modules/generated/
+  sklearn.model\_selection.RandomizedSearchCV.html
+ 
+  \item http://rpubs.com/fbarth/exemploRandomForest
+  
   \end{itemize}
 \end{Slide}
 
