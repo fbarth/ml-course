@@ -999,15 +999,42 @@ Levels: setosa versicolor virginica
 		
 		\item A variância de $y$, a variável alvo, em cada subconjunto $D_{L}$ e $D_{R}$. é sempre menor ou igual à variância de $y$ antes da divisão. 
 		
+		\newpage
+		
 		\item Podemos estimar a redução em variância obtida pela aplicação do teste $h_{A}$:  
 		
-		\item \textbf{TODO}
+		\begin{eqnarray}
+		SDR(h_{A}) = sd(D,y) - \frac{n_{L}}{n} \times sd(D_{L}, y) - \frac{n_{R}}{n} \times sd(D_{R}, y) \nonumber
+		\end{eqnarray}
+		
+		\item Para cada atributo, e para cada possível teste no valor do atributo, é calculada a redução da variância associada a esse teste. 
+		
+		\item O teste que provoca uma maior redução em variância é escolhido como teste para o nó. 
 		
 	\end{itemize}
 \end{Slide}
 
 \begin{Slide}{Cálculo do valor do nodo de retorno}
+
+\begin{itemize}
+	\item O valor de cada nó folha recebe o valor médio dos exemplos que estão naquela folha. 
+\end{itemize}	
 	
+\end{Slide}
+
+\begin{Slide}{Exemplo de código}
+\scriptsize
+\begin{lstlisting}
+from sklearn.datasets import load_boston
+from sklearn.model_selection import 
+  cross_val_score
+from sklearn.tree import DecisionTreeRegressor
+boston = load_boston()
+regressor = DecisionTreeRegressor(
+  random_state=0, max_depth=2)
+model = regressor.fit(
+  boston.data, boston.target)
+\end{lstlisting}
 \end{Slide}
 
 
@@ -1016,13 +1043,14 @@ Levels: setosa versicolor virginica
 
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
-  \item Tom Mitchell. Machine Learning, 1997. (Capítulo 3)
+  \item Faceli et all. Inteligência Artificial: uma abordagem de Aprendizado de Máquina. Editora LTC. 2011.
   \item Russel e Norvig. Inteligência Artificial, 2a. edição,
     capítulo 18.
    \item https://scikit-learn.org/stable/modules/tree.html
    
    \newpage
-   
+
+  \item Tom Mitchell. Machine Learning, 1997. (Capítulo 3)   
   \item \emph{Weka} no \emph{R}:
     http://cran.r-project.org/web/packages/RWeka/RWeka.pdf.
   \item Yanchang Zhao. R and Data Mining: Examples and Case

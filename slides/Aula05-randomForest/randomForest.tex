@@ -16,6 +16,21 @@
 \usepackage{booktabs}
 \usepackage{algorithm}
 
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\usepackage[procnames]{listings}
+\lstset{language=Python, 
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green},
+	procnamekeys={def,class}}
+
 %
 % Slides
 % ======
@@ -120,17 +135,67 @@ Para problemas de classificação e regressão o algoritmo funciona da seguinte for
 \end{Slide}
 
 
-\begin{Slide}{Hiper-parâmetros}
+\begin{Slide}{Hiperparâmetros}
+	
+	Um modelo de Random Forest tem os seguintes hiperparâmetros: 
+	
 	\begin{itemize}
-		\item n\_estimators = number of trees in the foreset
-		\item max\_features = max number of features considered for splitting a node
-		\item max\_depth = max number of levels in each decision tree
-		\item min\_samples\_split = min number of data points placed in a node before the node is split
-		\item min\_samples\_leaf = min number of data points allowed in a leaf node
-		\item bootstrap = method for sampling data points (with or without replacement)
+		\item n\_estimators = número de árvores na floresta. 
+		\item max\_features = número máximo de atributos considerados na seleção de um atributo.
+		\item max\_depth = número máximo de níveis em cada árvore de decisão.
+		
+		\newpage
+		
+		\item min\_samples\_split = número mínimo de exemplos que devem ser considerados antes de cada divisão de nodo.
+		\item min\_samples\_leaf = número mínimo de exemplos em cada nodo final.
+		\item bootstrap = método para amostragem de exemplos (com ou sem \textit{replacement})
 	\end{itemize}
 \end{Slide}
 
+\begin{Slide}{GridSearch}
+\tiny
+\begin{lstlisting}
+from sklearn.model_selection import GridSearchCV
+param_grid = { 
+ 'n_estimators': [100, 200, 500, 600, 800, 1000],
+ 'max_features': ['auto', 'sqrt', 'log2'],
+ 'max_depth' : [5,10,50,100,150,None]
+}
+rfc=RandomForestClassifier(random_state=4)
+CV_rfc = GridSearchCV(
+ estimator=rfc, param_grid=param_grid, 
+ cv= 3, verbose=1, n_jobs=4)
+CV_rfc.fit(X_train, y_train)
+\end{lstlisting}
+\end{Slide}
+
+\begin{Slide}{GridSearch}
+	\begin{itemize}
+		\item Executa todas as combinações considerando todos os valores de todas as variáveis do \textit{grid}.
+		\item No caso do exemplo anterior, $6 \times 3 \times 6$, que gera 108 modelos possíveis. 
+		\item Além disso, cada modelo é gerado 3 vezes por que o \textit{GridSearchCV} executa uma rotina de cross-validation igual a 3.
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{GridSearch}
+\begin{figure}[htbp]
+	\centering 
+	\resizebox*{1\columnwidth}{0.8\textheight}
+	{\includegraphics{figuras/grid_search}}
+\end{figure}
+\end{Slide}
+
+
+\begin{Slide}{GridSearch e Random SearchCV}
+	\begin{itemize}
+		\item Apesar do processo demorar, o GridSearch retorna a melhor configuração para os parâmetros testados. 
+		
+		\item Ao invés de testar todas as possibilidades, pode-se utilizar o Random SearchCV para testar apenas parte das configurações de forma aleatória.
+		
+		\item o Random SearchCV testa no máximo $n$ combinações, onde $n$ é determinado pelo parâmetro $n\_iter$.
+		
+	\end{itemize}
+\end{Slide}
 
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
