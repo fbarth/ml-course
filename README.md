@@ -47,6 +47,12 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * [Lista 02](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/71e4391f-12f7-4c83-b296-8e71bc78a724/view?access_token=ac671b79eab7a3773710ccc991f561e7009de7c42fcbdebac7dcf7f8205e3503)
 
+## Lista de projetos
+
+* [Projeto 01](https://github.com/fbarth/ml-espm/issues/1): pré-processamento e análise descritiva. Um exemplo de projeto bem implementado pode ser encontrado [aqui](https://hentai-lab.github.io/Machine-Learning/html/Atividade_1.html).
+
+* [Projeto 02](): xxxx
+
 ## Observações para o bom andamento da disciplina
 
 É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
