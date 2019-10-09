@@ -34,8 +34,8 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
-* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf) ~[Este conteúdo não será ministrado na versão 2019/02]~
-* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf) ~[Este conteúdo não será ministrado na versão 2019/02]~
+* ~[Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)~ [Este conteúdo não será ministrado na versão 2019/02]
+* ~[Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)~ [Este conteúdo não será ministrado na versão 2019/02]
 
 ## Listas de exercícios
 
