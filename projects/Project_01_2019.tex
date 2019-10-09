@@ -26,11 +26,13 @@ O objetivo deste projeto é identificar quais clientes de uma instituição finance
 
 \section{Dados}
 
-Para a execução deste projeto você deverá utilizar dois arquivos CSV: 
+Para a execução deste projeto você deverá utilizar três arquivos CSV: 
 
 \begin{itemize}	
-	\item arquivo com variáveis independentes: 
-	\item arquivo com variável dependente:
+	\item arquivo com variáveis independentes para treinar o modelo: data/transacoes\_financeiras\_x\_treinamento.csv
+	\item arquivo com variável dependente para treinar o modelo: data/transacoes\_financeiras\_y\_treinamento.csv
+	\item arquivo de teste com as variáveis independentes: 
+	data/transacoes\_financeiras\_y\_teste.csv
 \end{itemize}
 
 
@@ -41,9 +43,9 @@ Sugere-se seguir as seguintes etapas para a execução desta análise:
 \begin{itemize}
 \item Aquisição, análise exploratória e pré-processamento dos dados; 
 \item Construção do modelo;
-\item Análise do modelo, e;
-\item Preparação do relatório e principais artefatos que devem ser
-  entregues. 
+\item Análise do modelo;
+\item Preparação do relatório com as estimativas de resultados, e;
+\item Geração do arquivo com os resultados para os exemplos no conjunto de teste cego (validação final). 
 \end{itemize}
 
 \section{Itens que devem ser entregues}
@@ -60,16 +62,36 @@ Os seguintes itens devem ser entregues:
 \item conclusão, ou seja, descrição dos resultados encontrados com a
   análise realizada. 
 \end{itemize}
-\item O relatório deve possuir duas figuras que ilustram e sumarizam
-  bem os achados. Cada uma das figuras deve ter um \textit{caption}
-  com uma descrição autocontida da figura.
+\item O relatório deve apresentar os valores de F1-Score obtidos pelos modelos testados. Além de
+apresentar os valores de F1-Score, a equipe deverá explicar qual é a equação e o conceito por trás desta
+equação. Além disso, deve também explicar o motivo de utilizar F1-Score e não acurácia. 
 \item Todos os comandos que fazem parte do script (aquisição, transformação, 
 criação do modelo, avaliação, etc) devem estar presentes no Notebook Python. 
+\item Arquivo texto com as predições para o arquivo de teste (data/transacoes\_financeiras\_y\_teste.csv)
 \end{itemize}
 
 \section{Equipes e prazos}
 
 Este trabalho poderá ser feito em equipes com até três (3) integrantes e deverá
-ser entregue até o dia XX de outubro de 2019 via BlackBoard.
+ser apresentado no dia 23 de outubro de 2019. 
+
+\section{Avaliação}
+
+A avaliação por equipe será composta pelos seguintes atributos:
+
+\begin{enumerate}
+	\item Relatório (60\% nota): o relatório precisa estar completo e correto. Além disso, precisa fazer uso de comentários em markdown para facilitar a leitura. Deve ser objetivo e claro.  
+	\item Apresentação (20\% da nota): a equipe deve apresentar os resultados de forma clara e objetiva, fazendo uso do python notebook para discutir os resultados com os demais alunos da disciplina. 
+	\item Resultado na forma do arquivo com as predições (20\% da nota): 
+	\begin{equation}
+	nota\_predicoes = F1\_score * 0.2
+	\end{equation}
+\end{enumerate}
+
+A nota final do relatório é calculado por:
+
+\begin{equation}
+nota\_final = \frac{6 * relatorio + 2 * apresentacao + 2 * F1\_Score}{10}
+\end{equation}
 
 \end{document}

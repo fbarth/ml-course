@@ -34,8 +34,8 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
-* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
-* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
+* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf) ~[Este conteúdo não será ministrado na versão 2019/02]~
+* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf) ~[Este conteúdo não será ministrado na versão 2019/02]~
 
 ## Listas de exercícios
 
@@ -51,7 +51,16 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * [Projeto 01](https://github.com/fbarth/ml-espm/issues/1): pré-processamento e análise descritiva. Um exemplo de projeto bem implementado pode ser encontrado [aqui](https://hentai-lab.github.io/Machine-Learning/html/Atividade_1.html).
 
-* [Projeto 02](): xxxx
+* [Projeto 02](): desenvolvimento de um modelo preditivo (classificador) que consegue identificar quando um cliente de uma instituição financeira irá ou não executar uma determinada transação. 
+
+## Agenda para os últimos dias da disciplina
+
+* 09/10/2019: entrega do enunciado e execução do projeto 02;
+* 16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;
+* 23/10/2019: entrega e apresentação das soluções para o projeto 02;
+* 30/10/2019: entrega das soluções para o projeto 03;
+* 06/11/2019: avaliação final, e;
+* 04/12/2019: prova substitutiva. 
 
 ## Observações para o bom andamento da disciplina
 
