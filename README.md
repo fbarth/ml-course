@@ -51,7 +51,7 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * [Projeto 01](https://github.com/fbarth/ml-espm/issues/1): pré-processamento e análise descritiva. Um exemplo de projeto bem implementado pode ser encontrado [aqui](https://hentai-lab.github.io/Machine-Learning/html/Atividade_1.html).
 
-* [Projeto 02](): desenvolvimento de um modelo preditivo (classificador) que consegue identificar quando um cliente de uma instituição financeira irá ou não executar uma determinada transação. 
+* [Projeto 02](https://github.com/fbarth/ml-espm/blob/master/projects/Project_01_2019.pdf): desenvolvimento de um modelo preditivo (classificador) que consegue identificar quando um cliente de uma instituição financeira irá ou não executar uma determinada transação. 
 
 ## Agenda para os últimos dias da disciplina
 
