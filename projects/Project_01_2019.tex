@@ -80,18 +80,20 @@ ser apresentado no dia 23 de outubro de 2019.
 A avaliação por equipe será composta pelos seguintes atributos:
 
 \begin{enumerate}
-	\item Relatório (60\% nota): o relatório precisa estar completo e correto. Além disso, precisa fazer uso de comentários em markdown para facilitar a leitura. Deve ser objetivo e claro.  
-	\item Apresentação (20\% da nota): a equipe deve apresentar os resultados de forma clara e objetiva, fazendo uso do python notebook para discutir os resultados com os demais alunos da disciplina. 
+	\item Relatório (60\% nota): o relatório precisa estar completo e correto. Além disso, precisa fazer uso de comentários em markdown para facilitar a leitura. Deve ser objetivo e claro. A nota do relatório pode ser entre 0 e 10.  
+	\item Apresentação (20\% da nota): a equipe deve apresentar os resultados de forma clara e objetiva, fazendo uso do python notebook para discutir os resultados com os demais alunos da disciplina. A nota da apresentação pode ser entre 0 e 10. 
 	\item Resultado na forma do arquivo com as predições (20\% da nota): 
 	\begin{equation}
-	nota\_predicoes = F1\_score * 0.2
+	nota\_predicoes = F1\_score* 0.4
 	\end{equation}
 \end{enumerate}
 
 A nota final do relatório é calculado por:
 
 \begin{equation}
-nota\_final = \frac{6 * relatorio + 2 * apresentacao + 2 * F1\_Score}{10}
+nota\_final = \frac{6 * relatorio + 2 * apresentacao + 10 * nota\_predicoes}{10}
 \end{equation}
+
+Se nenhum dos itens for entregue a nota será zero (0).
 
 \end{document}
