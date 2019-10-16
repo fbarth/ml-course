@@ -53,13 +53,16 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * [Projeto 02](https://github.com/fbarth/ml-espm/blob/master/projects/Project_01_2019.pdf): desenvolvimento de um modelo preditivo (classificador) que consegue identificar quando um cliente de uma instituição financeira irá ou não executar uma determinada transação. 
 
+* [Projeto 03](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/c751db52-6370-4633-938f-a0410fc07e74/view?access_token=b3d438ad4d46d6e1cbe703c24f7bc1845306282abcfb9fc306d48cb81f2ea6a1): desenvolvimento de um modelo de regressão para preços de imóveis na cidade de São Paulo.
+
 ## Agenda para os últimos dias da disciplina
 
 * 09/10/2019: entrega do enunciado e execução do projeto 02;
 * 16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;
 * 23/10/2019: entrega e apresentação das soluções para o projeto 02;
 * 30/10/2019: entrega das soluções para o projeto 03;
-* 06/11/2019: avaliação final, e;
+* 06/11/2019: avaliação final;
+* 27/11/2019: revisão das notas, e;
 * 04/12/2019: prova substitutiva. 
 
 ## Observações para o bom andamento da disciplina
@@ -71,11 +74,11 @@ e conteúdos novos da disciplina.
 ## Problemas até o momento discutidos em sala de aula (versão 2018 e 2019)
 
 * Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
-* Valor de imóvel em São Paulo: data/20140917_imoveis_completo.rda
+* Valor de imóvel em São Paulo: data/20140917_imoveis_filtrados_final.csv_shaped.csv
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
+* SNS Data
 * Grocery Store: data("Groceries")
 * Iris dataset: data(iris) ou load_iris()
-* SNS Data
 * [Cars](data/cars.csv)
