@@ -57,11 +57,13 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 ## Agenda para os últimos dias da disciplina
 
-* 09/10/2019: entrega do enunciado e execução do projeto 02;
-* 16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;
+* ~09/10/2019: entrega do enunciado e execução do projeto 02;~
+* ~16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;~
 * 23/10/2019: execução dos projetos 02 e 03; 
 * 30/10/2019: entrega das soluções para o projeto 03 e execução do projeto 02;
 * 06/11/2019: avaliação final;
+* 13/11/2019: Soul ESPM (mesa redonda sobre AI);
+* 20/11/2019: Feriado
 * 27/11/2019: entrega e apresentação das soluções para o projeto 02, e;
 * 04/12/2019: prova substitutiva. 
 
