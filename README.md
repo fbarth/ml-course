@@ -65,7 +65,7 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 * 13/11/2019: Soul ESPM (mesa redonda sobre AI);
 * 20/11/2019: Feriado
 * 27/11/2019: entrega e apresentação das soluções para o projeto 02, e;
-* 04/12/2019: prova substitutiva. 
+* 04/12/2019: prova complementar. 
 
 ## Observações para o bom andamento da disciplina
 
