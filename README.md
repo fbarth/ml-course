@@ -59,7 +59,7 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * ~09/10/2019: entrega do enunciado e execução do projeto 02;~
 * ~16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;~
-* 23/10/2019: execução dos projetos 02 e 03; 
+* ~23/10/2019: execução dos projetos 02 e 03;~ 
 * 30/10/2019: entrega das soluções para o projeto 03 e execução do projeto 02;
 * 06/11/2019: avaliação final;
 * 13/11/2019: Soul ESPM (mesa redonda sobre AI);
