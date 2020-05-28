@@ -5,24 +5,17 @@ Aprendizagem de Máquina do curso de TECH da ESPM.
 
 Este projeto é composto pelos seguintes diretórios e arquivos: 
 
-* **data**: possui todos os datasets que serão utilizados em sala de aula. Se o 
-dataset do exercício ou projeto não estiver nesta pasta é por que o link do mesmo
-foi informado em algum outro documento;
 * **references**: nesta pasta você vai encontrar alguns ebooks 
 ou artigos que serão utilizados na disciplina;
 * **reports**: aqui é o lugar onde os resultados dos exercícios e projetos serão publicados;
 * **scripts**: diretório que possui todos os scripts utilizados em sala de aula, e;
 * **slides**: diretório que possui todos os slides utilizados em sala de aula.
 
-Todo os exemplos e implementações estão escritos em R. No entanto, devido a recente popularidade
-da linguagem de programação Python para a implementação para projetos de aprendizagem de máquina,
-um dos objetivos neste semestre será ter exemplos e implementações em Python. Além disso, comparar
-as duas linguagens de programação (R e Python) como ferramentas de suporte para o processo 
-[CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining).
+Todo os exemplos e implementações estão escritos em Python ou R. Os projetos desta disciplina seguem o processo [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining).
 
-No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) como ambiente de desenvolvimento para esta disciplina.
+No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) e [Anaconda](https://www.anaconda.com/) como ambientes de desenvolvimento para esta disciplina.
 
-## Slides de suporte
+## Slides da disciplina
 
 * [Aprendizagem de Máquina](slides/Aula01-aprendizagemMaquina/aIntroducao.pdf)
 * [Processo de KDD](slides/Aula02-processo-kdd/bigDataCienciaDadosKDD.pdf)
@@ -33,9 +26,11 @@ No segundo semestre de 2019 vamos utilizar a ferramenta [Watson Studio](https://
 * [Design de projetos: validação](slides/Aula03-design/projetoEvalidacao.pdf)
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Random Forest](slides/Aula05-randomForest/randomForest.pdf)
+* [XGBoost]()
+* [Como tratar datasets desbalanceados]()
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
-* ~[Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)~ [Este conteúdo não será ministrado na versão 2019/02]
-* ~[Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)~ [Este conteúdo não será ministrado na versão 2019/02]
+* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
+* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
 ## Listas de exercícios
 
@@ -54,19 +49,6 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 * [Projeto 02](https://github.com/fbarth/ml-espm/blob/master/projects/Project_01_2019.pdf): desenvolvimento de um modelo preditivo (classificador) que consegue identificar quando um cliente de uma instituição financeira irá ou não executar uma determinada transação. 
 
 * [Projeto 03](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/c751db52-6370-4633-938f-a0410fc07e74/view?access_token=b3d438ad4d46d6e1cbe703c24f7bc1845306282abcfb9fc306d48cb81f2ea6a1): desenvolvimento de um modelo de regressão para preços de imóveis na cidade de São Paulo.
-
-## Agenda para os últimos dias da disciplina
-
-* ~09/10/2019: entrega do enunciado e execução do projeto 02;~
-* ~16/10/2019: entrega do enunciado do projeto 03 e execução dos projetos 02 e 03;~
-* ~23/10/2019: execução dos projetos 02 e 03;~ 
-* ~30/10/2019: entrega das soluções para o projeto 03 e execução do projeto 02;~
-* ~06/11/2019: avaliação final;~
-* ~13/11/2019: Soul ESPM (mesa redonda sobre AI);~
-* ~20/11/2019: Feriado;~
-* 27/11/2019: entrega e apresentação das soluções para o projeto 02;
-* 04/12/2019: prova substitutiva, e;
-* 09/12/2019: prova complementar. 
 
 ## Observações para o bom andamento da disciplina
 
