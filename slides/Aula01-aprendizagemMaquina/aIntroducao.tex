@@ -29,7 +29,7 @@
 \title{Aprendizagem de máquina} 
 \author{Fabrício Barth}
 \institution{}
-\date{Agosto de 2019}
+\date{Maio de 2020}
 
 \SlideHeader{}
             {}
@@ -57,6 +57,7 @@
 \item Hierarquia de aprendizado.
 \item Exemplos de aprendizagem supervisionada (modelos preditivos).
 \item Exemplos de aprendizagem não supervisionada (modelos descritivos).
+\item Exemplo de aprendizagem por reforço
 \item Referências e exercícios.
 \end{itemize}
 \end{Slide}
@@ -70,19 +71,56 @@
   aprender sem serem explicitamente programados [Arthur Samuel
   (1959)].
 
-\item Área de estudo que permite desenvolver sistemas computacionais sem explicitamente programá-los.   
+\end{itemize}
 
+\newpage
+
+
+\textbf{Abstração} para a maioria dos sistemas hoje em produção. 
+
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{0.8\columnwidth}{0.3\textheight}
+		{\includegraphics{figures/aplicacoesAm_1.png}}
+		%\caption{X}
+		%\label{fig:X}
+	\end{figure}
+
+\textbf{Método normalmente empregado}:
+
+\begin{itemize}
+	\item Identificação dos requisitos.
+	\item Especificação das regras.
+	\item Implementação das regras.
+	\item Validação da implementação. 
+	\item \textit{Deploy} em produção.
+\end{itemize}
+
+\newpage
+
+O que fazer quando não se sabe as regras \textbf{a priori}? 
+
+Exemplos de soluções onde é muito difícil ou impossível determinar todas as regras a priori. 
+
+\begin{itemize}
+	\item Sistemas de Recomendação.
+	\item Sistemas para identificação de spam.
+	\item Sistemas para identificação de fake news.
+	\item Jogadores de Xadrez, Shogi ou Go.
+	\item Sistema para identificação de fraude.
 \end{itemize}
 
 \newpage
 
 	\begin{figure}[htbp]
-		\centering 
-		\resizebox*{0.9\columnwidth}{1\textheight}
-		{\includegraphics{figures/aplicacoesAm.png}}
-		%\caption{X}
-		%\label{fig:X}
-	\end{figure}
+	\centering 
+	\resizebox*{0.9\columnwidth}{0.8\textheight}
+	{\includegraphics{figures/aplicacoesAm_2.png}}
+	%\caption{X}
+	%\label{fig:X}
+\end{figure}
+
+
 \end{Slide}
 
 \begin{Slide}{O que é Aprendizagem de Máquina?}
@@ -119,13 +157,15 @@ Tom Mitchell?
 \begin{Slide}{Hierarquia de aprendizado}
 \begin{figure}[htbp]
 \centering 
-\resizebox*{1\columnwidth}{0.6\textheight}
+\resizebox*{1\columnwidth}{0.7\textheight}
 {\includegraphics{figures/hierarquiaAM.png}}
 %\caption{X}
 %\label{fig:X}
 \end{figure}
 \end{Slide}
 
+\begin{PartSlide}{Aprendizagem de Máquina Supervisionada}
+\end{PartSlide}
 
 \begin{Slide}{Exemplos de aprendizagem supervisionada}
 \begin{itemize}
@@ -190,6 +230,8 @@ problema deve ser tratado como problema de classificação?
 \end{itemize}
 \end{Slide}
 
+\begin{PartSlide}{Aprendizagem de Máquina Não Supervisionada}
+\end{PartSlide}
 
 \begin{Slide}{Exemplos de aprendizagem não supervisionada}
 \begin{itemize}
@@ -200,6 +242,14 @@ problema deve ser tratado como problema de classificação?
   informação.
 \item Em uma rede social, identificar sub-grupo de pessoas.   
 \end{itemize}
+\end{Slide}
+
+\begin{Slide}{Exemplo de identificação de grupos em redes sociais}
+	\begin{figure}[htbp]
+		\centering 
+		\resizebox*{1\columnwidth}{0.8\textheight}
+		{\includegraphics{figures/agrupamentoRede.png}}
+	\end{figure}
 \end{Slide}
 
 \begin{Slide}{Exemplos de aprendizagem não supervisionada}
@@ -230,14 +280,6 @@ $user_{n}$ & 1& 1& 0& $\cdots$& 1\\
 \end{table}
 \end{Slide}
 
-\begin{Slide}{Exemplo de identificação de grupos em redes sociais}
-\begin{figure}[htbp]
-\centering 
-\resizebox*{1\columnwidth}{0.8\textheight}
-{\includegraphics{figures/agrupamentoRede.png}}
-\end{figure}
-\end{Slide}
-
 \begin{Slide}{Exercícios}
 Quais dos problemas abaixo você iria resolver com uma abordagem não
 supervisionada de aprendizagem?
@@ -254,6 +296,37 @@ supervisionada de aprendizagem?
 \end{Slide}
 
 
+\begin{PartSlide}{Aprendizagem por Reforço}
+\end{PartSlide}
+
+\begin{Slide}{Visão Geral}
+	\small
+	Um agente aprende a resolver uma tarefa através de repetidas interações com o ambiente, por tentativa e erro, recebendo 
+	(esporadicamente) reforços (punições ou recompensas) como retorno.
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{figures/visaoGeral.png}
+	\end{center}
+\end{Slide}
+
+\begin{Slide}{Visão Geral}
+	\begin{itemize}
+		\item Este agente não tem conhecimento algum sobre a tarefa que precisa executar (heurísticas ou funções de utilidade específicas).
+		\item A \textbf{tarefa} deste agente é executar uma \textbf{sequência de ações}, observar as suas \textbf{consequências} e aprender uma \textbf{política de controle}.
+		
+		\newpage
+		
+		\item A política de controle desejada é aquela que \textbf{maximiza} os reforços (\textit{reward}) acumulados ao longo do tempo pelo agente: $r_{0} + \gamma r_{1} + \gamma^{2} r_{2} + \cdots $ onde $0 \leq \gamma < 1$.
+	\end{itemize}
+	
+	\hspace{1cm}
+	
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{figures/sequencia.png}
+	\end{center}
+	
+\end{Slide}
+
+
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
   \item Tom Mitchell. Machine Learning, 1997.
@@ -263,6 +336,7 @@ supervisionada de aprendizagem?
   
   \newpage
   
+  \item Richard Sutton and Andrew Barto. Reinforcement Learning: An Introduction. Second Edition, in progress. The MIT Press, 2015.
   \item Andrew Ng. Machine Learning. Coursera. https://www.coursera.org/learn/machine-learning
   \item \textit{Faceli, Lorena, Gama, Carvalho. Inteligência
       Artificial: uma abordagem de aprendizado de máquina, 2011.}

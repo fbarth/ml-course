@@ -200,7 +200,7 @@ Exemplo de teste médico:
 \vspace{0.2cm}
 \begin{tabular}{|l|l|l|c|}
 \toprule
-& \textbf{Positivo de fato} & \textbf{Negativo de fato} & \textbf{Precisão}\\
+& \textbf{Positivo de fato} & \textbf{Negativo de fato} & \textbf{Precisão (Precision)}\\
 \midrule
 \textbf{Classificados} & Verdadeiro  & Falso & \\
 \textbf{pelo modelo} & Positivo & Positivo & $VP / (VP + FP)$\\ 
@@ -210,12 +210,31 @@ Exemplo de teste médico:
 \textbf{pelo modelo} & Negativo & Negativo & $VN / (VN + FN)$\\
 \textbf{como negativo} & (FN) & (VN) & \\
 \midrule
-\textbf{Cobertura} & & & Acurácia: \\
+\textbf{Cobertura (Recall)} & & & Acurácia: \\
 & $VP / (VP + FN)$ & $VN / (FP + VN)$ & $(VP + VN) / (FP + FN)$\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{Slide}
+
+\begin{Slide}{F1-score}
+	
+	É uma medida harmônica entre \textit{Precision} e \textit{Recall}:
+	
+	\begin{equation}
+	F1\_score = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+	\end{equation}
+	
+\end{Slide}
+
+\begin{Slide}{Curva ROC: exemplo de uso de gráfico na avaliação de modelos}
+	Análise ROC, do inglês \textit{Receiver Operating Characteristic}, é um método gráfico para avaliação, organização e seleção de sistemas de diagnóstico e/ou predição.
+	
+	Do domínio de Aprendizagem de Máquina, a curva ROC é particularmente útil em casos nos quais existe uma grande desproporção entre as classes ou quando se deve levar em consideração diferentes custos/benefícios para os diferentes erros/acertos de classificação.
+	
+\end{Slide}
+
+
 
 %\begin{Slide}{\textit{Cross-validation}}
 %\begin{figure}[htbp]
