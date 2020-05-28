@@ -16,3 +16,4 @@ Makefile
 _region_.tex
 *.bak
 .ipynb_checkpoints
+data
