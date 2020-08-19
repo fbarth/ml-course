@@ -15,6 +15,19 @@ Todo os exemplos e implementações estão escritos em Python ou R. Os projetos 
 
 No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) ou [Anaconda](https://www.anaconda.com/) como ambientes de desenvolvimento para esta disciplina.
 
+## Datasets que podem ser utilizados nesta disciplina
+
+* German Credit Risk: https://www.kaggle.com/uciml/german-credit
+* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
+* Valor de imóvel em São Paulo: data/20140917_imoveis_filtrados_final.csv_shaped.csv
+* Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
+* Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
+* Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
+* SNS Data: 
+* Grocery Store: data("Groceries")
+* Iris dataset: data(iris) ou load_iris()
+* [Cars](data/cars.csv)
+
 ## Slides da disciplina
 
 * [Aprendizagem de Máquina](slides/Aula01-aprendizagemMaquina/aIntroducao.pdf)
@@ -55,15 +68,3 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
 da funcionalidade *Watching*. Desta forma, todos os alunos terão acesso as notícias, atividades 
 e conteúdos novos da disciplina.
-
-## Problemas até o momento discutidos em sala de aula (versão 2018 e 2019)
-
-* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
-* Valor de imóvel em São Paulo: data/20140917_imoveis_filtrados_final.csv_shaped.csv
-* Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
-* Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
-* Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
-* SNS Data: 
-* Grocery Store: data("Groceries")
-* Iris dataset: data(iris) ou load_iris()
-* [Cars](data/cars.csv)
