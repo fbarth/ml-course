@@ -13,7 +13,7 @@ ou artigos que serão utilizados na disciplina;
 
 Todo os exemplos e implementações estão escritos em Python ou R. Os projetos desta disciplina seguem o processo [CRISP-DM](https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining).
 
-No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) e [Anaconda](https://www.anaconda.com/) como ambientes de desenvolvimento para esta disciplina.
+No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) ou [Anaconda](https://www.anaconda.com/) como ambientes de desenvolvimento para esta disciplina.
 
 ## Slides da disciplina
 
@@ -63,7 +63,7 @@ e conteúdos novos da disciplina.
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
-* SNS Data
+* SNS Data: 
 * Grocery Store: data("Groceries")
 * Iris dataset: data(iris) ou load_iris()
 * [Cars](data/cars.csv)
