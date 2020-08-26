@@ -15,18 +15,21 @@ Todo os exemplos e implementações estão escritos em Python ou R. Os projetos 
 
 No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https://github.com/fbarth/ml-espm/blob/master/WatsonStudio.md) ou [Anaconda](https://www.anaconda.com/) como ambientes de desenvolvimento para esta disciplina.
 
-## Datasets que podem ser utilizados nesta disciplina
+## Datasets que serão utilizados nesta disciplina (versão 2020)
 
-* German Credit Risk: https://www.kaggle.com/uciml/german-credit
-* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data
-* Valor de imóvel em São Paulo: data/20140917_imoveis_filtrados_final.csv_shaped.csv
+* German Credit Risk: https://www.kaggle.com/uciml/german-credit ou dataset/german_credit_data.csv
+* Câncer de mama: https://www.kaggle.com/uciml/breast-cancer-wisconsin-data dataset/breast-cancer-wisconsin.csv
+* Valor de imóvel em São Paulo: dataset/20140917_imoveis_filtrados_final.csv_shaped.csv
 * Madelon dataset: http://archive.ics.uci.edu/ml/datasets/madelon
 * Pump it Up: Data Mining the Water Table: https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/
 * Abalos sísmicos: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
-* SNS Data: 
+* SNS Data: dataset/snsdata.csv
+
+## Datasets de "brinquedo"
+
 * Grocery Store: data("Groceries")
-* Iris dataset: data(iris) ou load_iris()
-* [Cars](data/cars.csv)
+* Iris dataset: data(iris) ou load_iris() ou dataset/iris.csv
+* Cars: dataset/cars.csv
 
 ## Slides da disciplina
 
