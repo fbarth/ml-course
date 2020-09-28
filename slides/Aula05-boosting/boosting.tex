@@ -1,0 +1,154 @@
+%
+% Problemas para identificação de técnicas
+% de representação de conhecimento
+%
+% by Fabrício Jailson Barth 2006
+%
+
+\documentclass[landscape,pdftex]{jomislides}
+
+\slidesmag{5} % escala, qto maior maiores serão as letras/figras/etc.
+
+%\centerslidesfalse
+
+\usepackage{algorithmic}
+\usepackage{alltt}
+\usepackage{booktabs}
+\usepackage{algorithm}
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\usepackage[procnames]{listings}
+\lstset{language=Python, 
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green},
+	procnamekeys={def,class}}
+
+%
+% Slides
+% ======
+%
+
+
+\begin{document}
+
+%\input{autorHeaders}
+
+\title{Ensemble models: Bagging and Boosting} 
+\author{Fabrício Barth}
+\institution{}
+\date{Setembro de 2020}
+
+\SlideHeader{}
+            {}
+\SlideFooter{\theslidepartheading $\;$ --- $\;$ \theslideheading}
+            {\theslide}
+
+\vpagecolor[white]{white}
+
+
+\subtitle{}
+
+\maketitle
+
+\begin{Slide}{Ensemble Learning}
+\begin{itemize}
+	\item Métodos que geram diversos modelos e agregam o seu resultado.
+	\item Basicamente, existem dois tipos:
+	
+	\newpage
+	
+	\begin{itemize}
+		\item \textbf{Bagging}: cria diversos modelos de forma independente e ao realizar uma predição faz uso da média da opinião de todos os modelos. 
+		\item \textbf{Boosting}: cria um modelo robusto a partir da criação e aperfeiçoamento de diversos modelos fracos. Um modelo fraco é inicialmente criado e então o próximo modelo é criado tentando resolver os erros do primeiro modelo e assim sucessivamente.
+	\end{itemize}
+\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Algoritmos do tipo Bagging}
+	\begin{itemize}
+		\item from sklearn.ensemble import RandomForestClassifier 
+		\item from imblearn.ensemble import BalancedRandomForestClassifier
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Algoritmos do tipo Boosting}
+	\begin{itemize}
+		\item AdaBoost 
+		\item Gradient Boost
+		\item XGBoost
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{AdaBoost}
+	\begin{itemize}
+		\item Usa um conjunto de stumps (árvores com só um nível de decisão - um nodo e duas folhas) como modelo. Ou seja, utiliza diversos modelos "fracos" para compor um modelo "forte".
+		\item No entanto, cada stump depende do stump anterior.  Os erros que o primeiro stump comete influencia como o segundo stump é feito e assim sucessivamente. 
+		\item Alguns stumps tem peso superior que outros stumps. 
+		
+		\newpage
+		
+		\item Este é um vídeo que explica de forma muito didática como o algoritmo Adaboost funciona: \textbf{https://www.youtube.com/watch?v=LsK-xG1cLYA}
+		
+		\item Esta é uma aula do professor Patrick Winston no curso de Inteligência Artificial do MIT: \textbf{https://www.youtube.com/watch?v=UHBmv7qCey4} Explica de uma maneira mais formal como a ideia de Boosting funciona.
+		
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{Gradient Boost para problemas de regressão}
+	\begin{itemize}
+		\item A forma de funcionamento do Gradient Boost é muito parecida com a forma de funcionamento do AdaBoost.
+		\item No entanto, ao invés de criar vários stumps, o Gradient Boost cria diversas árvores com profundidade limitada. Até 4, 8 ou 32, por exemplo. 
+		\item A única diferença está no primeiro modelo que é apenas um nodo. Em problemas de regressão é a média do valor a ser predito. Em problemas de classificação é a maioria dos valores no conjunto de treinamento.
+		
+		\newpage
+		
+		\item Cada árvore também depende do erro da árvore anterior, assim como no AdaBoost cada stump depende do stump anterior. 
+		
+		\item Em um problema de regressão, cada árvore calcula o valor pseudo residual\footnote{para diferenciar do conceito de resíduo de uma regressão linear} (o erro) do modelo anterior. 
+		
+		\item O algoritmo Gradient Boost faz uso de um \textit{Learning rate} (uma valor entre 0 e 1)  para fazer com que o algoritmo possa ir aos poucos para a direção certa, ou seja, para o valor predito certo. 
+		
+		\newpage
+		
+		\item Outro vídeo que explica de forma muito didática como o algoritmo em questão funciona: \textbf{https://www.youtube.com/watch?v=3CC4N4z3GJc}
+		 
+	\end{itemize}
+\end{Slide}	
+
+\begin{Slide}{Referências}
+	\begin{itemize}
+		\item https://scikit-learn.org/stable/modules/ensemble.html\#adaboost
+		\item AdaBoost: https://www.youtube.com/watch?v=LsK-xG1cLYA
+		\item Learning: Boosting. MIT 6.034 Artificial Intelligence, Fall 2010. Instructor: Patrick Winston. https://www.youtube.com/watch?v=UHBmv7qCey4
+		\item 
+	\end{itemize}
+\end{Slide}
+
+\begin{Slide}{GridSearch}
+\tiny
+\begin{lstlisting}
+from sklearn.model_selection import GridSearchCV
+param_grid = { 
+ 'n_estimators': [100, 200, 500, 600, 800, 1000],
+ 'max_features': ['auto', 'sqrt', 'log2'],
+ 'max_depth' : [5,10,50,100,150,None]
+}
+rfc=RandomForestClassifier(random_state=4)
+CV_rfc = GridSearchCV(
+ estimator=rfc, param_grid=param_grid, 
+ cv= 3, verbose=1, n_jobs=4)
+CV_rfc.fit(X_train, y_train)
+\end{lstlisting}
+\end{Slide}
+
+
+\end{document}
+

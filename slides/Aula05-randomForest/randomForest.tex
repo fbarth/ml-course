@@ -44,7 +44,7 @@
 \title{Random Forest} 
 \author{Fabrício Barth}
 \institution{}
-\date{Agosto de 2019}
+\date{Agosto de 2020}
 
 \SlideHeader{}
             {}
@@ -149,7 +149,7 @@ Para problemas de classificação e regressão o algoritmo funciona da seguinte for
 		
 		\item min\_samples\_split = número mínimo de exemplos que devem ser considerados antes de cada divisão de nodo.
 		\item min\_samples\_leaf = número mínimo de exemplos em cada nodo final.
-		\item bootstrap = método para amostragem de exemplos (com ou sem \textit{replacement})
+		\item bootstrap = método para amostragem de exemplos (com ou sem \textit{replacement}). O default é $True$, ou seja, com \textit{replacement}. 
 	\end{itemize}
 \end{Slide}
 
@@ -202,19 +202,27 @@ CV_rfc.fit(X_train, y_train)
 	https://github.com/fbarth/ml-espm/blob/master/scripts/python/05\_02\_random\_forest.ipynb
 \end{Slide}
 
+\begin{Slide}{Implementação de RandomForest para problemas desbalanceados}
+	\begin{itemize}
+		\item imblearn.ensemble.BalancedRandomForestClassifier
+		\item Esta implementação faz under-sample para balancear o conjunto de treinamento em cada seleção de exemplos para construção de cada uma das árvores da floresta.
+	\end{itemize}
+\end{Slide}
+
 \begin{Slide}{Considerações finais}
 	\begin{itemize}
-		\item Em comparação com as árvores de decisão, o que se perde é a estrutura simples e interpretável; o que se ganha é o aumento da precisão. 
+		\item Em comparação com as árvores de decisão, o que se perde é a estrutura simples e interpretável; o que se ganha é a redução de \textit{overfitting}. 
 	\end{itemize}
-	
 \end{Slide}
 
 \begin{Slide}{Material de \textbf{consulta}}
   \begin{itemize}
   	
-  	 \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/~breiman/RandomForests/
+  	 \item Breiman and Cutler. Random Forests. Acessado em https://www.stat.berkeley.edu/\~breiman/RandomForests/
   	 
   \item Liaw and Wiener. Classification and Regression by randomForest. R News 2 (3): 18--22 (2002)
+  
+  \item https://scikit-learn.org/stable/modules/ensemble.html\#forest
   
   \newpage
   
