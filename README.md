@@ -52,8 +52,9 @@ No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https:
 * [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
 * [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
-* [Como tratar datasets desbalanceados]()
-* [Engenharia de atributos]()
+* [Engenharia de atributos](slides/Aula10-eng-atributos/README.md)
+* [Como tratar datasets desbalanceados](slides/Aula11-dataset-desbalanceados/README.md)
+
 
 ## Listas de exercícios
 
