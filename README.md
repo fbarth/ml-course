@@ -35,18 +35,25 @@ No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https:
 
 * [Aprendizagem de Máquina](slides/Aula01-aprendizagemMaquina/aIntroducao.pdf)
 * [Processo de KDD](slides/Aula02-processo-kdd/bigDataCienciaDadosKDD.pdf)
+
 * [Pré-processamento de dados com R](slides/Aula03-processamentoDadosR/analiseExploratoria_v2.pdf)
 * [Pré-processamento de dados com Python - material incompleto](slides/Aula03-processamentoDadosPython/analiseExploratoria_python.pdf)
+
 * [Regressão Linear](slides/Aula04-regressao/regressao.pdf)
 * [Regressão Linear com Python](slides/Aula04-regressao/regressao_py.pdf)
+
 * [Design de projetos: validação](slides/Aula03-design/projetoEvalidacao.pdf)
+
 * [Árvores de decisão](slides/Aula05-arvoresDecisao/arvoresDecisao.pdf)
 * [Ensemble Models: Bagging and Boosting](slides/Aula05-boosting/boosting.pdf)
 * [Bagging: Random Forest](slides/Aula05-randomForest/randomForest.pdf)
-* [Como tratar datasets desbalanceados]()
+
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
 * [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
 * [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
+
+* [Como tratar datasets desbalanceados]()
+* [Engenharia de atributos]()
 
 ## Listas de exercícios
 
