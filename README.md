@@ -53,7 +53,7 @@ No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https:
 * [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
 * [Engenharia de atributos](slides/Aula10-eng-atributos/README.md)
-* [Como tratar datasets desbalanceados](slides/Aula11-dataset-desbalanceados/README.md)
+* [Como tratar datasets desbalanceados](slides/Aula11-dataset-desbalanceados/datasets-desbalanceados.ipynb)
 
 
 ## Avaliações antigas - anteriores a 2020/2
