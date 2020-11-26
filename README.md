@@ -33,11 +33,17 @@ No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https:
 
 ## Slides da disciplina
 
+### Introdução
+
 * [Aprendizagem de Máquina](slides/Aula01-aprendizagemMaquina/aIntroducao.pdf)
 * [Processo de KDD](slides/Aula02-processo-kdd/bigDataCienciaDadosKDD.pdf)
 
+### Pré-processamento e análise descritiva
+
 * [Pré-processamento de dados com R](slides/Aula03-processamentoDadosR/analiseExploratoria_v2.pdf)
 * [Pré-processamento de dados com Python - material incompleto](slides/Aula03-processamentoDadosPython/analiseExploratoria_python.pdf)
+
+### Aprendizagem de Máquina Supervisionada
 
 * [Regressão Linear](slides/Aula04-regressao/regressao.pdf)
 * [Regressão Linear com Python](slides/Aula04-regressao/regressao_py.pdf)
@@ -49,11 +55,14 @@ No segundo semestre de 2020 vamos utilizar as ferramentas [Watson Studio](https:
 * [Bagging: Random Forest](slides/Aula05-randomForest/randomForest.pdf)
 
 * [Aprendizado Baseado em Instâncias](slides/Aula06-aprendizadoBaseadoInstancias/aprendizadoBaseadoInstancias.pdf)
-* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
-* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
 * [Engenharia de atributos](slides/Aula10-eng-atributos/README.md)
 * [Como tratar datasets desbalanceados](slides/Aula11-dataset-desbalanceados/datasets-desbalanceados.ipynb)
+
+### Aprendizagem de Máquina Não Supervisionada
+
+* [Algoritmos de Agrupamento](slides/Aula07-agrupamento/agrupamento.pdf)
+* [Regras de Associação](slides/Aula08-regrasAssociacao/regrasAssociacao.pdf)
 
 
 ## Avaliações antigas - anteriores a 2020/2
