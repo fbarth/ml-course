@@ -90,3 +90,8 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
 da funcionalidade *Watching*. Desta forma, todos os alunos terão acesso as notícias, atividades 
 e conteúdos novos da disciplina.
+
+## Referências adicionais
+
+* [Referências adicionais no padlet](https://padlet.com/fabriciobarth/3ssm8hqgdhj5sesl)
+
