@@ -17,3 +17,6 @@ _region_.tex
 *.bak
 .ipynb_checkpoints
 data
+venv
+.vscode
+

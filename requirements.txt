@@ -1,0 +1,7 @@
+pandas
+sklearn
+jupyterlab==3
+mlxtend
+seaborn
+matplotlib
+

@@ -85,6 +85,18 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 
 * [Projeto 03](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/c751db52-6370-4633-938f-a0410fc07e74/view?access_token=b3d438ad4d46d6e1cbe703c24f7bc1845306282abcfb9fc306d48cb81f2ea6a1): desenvolvimento de um modelo de regressão para preços de imóveis na cidade de São Paulo.
 
+## Configuração do ambiente
+
+Opcionalmente, podemos utilizar `virtualenv` para sempre utilizar o mesmo conjunto de pacotes e versão de python. 
+
+````bash
+virtualenv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+````
+
+
 ## Observações para o bom andamento da disciplina
 
 É fortemente aconselhável que todos os alunos da disciplina sigam este projeto no GitHub através
