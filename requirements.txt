@@ -4,4 +4,7 @@ jupyterlab==3
 mlxtend
 seaborn
 matplotlib
+statsmodels
+scipy
+xgboost
 
