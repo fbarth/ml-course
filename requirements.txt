@@ -7,4 +7,5 @@ matplotlib
 statsmodels
 scipy
 xgboost
+workalendar
 
