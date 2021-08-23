@@ -1,6 +1,6 @@
 pandas
 sklearn
-jupyterlab==3
+jupyterlab==3.0.17
 mlxtend
 seaborn
 matplotlib
