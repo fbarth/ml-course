@@ -1,6 +1,5 @@
 pandas
 sklearn
-jupyterlab==3.0.17
 mlxtend
 seaborn
 matplotlib
@@ -8,4 +7,8 @@ statsmodels
 scipy
 xgboost
 workalendar
+IPython
+jupyterlab
+graphviz
+imblearn
 

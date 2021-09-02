@@ -90,7 +90,7 @@ ferramenta para exercitar os conceitos vistos em sala de aula.
 Opcionalmente, podemos utilizar `virtualenv` para sempre utilizar o mesmo conjunto de pacotes e versão de python. 
 
 ````bash
-virtualenv venv
+python3.8 -m virtualenv venv
 source venv/bin/activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
