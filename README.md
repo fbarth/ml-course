@@ -1,7 +1,7 @@
-# Machine Learning - TECH - ESPM
+# Machine Learning
 
 O objetivo deste projeto é manter os arquivos da disciplina de 
-Aprendizagem de Máquina do curso de TECH da ESPM. 
+Aprendizagem de Máquina. 
 
 Este projeto é composto pelos seguintes diretórios e arquivos: 
 
